@@ -2,7 +2,6 @@ import React from 'react';
 import { FaWater, FaWind } from 'react-icons/fa';
 import { GiWaves } from 'react-icons/gi'; // Import ikon gelombang
 import BackgroundImage from '../assets/dlhk-diy.jpg'; // Import gambar latar belakang
-import DecorationImage from '../assets/decoration.png'; // Import gambar dekorasi
 
 const ApplicationSection = () => {
   return (
@@ -28,10 +27,6 @@ const ApplicationSection = () => {
         </p>
       </div>
 
-      {/* Gambar Dekorasi di sebelah kanan teks */}
-      <div className="relative z-10 w-1/3 h-auto mt-14">
-        <img src={DecorationImage} alt="Decoration" className="w-full h-full object-contain" />
-      </div>
 
       {/* Container untuk Kartu Aplikasi */}
       <div className="relative z-10 max-w-7xl px-4 sm:px-6 lg:px-8 grid grid-cols-1 md:grid-cols-3 gap-8 mt-24 w-full">
