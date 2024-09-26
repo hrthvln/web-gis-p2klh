@@ -9,10 +9,10 @@ const HeroSection = () => {
       <div className="relative w-full min-h-screen bg-white flex items-center overflow-hidden">
         {/* Teks Hero Section */}
         <div className="text-left px-10 sm:px-16 lg:px-16 max-w-lg lg:max-w-2xl">
-          <h1 className="font-cardo text-[#325939] text-3xl sm:text-5xl font-bold mb-4">
+          <h1 className="font-cardo text-[#16423C] text-3xl sm:text-5xl font-bold mb-4">
             SISTEM INFORMASI
           </h1>
-          <h2 className="text-[#325939] text-1xl sm:text-3xl font-bold mb-7">
+          <h2 className="text-[#16423C] text-1xl sm:text-3xl font-bold mb-7">
             PEMANTAUAN LINGKUNGAN HIDUP
           </h2>
           <p className="font-cardo text-black text-lg sm:text-lg max-w-xl mb-2 text-justify">
@@ -40,7 +40,7 @@ const HeroSection = () => {
         {/* Teks About Section */}
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 flex flex-col lg:flex-row items-start lg:items-center justify-end w-full">
           <div className="lg:w-1/2 text-left lg:pl-16 lg:pr-8">
-            <h2 className="font-cardo text-[#325939] text-1xl sm:text-3xl font-bold mb-7">
+            <h2 className="font-cardo text-[#16423C] text-1xl sm:text-3xl font-bold mb-7">
               Visualisasi geospasial interaktif—
             </h2>
             <p className="font-cardo text-black text-lg sm:text-lg max-w-xl mb-3 text-justify">

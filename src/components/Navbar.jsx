@@ -1,6 +1,5 @@
 import React from 'react';
 import logo from '../assets/logo.png'; // Ganti dengan logo Anda
-import { FaBars } from 'react-icons/fa'; // Import ikon hamburger
 
 const Navbar = () => {
   // Fungsi untuk scroll ke section
@@ -32,7 +31,7 @@ const Navbar = () => {
           {/* Tombol untuk mengarah ke ApplicationSection */}
           <button
             onClick={() => handleScrollToSection('application-section')}
-            className="bg-[#325939] text-white px-4 py-2 rounded hover:bg-opacity-80 transition duration-300"
+            className="bg-[#6A9C89] text-white px-4 py-2 rounded hover:bg-opacity-80 transition duration-300"
           >
             Aplikasi WebGIS
           </button>
