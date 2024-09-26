@@ -28,17 +28,17 @@ function App() {
           />
           {/* River Water Quality Map Route */}
           <Route 
-            path="/maps/river-water-quality" 
+            path="/maps/kualitas-air-sungai" 
             element={<RiverWaterQualityMap />} 
           />
           {/* Air Quality Map Route */}
           <Route 
-            path="/maps/air-quality" 
+            path="/maps/kualitas-udara" 
             element={<AirQualityMap />} 
           />
           {/* Sea Water Quality Map Route */}
           <Route 
-            path="/maps/sea-water-quality" 
+            path="/maps/kualitas-air-laut" 
             element={<SeaWaterQualityMap />} 
           />
         </Routes>
