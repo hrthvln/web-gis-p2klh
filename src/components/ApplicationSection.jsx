@@ -1,4 +1,5 @@
 import React from 'react';
+import { Link } from 'react-router-dom'; // Import Link
 import { FaWater, FaWind } from 'react-icons/fa';
 import { GiWaves } from 'react-icons/gi'; // Import ikon gelombang
 import BackgroundImage from '../assets/dlhk-diy.jpg'; // Import gambar latar belakang
@@ -35,9 +36,11 @@ const ApplicationSection = () => {
           <div className="bg-white border-2 border-gray-200 p-4 rounded-lg flex flex-col items-center justify-center h-60">
             <FaWater className="text-3xl text-blue-500 mb-4" /> {/* Ikon Air */}
             <h3 className="text-sm font-semibold mb-2 text-center">Peta Pemantauan Kualitas Air Sungai</h3>
-            <button className="bg-[#6A9C89] text-white px-3 py-1 text-sm rounded hover:bg-opacity-80 transition duration-300">
-              Buka
-            </button>
+            <Link to="/maps/kualitas-air-sungai">
+              <button className="bg-[#6A9C89] text-white px-3 py-1 text-sm rounded hover:bg-opacity-80 transition duration-300">
+                Buka
+              </button>
+            </Link>
           </div>
         </div>
 
@@ -46,9 +49,11 @@ const ApplicationSection = () => {
           <div className="bg-white border-2 border-gray-200 p-4 rounded-lg flex flex-col items-center justify-center h-60">
             <FaWind className="text-3xl text-green-500 mb-4" /> {/* Ikon Udara */}
             <h3 className="text-sm font-semibold mb-2 text-center">Peta Pemantauan Kualitas Udara</h3>
-            <button className="bg-[#6A9C89] text-white px-3 py-1 text-sm rounded hover:bg-opacity-80 transition duration-300">
-              Buka
-            </button>
+            <Link to="/maps/kualitas-udara">
+              <button className="bg-[#6A9C89] text-white px-3 py-1 text-sm rounded hover:bg-opacity-80 transition duration-300">
+                Buka
+              </button>
+            </Link>
           </div>
         </div>
 
@@ -57,9 +62,11 @@ const ApplicationSection = () => {
           <div className="bg-white border-2 border-gray-200 p-4 rounded-lg flex flex-col items-center justify-center h-60">
             <GiWaves className="text-3xl text-blue-700 mb-4" /> {/* Ikon Gelombang */}
             <h3 className="text-sm font-semibold mb-2 text-center">Peta Pemantauan Kualitas Air Laut</h3>
-            <button className="bg-[#6A9C89] text-white px-3 py-1 text-sm rounded hover:bg-opacity-80 transition duration-300">
-              Buka
-            </button>
+            <Link to="/maps/kualitas-air-laut">
+              <button className="bg-[#6A9C89] text-white px-3 py-1 text-sm rounded hover:bg-opacity-80 transition duration-300">
+                Buka
+              </button>
+            </Link>
           </div>
         </div>
       </div>
