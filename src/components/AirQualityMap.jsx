@@ -1,4 +1,3 @@
-// src/components/AirQuality.jsx
 import React, { useEffect, useState } from 'react';
 import L from 'leaflet';
 import 'leaflet/dist/leaflet.css';
@@ -10,6 +9,15 @@ const AirQuality = () => {
   const [map, setMap] = useState(null);
   const [boundaryLayer, setBoundaryLayer] = useState(null);
   const [coords, setCoords] = useState({ lat: null, lng: null });
+
+  // Warna yang ditetapkan untuk setiap kabupaten
+  const kabupatenColors = {
+    'Sleman': '#2c7fb8',
+    'Bantul': '#FFE400',
+    'Gunungkidul': '#d95f0e', // Ubah ke nama yang konsisten dengan GeoJSON
+    'Kulon Progo': '#379237',
+    'Kota Yogyakarta': '#dd1c77'
+  };
 
   // Fungsi untuk memuat data GeoJSON
   const loadGeoJsonData = async (url) => {
@@ -60,6 +68,7 @@ const AirQuality = () => {
     };
   }, []);
 
+  // Fungsi untuk memuat dan mengaktifkan boundary layer (batas kabupaten)
   const toggleBoundaryLayer = async () => {
     if (boundaryLayer) {
       map.removeLayer(boundaryLayer);
@@ -67,13 +76,23 @@ const AirQuality = () => {
     } else {
       const boundariesData = await loadGeoJsonData('/map/batasKab_cleaned.geojson');
       const newBoundaryLayer = L.geoJSON(boundariesData, {
-        style: (feature) => ({
-          color: feature.properties.color || '#FF5733', // Warna highlight untuk batas kabupaten
-          weight: 3,
-          opacity: 0.7
-        }),
+        style: (feature) => {
+          const kabupaten = feature.properties.NAMOBJ;
+          console.log("Kabupaten ditemukan:", kabupaten); // Debugging untuk memastikan nama kabupaten
+          
+          // Tetapkan warna dari daftar kabupatenColors atau gunakan warna default jika kabupaten tidak ada dalam daftar
+          const color = kabupatenColors[kabupaten] || '#000000'; 
+          return {
+            color: color, // Warna ditetapkan dari kabupatenColors
+            weight: 3,
+            opacity: 0.7,
+            fillOpacity: 0.2, // Pastikan ada fillOpacity agar warna muncul
+            fillColor: color // Tambahkan fillColor agar batasnya berwarna
+          };
+        },
         onEachFeature: (feature, layer) => {
-          layer.bindPopup(`<h3>${feature.properties.nama}</h3>`); // Menampilkan nama kabupaten
+          // Tampilkan popup dengan nama kabupaten
+          layer.bindPopup(`<h3>${feature.properties.NAMOBJ}</h3>`);
         },
       }).addTo(map);
       setBoundaryLayer(newBoundaryLayer);
@@ -82,7 +101,9 @@ const AirQuality = () => {
 
   // Memanggil fungsi untuk menampilkan batas kabupaten saat komponen pertama kali dimuat
   useEffect(() => {
-    toggleBoundaryLayer();
+    if (map) {
+      toggleBoundaryLayer();
+    }
   }, [map]);
 
   return (

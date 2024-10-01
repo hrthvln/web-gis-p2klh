@@ -1,4 +1,3 @@
-// src/components/RiverWaterQualityMap.jsx
 import React, { useEffect, useState } from 'react';
 import L from 'leaflet';
 import 'leaflet/dist/leaflet.css';
@@ -8,15 +7,18 @@ import logo from '../assets/logo.png'; // Sesuaikan jalur logo
 
 const RiverWaterQualityMap = () => {
   const [map, setMap] = useState(null);
-  const [geojsonLayerFeb, setGeojsonLayerFeb] = useState(null);
-  const [geojsonLayerJun, setGeojsonLayerJun] = useState(null);
-  const [geojsonLayerOkt, setGeojsonLayerOkt] = useState(null);
   const [boundaryLayer, setBoundaryLayer] = useState(null);
-  const [selectedYear, setSelectedYear] = useState('2023');
-  const [showFilterPopup, setShowFilterPopup] = useState(false);
-  const [showLegendPopup, setShowLegendPopup] = useState(false);
-  const [showLayerPopup, setShowLayerPopup] = useState(false);
+  const [pointLayer, setPointLayer] = useState(null); // Untuk layer titik
   const [coords, setCoords] = useState({ lat: null, lng: null });
+
+  // Warna yang ditetapkan untuk setiap kabupaten
+  const kabupatenColors = {
+    'Sleman': '#2c7fb8',
+    'Bantul': '#FFE400',
+    'Gunungkidul': '#d95f0e',
+    'Kulon Progo': '#379237',
+    'Kota Yogyakarta': '#dd1c77'
+  };
 
   // Fungsi untuk memuat data GeoJSON
   const loadGeoJsonData = async (url) => {
@@ -34,7 +36,7 @@ const RiverWaterQualityMap = () => {
     // Inisialisasi peta
     const initialMap = L.map('map').setView([-7.797068, 110.370529], 10); // Koordinat DIY
 
-    // Tambahkan tile layer alternatif (Google Maps tile sebagai opsi)
+    // Tambahkan tile layer
     L.tileLayer('https://{s}.google.com/vt/lyrs=m&x={x}&y={y}&z={z}', {
       subdomains: ['mt0', 'mt1', 'mt2', 'mt3'],
       maxZoom: 20,
@@ -50,13 +52,7 @@ const RiverWaterQualityMap = () => {
       }
     }).addTo(initialMap);
 
-    // Hapus kontrol zoom default dan tambahkan satu kontrol zoom
-    if (initialMap.zoomControl) {
-      initialMap.removeControl(initialMap.zoomControl); // Hapus kontrol zoom yang kedua
-    }
-    L.control.zoom({ position: 'topleft' }).addTo(initialMap);
-
-    // Event listener untuk menampilkan koordinat kursor secara realtime
+    // Event listener untuk menampilkan koordinat kursor
     initialMap.on('mousemove', function (e) {
       setCoords({ lat: e.latlng.lat.toFixed(6), lng: e.latlng.lng.toFixed(6) });
     });
@@ -73,25 +69,7 @@ const RiverWaterQualityMap = () => {
     };
   }, []);
 
-  // Fungsi untuk mengelola penambahan lapisan GeoJSON
-  const toggleLayer = async (layerState, setLayerState, geojsonUrl) => {
-    if (layerState) {
-      map.removeLayer(layerState);
-      setLayerState(null);
-    } else {
-      const geojsonData = await loadGeoJsonData(geojsonUrl);
-      const newLayer = L.geoJSON(geojsonData, {
-        style: (feature) => ({
-          color: feature.properties.color || 'blue',
-        }),
-        onEachFeature: (feature, layer) => {
-          layer.bindPopup(`<h3>${feature.properties.nama}</h3><p>Tahun: ${feature.properties.tahun}</p>`);
-        },
-      }).addTo(map);
-      setLayerState(newLayer);
-    }
-  };
-
+  // Fungsi untuk memuat dan mengaktifkan boundary layer (batas kabupaten)
   const toggleBoundaryLayer = async () => {
     if (boundaryLayer) {
       map.removeLayer(boundaryLayer);
@@ -99,92 +77,76 @@ const RiverWaterQualityMap = () => {
     } else {
       const boundariesData = await loadGeoJsonData('/map/batasKab_cleaned.geojson');
       const newBoundaryLayer = L.geoJSON(boundariesData, {
-        style: (feature) => ({
-          color: feature.properties.color || '#FF5733', // Warna highlight untuk batas kabupaten
-          weight: 3, // Menentukan ketebalan garis
-          opacity: 0.7, // Transparansi garis
-        }),
+        style: (feature) => {
+          const kabupaten = feature.properties.NAMOBJ;
+          console.log("Kabupaten ditemukan:", kabupaten); // Debugging untuk memastikan nama kabupaten
+          
+          const color = kabupatenColors[kabupaten] || '#000000'; 
+          return {
+            color: color, 
+            weight: 3,
+            opacity: 0.7,
+            fillOpacity: 0.2, 
+            fillColor: color 
+          };
+        },
         onEachFeature: (feature, layer) => {
-          layer.bindPopup(`<h3>${feature.properties.nama}</h3>`);
+          layer.bindPopup(`<h3>${feature.properties.NAMOBJ}</h3>`);
         },
       }).addTo(map);
       setBoundaryLayer(newBoundaryLayer);
     }
   };
-  
+
+  // Fungsi untuk memuat titik-titik dari file GeoJSON
+  const loadPointLayer = async () => {
+    if (pointLayer) {
+      map.removeLayer(pointLayer);
+      setPointLayer(null);
+    } else {
+      const pointData = await loadGeoJsonData('/map/titikFebruari_cleaned.geojson');
+      const newPointLayer = L.geoJSON(pointData, {
+        pointToLayer: (feature, latlng) => {
+          return L.circleMarker(latlng, {
+            radius: 6,
+            fillColor: "#ff7800",
+            color: "#000",
+            weight: 1,
+            opacity: 1,
+            fillOpacity: 0.8
+          });
+        },
+        onEachFeature: (feature, layer) => {
+          const { Sungai, Lokasi, PL_1, IP_Feb, Status } = feature.properties;
+          const [lng, lat] = feature.geometry.coordinates; // Pastikan urutannya benar (lng, lat)
+          layer.bindPopup(`
+            <h3>Nama Sungai: ${Sungai}</h3>
+            <b>Koordinat:</b> x: ${lng}, y: ${lat}<br/>
+            <b>Lokasi:</b> ${Lokasi}<br/>
+            <b>Penggunaan Lahan:</b> ${PL_1}<br/>
+            <b>Indeks Pencemaran:</b> ${IP_Feb}<br/>
+            <b>Status:</b> ${Status}
+          `);
+        }
+      }).addTo(map);
+      setPointLayer(newPointLayer);
+    }
+  };
+
+  // Memanggil fungsi untuk menampilkan batas kabupaten dan titik-titik saat komponen pertama kali dimuat
+  useEffect(() => {
+    if (map) {
+      toggleBoundaryLayer();
+      loadPointLayer();
+    }
+  }, [map]);
 
   return (
     <div>
       {/* Navbar */}
       <nav style={{ backgroundColor: '#6A9C89', padding: '10px', display: 'flex', alignItems: 'center' }}>
         <img src={logo} alt="Logo" style={{ height: '40px', marginRight: '10px' }} />
-        <h2 style={{ color: 'white', margin: 0 }}>Peta Pemantauan Kualitas Air Sungai di DIY</h2>
-        <div style={{ marginLeft: 'auto', display: 'flex', gap: '20px' }}>
-          {/* Filter Tahun */}
-          <div>
-            <i className="fas fa-filter" style={{ color: 'white', cursor: 'pointer' }} onClick={() => setShowFilterPopup(!showFilterPopup)}></i>
-            {showFilterPopup && (
-              <div className="popup">
-                <div className="popup-content">
-                  <span className="close-btn" onClick={() => setShowFilterPopup(false)}>x</span>
-                  <h3>Filter Tahun</h3>
-                  <select value={selectedYear} onChange={(e) => setSelectedYear(e.target.value)}>
-                    <option value="2023">2023</option>
-                    <option value="2022">2022</option>
-                    <option value="2021">2021</option>
-                  </select>
-                </div>
-              </div>
-            )}
-          </div>
-
-          {/* Layer List */}
-          <div>
-            <i className="fas fa-layer-group" style={{ color: 'white', cursor: 'pointer' }} onClick={() => setShowLayerPopup(!showLayerPopup)}></i>
-            {showLayerPopup && (
-              <div className="popup">
-                <div className="popup-content">
-                  <span className="close-btn" onClick={() => setShowLayerPopup(false)}>x</span>
-                  <h3>Layer List</h3>
-                  <label>
-                    <input type="checkbox" onChange={() => toggleLayer(geojsonLayerFeb, setGeojsonLayerFeb, '/map/sungaiFeb.geojson')} /> Periode Februari
-                  </label><br />
-                  <label>
-                    <input type="checkbox" onChange={() => toggleLayer(geojsonLayerJun, setGeojsonLayerJun, '/map/sungaiJun.geojson')} /> Periode Juni
-                  </label><br />
-                  <label>
-                    <input type="checkbox" onChange={() => toggleLayer(geojsonLayerOkt, setGeojsonLayerOkt, '/map/sungaiOkt.geojson')} /> Periode Oktober
-                  </label><br />
-                  <label>
-                    <input type="checkbox" onChange={toggleBoundaryLayer} /> Batas Kabupaten
-                  </label>
-                </div>
-              </div>
-            )}
-          </div>
-
-          {/* Legenda */}
-          <div>
-            <i className="fas fa-info-circle" style={{ color: 'white', cursor: 'pointer' }} onClick={() => setShowLegendPopup(!showLegendPopup)}></i>
-            {showLegendPopup && (
-              <div className="popup">
-                <div className="popup-content">
-                  <span className="close-btn" onClick={() => setShowLegendPopup(false)}>x</span>
-                  <h3>Legenda</h3>
-                  <p><b>Titik Pemantauan Kualitas Air Sungai</b> <i className="fas fa-circle" style={{ color: 'blue' }}></i></p>
-                  <p><b>Batas Kecamatan</b> <i className="fas fa-circle" style={{ color: 'red' }}></i></p>
-                  <div>
-                    <p><b>Sleman</b> <i className="fas fa-square" style={{ color: '#1f77b4' }}></i></p>
-                    <p><b>Bantul</b> <i className="fas fa-square" style={{ color: '#ff7f0e' }}></i></p>
-                    <p><b>Kulon Progo</b> <i className="fas fa-square" style={{ color: '#2ca02c' }}></i></p>
-                    <p><b>Gunung Kidul</b> <i className="fas fa-square" style={{ color: '#d62728' }}></i></p>
-                    <p><b>Kota Yogyakarta</b> <i className="fas fa-square" style={{ color: '#9467bd' }}></i></p>
-                  </div>
-                </div>
-              </div>
-            )}
-          </div>
-        </div>
+        <h2 style={{ color: 'white', margin: 0 }}>Peta Kualitas Air Sungai dan Batas Kabupaten</h2>
       </nav>
 
       {/* Peta */}
