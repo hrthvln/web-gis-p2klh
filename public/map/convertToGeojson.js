@@ -1,7 +1,7 @@
 import { promises as fs } from 'fs';
 
-// Membaca file JSON yang berisi data titik sungai (titikFebruari.json)
-const data = JSON.parse(await fs.readFile('titikFebruari.json', 'utf8'));
+// Membaca file JSON yang berisi data sungai
+const data = JSON.parse(await fs.readFile('Oktober_PenggunaanLahan.json', 'utf8'));
 
 // Fungsi untuk membersihkan nilai null dan 0 dari koordinat
 function clean_coordinates(x, y) {
@@ -15,7 +15,7 @@ function clean_coordinates(x, y) {
 const geoJsonData = {
     type: 'FeatureCollection',
     features: data.features.map(item => {
-        const coordinates = clean_coordinates(item.attributes.X, item.attributes.Y);
+        const coordinates = clean_coordinates(item.properties.X, item.properties.Y);
         if (coordinates) {
             return {
                 type: 'Feature',
@@ -24,17 +24,13 @@ const geoJsonData = {
                     coordinates: coordinates
                 },
                 properties: {
-                    "FID": item.attributes.FID,
-                    "No_": item.attributes.No_,
-                    "Sungai": item.attributes.Sungai,
-                    "IP_Feb": item.attributes.IP_Feb,
-                    "Status": item.attributes.Status,
-                    "Lokasi": item.attributes.Lokasi,
-                    "BUFF_DIST": item.attributes.BUFF_DIST,
-                    "PL_1": item.attributes.PL_1,
-                    "Luas_Ha": item.attributes.Luas_Ha,
-                    "SUMBER": item.attributes.SUMBER,
-                    "LUSE": item.attributes.LUSE
+                    "FID": item.properties.FID,
+                    "No_": item.properties.No_,
+                    "Sungai": item.properties.Sungai,
+                    "IP_Okt": item.properties.IP_Okt,
+                    "Status": item.properties.Status,
+                    "Lokasi": item.properties.Lokasi,
+                    "PL": item.properties.PL
                 }
             };
         }
@@ -42,6 +38,6 @@ const geoJsonData = {
 };
 
 // Menyimpan hasil yang sudah dikonversi dan dibersihkan ke file GeoJSON baru
-await fs.writeFile('titikFebruari_cleaned.geojson', JSON.stringify(geoJsonData, null, 2));
+await fs.writeFile('titikOktober_cleaned.geojson', JSON.stringify(geoJsonData, null, 2));
 
-console.log('File JSON telah dikonversi dan dibersihkan sebagai titikFebruari_cleaned.geojson');
+console.log('File JSON telah dikonversi dan dibersihkan sebagai titikOktober_cleaned.geojson');

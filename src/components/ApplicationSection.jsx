@@ -37,7 +37,7 @@ const ApplicationSection = () => {
             <FaWater className="text-3xl text-blue-500 mb-4" /> {/* Ikon Air */}
             <h3 className="text-sm font-semibold mb-2 text-center">Peta Pemantauan Kualitas Air Sungai</h3>
             <Link to="/maps/kualitas-air-sungai">
-              <button className="bg-[#6A9C89] text-white px-3 py-1 text-sm rounded hover:bg-opacity-80 transition duration-300">
+              <button className="bg-[#16423C]/80 text-white px-3 py-1 text-sm rounded hover:bg-opacity-80 transition duration-300">
                 Buka
               </button>
             </Link>
@@ -50,7 +50,7 @@ const ApplicationSection = () => {
             <FaWind className="text-3xl text-green-500 mb-4" /> {/* Ikon Udara */}
             <h3 className="text-sm font-semibold mb-2 text-center">Peta Pemantauan Kualitas Udara</h3>
             <Link to="/maps/kualitas-udara">
-              <button className="bg-[#6A9C89] text-white px-3 py-1 text-sm rounded hover:bg-opacity-80 transition duration-300">
+              <button className="bg-[#16423C]/80 text-white px-3 py-1 text-sm rounded hover:bg-opacity-80 transition duration-300">
                 Buka
               </button>
             </Link>
@@ -63,7 +63,7 @@ const ApplicationSection = () => {
             <GiWaves className="text-3xl text-blue-700 mb-4" /> {/* Ikon Gelombang */}
             <h3 className="text-sm font-semibold mb-2 text-center">Peta Pemantauan Kualitas Air Laut</h3>
             <Link to="/maps/kualitas-air-laut">
-              <button className="bg-[#6A9C89] text-white px-3 py-1 text-sm rounded hover:bg-opacity-80 transition duration-300">
+              <button className="bg-[#16423C]/80 text-white px-3 py-1 text-sm rounded hover:bg-opacity-80 transition duration-300">
                 Buka
               </button>
             </Link>

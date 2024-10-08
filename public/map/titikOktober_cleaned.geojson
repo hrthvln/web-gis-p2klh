@@ -1,0 +1,955 @@
+{
+  "type": "FeatureCollection",
+  "features": [
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          110.385648,
+          -7.645709
+        ]
+      },
+      "properties": {
+        "FID": 0,
+        "No_": 1,
+        "Sungai": "Winongo 1",
+        "IP_Okt": 9.2066,
+        "Status": "CEMAR SEDANG",
+        "Lokasi": "Jembatan Pules Lor Suradadi, Girikerto, Turi, Kabupaten Sleman",
+        "PL": "Perkebunan/Kebun, Sawah Irigasi, Permukiman, Sungai"
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          110.361896,
+          -7.724906
+        ]
+      },
+      "properties": {
+        "FID": 1,
+        "No_": 2,
+        "Sungai": "Winongo 2",
+        "IP_Okt": 10.1122,
+        "Status": "CEMAR BERAT",
+        "Lokasi": "Jembatan Karangasem, Pandowoharjo, Kabupaten Sleman",
+        "PL": "Semak/Belukar, Perkebunan/Kebun, Tegalan/Ladang, Sawah Irigasi, Danau/Waduk, Permukiman, Kolam Air Tawar, Lapangan, Industri"
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          110.357462,
+          -7.776947
+        ]
+      },
+      "properties": {
+        "FID": 2,
+        "No_": 3,
+        "Sungai": "Winongo 3",
+        "IP_Okt": 7.7686,
+        "Status": "CEMAR SEDANG",
+        "Lokasi": "Jembatan Jatimulyo, Kricak, Yogyakarta",
+        "PL": "Semak/Belukar, Rumput/Tanah Kosong, Sawah Irigasi, Sungai, Permukiman"
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          110.356527,
+          -7.78973
+        ]
+      },
+      "properties": {
+        "FID": 3,
+        "No_": 4,
+        "Sungai": "Winongo 4",
+        "IP_Okt": 9.2245,
+        "Status": "CEMAR SEDANG",
+        "Lokasi": "Jembatan Jlagran, Bumijo, Yogyakarta",
+        "PL": "Sawah Irigasi, Sungai, Permukiman"
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          110.353584,
+          -7.808297
+        ]
+      },
+      "properties": {
+        "FID": 4,
+        "No_": 5,
+        "Sungai": "Winongo 5",
+        "IP_Okt": 10.1203,
+        "Status": "CEMAR BERAT",
+        "Lokasi": "Jembatan Tamansari, Wirobrajan, Yogyakarta",
+        "PL": "Perkebunan/Kebun, Rumput/Tanah Kosong, Sawah Irigasi, Sungai, Permukiman"
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          110.348516,
+          -7.840684
+        ]
+      },
+      "properties": {
+        "FID": 5,
+        "No_": 6,
+        "Sungai": "Winongo 6",
+        "IP_Okt": 11.2895,
+        "Status": "CEMAR BERAT",
+        "Lokasi": "Jembatan Dongkelan, Kasihan, Kabupaten Bantul",
+        "PL": "Perkebunan/Kebun, Sawah Irigasi, Sungai, Permukiman"
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          110.347103,
+          -7.913594
+        ]
+      },
+      "properties": {
+        "FID": 6,
+        "No_": 7,
+        "Sungai": "Winongo 7",
+        "IP_Okt": 4.1696,
+        "Status": "CEMAR RINGAN",
+        "Lokasi": "Jembatan Bakulan, Jetis, Kabupaten Bantul",
+        "PL": "Perkebunan/Kebun, Sawah Irigasi, Sungai, Permukiman"
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          110.313913,
+          -7.980412
+        ]
+      },
+      "properties": {
+        "FID": 7,
+        "No_": 8,
+        "Sungai": "Winongo 8",
+        "IP_Okt": 5.5304,
+        "Status": "CEMAR SEDANG",
+        "Lokasi": "Jembatan Mojo, Gading, Kretek, Kabupaten Bantul",
+        "PL": "Perkebunan/Kebun, Tegalan/Ladang, Sawah Irigasi, Sungai, Permukiman"
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          110.421412,
+          -7.629662
+        ]
+      },
+      "properties": {
+        "FID": 8,
+        "No_": 9,
+        "Sungai": "Gajahwong 1",
+        "IP_Okt": 4.1932,
+        "Status": "CEMAR RINGAN",
+        "Lokasi": "Jembatan Tanen, Hargobinangun, Pakem, Kabupaten Sleman",
+        "PL": "Semak/Belukar, Perkebunan/Kebun, Tegalan/Ladang, Sawah Irigasi, Sungai, Danau/Waduk, Permukiman"
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          110.393858,
+          -7.75492
+        ]
+      },
+      "properties": {
+        "FID": 9,
+        "No_": 10,
+        "Sungai": "Gajahwong 2",
+        "IP_Okt": 0.5704,
+        "Status": "MEMENUHI",
+        "Lokasi": "Jembatan Pelang, Condongcatur, Depok, Kabupaten Sleman",
+        "PL": "Perkebunan/Kebun, Sawah Irigasi, Permukiman"
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          110.397092,
+          -7.782552
+        ]
+      },
+      "properties": {
+        "FID": 10,
+        "No_": 11,
+        "Sungai": "Gajahwong 3",
+        "IP_Okt": 10.1238,
+        "Status": "CEMAR BERAT",
+        "Lokasi": "Jembatan IAIN, Caturtunggal, Depok, Kabupaten Sleman",
+        "PL": "Perkebunan/Kebun, Sawah Irigasi, Sungai, Permukiman"
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          110.39697,
+          -7.802332
+        ]
+      },
+      "properties": {
+        "FID": 11,
+        "No_": 12,
+        "Sungai": "Gajahwong 4",
+        "IP_Okt": 10.1208,
+        "Status": "CEMAR BERAT",
+        "Lokasi": "Jembatan Muja-muju, Umbulharjo, Yogyakarta",
+        "PL": "Perkebunan/Kebun, Tegalan/Ladang, Sawah Irigasi, Sungai, Permukiman, Kolam Air Tawar"
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          110.393386,
+          -7.813695
+        ]
+      },
+      "properties": {
+        "FID": 12,
+        "No_": 13,
+        "Sungai": "Gajahwong 5",
+        "IP_Okt": 9.2125,
+        "Status": "CEMAR SEDANG",
+        "Lokasi": "Jembatan Peleman, Rejowinangun, Kotagede, Yogyakarta",
+        "PL": "Sungai, Permukiman"
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          110.393187,
+          -7.826827
+        ]
+      },
+      "properties": {
+        "FID": 13,
+        "No_": 14,
+        "Sungai": "Gajahwong 6",
+        "IP_Okt": 10.1105,
+        "Status": "CEMAR BERAT",
+        "Lokasi": "Jembatan Tegalgendu, Kotagede, Yogyakarta",
+        "PL": "Sungai, Permukiman"
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          110.395724,
+          -7.844267
+        ]
+      },
+      "properties": {
+        "FID": 14,
+        "No_": 15,
+        "Sungai": "Gajahwong 7",
+        "IP_Okt": 6.5647,
+        "Status": "CEMAR SEDANG",
+        "Lokasi": "Jembatan Grojogan, Wirokerten, Banguntapan, Kabupaten Bantul",
+        "PL": "Perkebunan/Kebun, Rumput/Tanah Kosong, Tegalan/Ladang, Sawah Irigasi, Sungai, Permukiman, Emplasemen, Kolam Air Tawar"
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          110.395059,
+          -7.869094
+        ]
+      },
+      "properties": {
+        "FID": 15,
+        "No_": 16,
+        "Sungai": "Gajahwong 8",
+        "IP_Okt": 9.2263,
+        "Status": "CEMAR SEDANG",
+        "Lokasi": "Jembatan Kanggotan, Wonokromo, Pleret, Kabupaten Bantul",
+        "PL": "Perkebunan/Kebun, Tegalan/Ladang, Sawah Irigasi, Sungai, Permukiman"
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          110.338558,
+          -7.680227
+        ]
+      },
+      "properties": {
+        "FID": 16,
+        "No_": 17,
+        "Sungai": "Konteng 1",
+        "IP_Okt": 6.5551,
+        "Status": "CEMAR SEDANG",
+        "Lokasi": "Jembatan Medari, Jl Magelang Km 14, Kabupaten Sleman",
+        "PL": "Semak/Belukar, Perkebunan/Kebun, Sawah Tadah Hujan, Tegalan/Ladang, Sawah Irigasi, Permukiman, Makam, Lapangan, Industri"
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          110.313536,
+          -7.773518
+        ]
+      },
+      "properties": {
+        "FID": 17,
+        "No_": 18,
+        "Sungai": "Konteng 2",
+        "IP_Okt": 7.7767,
+        "Status": "CEMAR SEDANG",
+        "Lokasi": "Jembatan Klajuran, Gesikan, Sidoarum, Godean, Kabupaten Sleman",
+        "PL": "Perkebunan/Kebun, Tegalan/Ladang, Sawah Irigasi, Sungai, Permukiman, Kolam Air Tawar"
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          110.304756,
+          -7.804372
+        ]
+      },
+      "properties": {
+        "FID": 18,
+        "No_": 19,
+        "Sungai": "Konteng 3",
+        "IP_Okt": 5.5394,
+        "Status": "CEMAR SEDANG",
+        "Lokasi": "Jembatan Pasekan Balecatur, Gamping, Kabupaten Sleman",
+        "PL": "Perkebunan/Kebun, Sawah Irigasi, Sungai, Permukiman"
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          110.254978,
+          -7.83565
+        ]
+      },
+      "properties": {
+        "FID": 19,
+        "No_": 20,
+        "Sungai": "Konteng 4",
+        "IP_Okt": 4.1853,
+        "Status": "CEMAR RINGAN",
+        "Lokasi": "Sungai Argorejo (dekat Perum Pondok Sedayu), Sedayu, Kabupaten Bantul",
+        "PL": "Perkebunan/Kebun, Rumput/Tanah Kosong, Sawah Irigasi, Sungai, Permukiman"
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          110.349887,
+          -7.70286
+        ]
+      },
+      "properties": {
+        "FID": 20,
+        "No_": 21,
+        "Sungai": "Bedog 1",
+        "IP_Okt": 4.2027,
+        "Status": "CEMAR RINGAN",
+        "Lokasi": "Jembatan Sungai Bedog, Jalan Magelang Sleman",
+        "PL": "Perkebunan/Kebun, Sawah Irigasi, Sungai, Permukiman, Kolam Air Tawar"
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          110.32738,
+          -7.798408
+        ]
+      },
+      "properties": {
+        "FID": 21,
+        "No_": 22,
+        "Sungai": "Bedog 2",
+        "IP_Okt": 9.2182,
+        "Status": "CEMAR SEDANG",
+        "Lokasi": "Jembatan Gamping, Sleman",
+        "PL": "Perkebunan/Kebun, Sawah Irigasi, Sungai, Permukiman, Lapangan"
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          110.338201,
+          -7.845611
+        ]
+      },
+      "properties": {
+        "FID": 22,
+        "No_": 23,
+        "Sungai": "Bedog 3",
+        "IP_Okt": 10.1164,
+        "Status": "CEMAR BERAT",
+        "Lokasi": "Jembatan Kasongan, Kasihan, Tirtonirmolo, Bantul",
+        "PL": "Perkebunan/Kebun, Sawah Irigasi, Sungai, Permukiman"
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          110.321292,
+          -7.865488
+        ]
+      },
+      "properties": {
+        "FID": 23,
+        "No_": 24,
+        "Sungai": "Bedog 4",
+        "IP_Okt": 7.8894,
+        "Status": "CEMAR SEDANG",
+        "Lokasi": "Jembatan Gantung Tegaldowo, Guwosari, Pajangan, Bantul",
+        "PL": "Perkebunan/Kebun, Tegalan/Ladang, Sawah Irigasi, Sungai, Permukiman"
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          110.275833,
+          -7.909496
+        ]
+      },
+      "properties": {
+        "FID": 24,
+        "No_": 25,
+        "Sungai": "Bedog 5",
+        "IP_Okt": 4.1906,
+        "Status": "CEMAR RINGAN",
+        "Lokasi": "Tempuran Bedog-Progo",
+        "PL": "Perkebunan/Kebun, Rumput/Tanah Kosong, Tegalan/Ladang, Sawah Irigasi, Sungai, Permukiman"
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          110.737442,
+          -7.862072
+        ]
+      },
+      "properties": {
+        "FID": 25,
+        "No_": 26,
+        "Sungai": "Oyo 1",
+        "IP_Okt": 2.9822,
+        "Status": "CEMAR RINGAN",
+        "Lokasi": "Jembatan Kedungwates, Semin, Gunungkidul",
+        "PL": "Semak/Belukar, Perkebunan/Kebun, Sawah Tadah Hujan, Tegalan/Ladang, Sawah Irigasi, Sungai, Permukiman"
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          110.546169,
+          -7.892834
+        ]
+      },
+      "properties": {
+        "FID": 26,
+        "No_": 27,
+        "Sungai": "Oyo 2",
+        "IP_Okt": 4.1767,
+        "Status": "CEMAR RINGAN",
+        "Lokasi": "Jembatan Bunder, Patuk, Gunungkidul",
+        "PL": "Semak/Belukar, Perkebunan/Kebun, Tegalan/Ladang, Sungai, Permukiman, Hutan Konservasi, Hutan Produksi"
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          110.490922,
+          -7.925436
+        ]
+      },
+      "properties": {
+        "FID": 27,
+        "No_": 28,
+        "Sungai": "Oyo 3",
+        "IP_Okt": 4.1628,
+        "Status": "CEMAR RINGAN",
+        "Lokasi": "Jembatan Dodogan, Jatimulyo, Dlingo, Bantul",
+        "PL": "Semak/Belukar, Perkebunan/Kebun, Sawah Tadah Hujan, Tegalan/Ladang, Sawah Irigasi, Sungai, Permukiman, Hutan Lindung, Hutan Produksi"
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          110.379819,
+          -7.952154
+        ]
+      },
+      "properties": {
+        "FID": 28,
+        "No_": 29,
+        "Sungai": "Oyo 4",
+        "IP_Okt": 3.4241,
+        "Status": "CEMAR RINGAN",
+        "Lokasi": "Jembatan Dogongan, Siluk, Imogiri, Bantul",
+        "PL": "Perkebnan/Kebun, Sawah Tadah Hujan, Tegalan/Ladang, Sawah Irigasi, Sungai, Permukiman, Emplasemen"
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          110.383013,
+          -7.87276
+        ]
+      },
+      "properties": {
+        "FID": 29,
+        "No_": 30,
+        "Sungai": "Code 6",
+        "IP_Okt": 4.1918,
+        "Status": "CEMAR RINGAN",
+        "Lokasi": "Jembatan Pacar, Wonokromo, Pleret, Bantul",
+        "PL": "Tegalan/Ladang, Sawah Irigasi, Sungai, Permukiman, Emplasemen"
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          110.375299,
+          -7.851479
+        ]
+      },
+      "properties": {
+        "FID": 30,
+        "No_": 31,
+        "Sungai": "Code 5",
+        "IP_Okt": 9.2596,
+        "Status": "CEMAR SEDANG",
+        "Lokasi": "Jembatan Abang Ngoto, Sewon, Bantul",
+        "PL": "Rumput/Tanah Kosong, Tegalan/Ladang, Sawah Irigasi, Sungai, Permukiman, Emplasemen"
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          110.374325,
+          -7.817085
+        ]
+      },
+      "properties": {
+        "FID": 31,
+        "No_": 32,
+        "Sungai": "Code 4",
+        "IP_Okt": 10.138,
+        "Status": "CEMAR BERAT",
+        "Lokasi": "Jembatan Tungkak, Mergangsan, Yogyakarta",
+        "PL": "Tegalan/Ladang, Sawah Irigasi, Sungai, Permukiman"
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          110.451763,
+          -7.832468
+        ]
+      },
+      "properties": {
+        "FID": 32,
+        "No_": 33,
+        "Sungai": "Opak 2",
+        "IP_Okt": 9.2249,
+        "Status": "CEMAR SEDANG",
+        "Lokasi": "Taman Wisata Keluarga Gerbang Banyu Langit Bantul",
+        "PL": "Perkebunan/Kebun, Tegalan/Ladang, Sawah Irigasi, Sungai, Permukiman, Emplasemen"
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          110.482811,
+          -7.722875
+        ]
+      },
+      "properties": {
+        "FID": 33,
+        "No_": 34,
+        "Sungai": "Opak 1",
+        "IP_Okt": 2.2458,
+        "Status": "CEMAR RINGAN",
+        "Lokasi": "Cageran, Tamanmartani, Kalasan, Sleman",
+        "PL": "Perkebunan/Kebun, Tegalan/Ladang, Sawah Irigasi, Sungai, Permukiman"
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          110.368881,
+          -7.789521
+        ]
+      },
+      "properties": {
+        "FID": 34,
+        "No_": 35,
+        "Sungai": "Code 3",
+        "IP_Okt": 6.5818,
+        "Status": "CEMAR SEDANG",
+        "Lokasi": "Jembatan Kewek, Kotabaru, Yogyakarta",
+        "PL": "Sungai, Permukiman"
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          110.389449,
+          -7.715721
+        ]
+      },
+      "properties": {
+        "FID": 35,
+        "No_": 36,
+        "Sungai": "Code 2",
+        "IP_Okt": 5.5449,
+        "Status": "CEMAR SEDANG",
+        "Lokasi": "Jembatan Lojajar, Sariharjo, Ngaglik Slemanarjo, Ngaglik Sleman",
+        "PL": "Perkebunan/Kebun, Sawah Irigasi, Sungai, Permukiman, Industri"
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          110.414919,
+          -7.615416
+        ]
+      },
+      "properties": {
+        "FID": 36,
+        "No_": 37,
+        "Sungai": "Code 1",
+        "IP_Okt": 4.2391,
+        "Status": "CEMAR RINGAN",
+        "Lokasi": "Jembatan Kemiri, Pakem, Sleman",
+        "PL": "Semak/Belukar, Perkebunan/Kebun, Rumput/Tanah Kosong, Tegalan/Ladang, Sawah Irigasi, Sungai, Permukiman"
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          110.436804,
+          -7.827237
+        ]
+      },
+      "properties": {
+        "FID": 37,
+        "No_": 38,
+        "Sungai": "Kuning 4",
+        "IP_Okt": 4.1573,
+        "Status": "CEMAR RINGAN",
+        "Lokasi": "Jembatan Kuning, Jalan Wonosari, Sendangtirto, Berbah, Sleman",
+        "PL": "Perkebunan/Kebun, Tegalan/Ladang, Sawah Irigasi, Sungai, Permukiman, Kolam Air Tawar"
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          110.439094,
+          -7.782061
+        ]
+      },
+      "properties": {
+        "FID": 38,
+        "No_": 39,
+        "Sungai": "Kuning 3",
+        "IP_Okt": 5.5302,
+        "Status": "CEMAR SEDANG",
+        "Lokasi": "Jembatan Sorogenen, Jalan Solo, Purwomartani, Kalasan, Sleman",
+        "PL": "Bandara, Perkebunan/Kebun, Rumput/Tanah Kosong, Tegalan/Ladang, Sawah Irigasi, Sungai"
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          110.438765,
+          -7.704955
+        ]
+      },
+      "properties": {
+        "FID": 39,
+        "No_": 40,
+        "Sungai": "Kuning 2",
+        "IP_Okt": 7.7506,
+        "Status": "CEMAR SEDANG",
+        "Lokasi": "Jembatan Ngemplak, Sleman",
+        "PL": "Perkebunan/Kebun, Tegalan/Ladang, Sawah Irigasi, Sungai, Permukiman"
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          110.430645,
+          -7.668151
+        ]
+      },
+      "properties": {
+        "FID": 40,
+        "No_": 41,
+        "Sungai": "Kuning 1",
+        "IP_Okt": 5.4394,
+        "Status": "CEMAR SEDANG",
+        "Lokasi": "Jembatan Pokoh, Pakem, Sleman",
+        "PL": "Semak/Belukar, Perkebunan/Kebun, Tegalan/Ladang, Sawah Irigasi, Sungai, Permukiman, Makam, Kolam Air Tawar"
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          110.409271,
+          -7.733996
+        ]
+      },
+      "properties": {
+        "FID": 41,
+        "No_": 42,
+        "Sungai": "Tambakbayan 1",
+        "IP_Okt": 6.5432,
+        "Status": "CEMAR SEDANG",
+        "Lokasi": "Jembatan Plosokuning Dusun Plosokuning Ngaglik Sleman",
+        "PL": "Perkebunan/Kebun, Tegalan/Ladang, Sawah Irigasi, Sungai, Permukiman"
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          110.419197,
+          -7.783211
+        ]
+      },
+      "properties": {
+        "FID": 42,
+        "No_": 43,
+        "Sungai": "Tambakbayan 2",
+        "IP_Okt": 10.1148,
+        "Status": "CEMAR BERAT",
+        "Lokasi": "Jembatan Hotel Jayakarta, Caturtunggal, Depok, Sleman",
+        "PL": "Bandara, Perkebunan/Kebun, Rumput/Tanah Kosong, Tegalan/Ladang, Sawah Irigasi, Sungai, Permukiman, Kolam Air Tawar"
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          110.422892,
+          -7.821257
+        ]
+      },
+      "properties": {
+        "FID": 43,
+        "No_": 44,
+        "Sungai": "Tambakbayan 3",
+        "IP_Okt": 5.8429,
+        "Status": "CEMAR SEDANG",
+        "Lokasi": "Jembatan Sekarsuli, Jl. Wonosari, Sendangtirto, Berbah, Bantul",
+        "PL": "Perkebunan/Kebun, Sawah Tadah Hujan, Tegalan/Ladang, Sawah Irigasi, Sungai, Permukiman, Emplasemen, Kolam Air Tawar, Lapangan"
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          110.429505,
+          -7.851026
+        ]
+      },
+      "properties": {
+        "FID": 44,
+        "No_": 45,
+        "Sungai": "Tambakbayan 4",
+        "IP_Okt": 5.5208,
+        "Status": "CEMAR SEDANG",
+        "Lokasi": "Tempuran Tambakbayan-Opak, Talang Pamotan, Jambidan, Baturetno Banguntapan",
+        "PL": "Perkebunan/Kebun, Sawah Tadah Hujan, Tegalan/Ladang, Sawah irigasi, Sungai, Permukiman, Emplasemen"
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          110.365823,
+          -7.87246
+        ]
+      },
+      "properties": {
+        "FID": 45,
+        "No_": 46,
+        "Sungai": "Bulus 1",
+        "IP_Okt": 7.7664,
+        "Status": "CEMAR SEDANG",
+        "Lokasi": "Jembatan Ngaglik, Timbulharjo, Sewon, Bantul",
+        "PL": "Perkebunan/Kebun, Tegalan/Ladang, Sawah Irigasi, Permukiman"
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          110.36666,
+          -7.912404
+        ]
+      },
+      "properties": {
+        "FID": 46,
+        "No_": 47,
+        "Sungai": "Bulus 2",
+        "IP_Okt": 5.8561,
+        "Status": "CEMAR SEDANG",
+        "Lokasi": "Jembatan Pulo Kadang, Canden, Jetis, Bantul",
+        "PL": "Perkebunan/Kebun, Tegalan/Ladang, Sawah Irigasi, Sungai, Permukiman"
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          110.38086,
+          -7.774843
+        ]
+      },
+      "properties": {
+        "FID": 47,
+        "No_": 48,
+        "Sungai": "Belik 1",
+        "IP_Okt": 12.8778,
+        "Status": "CEMAR BERAT",
+        "Lokasi": "Jembatan Wisdom Park UGM, Karang Malang, Caturtunggal, Depok,Sleman",
+        "PL": "Sungai,  Permukiman"
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          110.386606,
+          -7.826637
+        ]
+      },
+      "properties": {
+        "FID": 48,
+        "No_": 49,
+        "Sungai": "Belik 2",
+        "IP_Okt": 8.5122,
+        "Status": "CEMAR SEDANG",
+        "Lokasi": "Jembatan Nitikan, Umbulharjo, Pandeyan, Yogyakarta",
+        "PL": "Sawah Irigasi, Permukiman"
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          110.391768,
+          -7.875274
+        ]
+      },
+      "properties": {
+        "FID": 49,
+        "No_": 50,
+        "Sungai": "Belik 3",
+        "IP_Okt": 9.029,
+        "Status": "CEMAR SEDANG",
+        "Lokasi": "Jembatan Wonokromo, Pleret, Bantul",
+        "PL": "Semak/Belukar, Perkebunan/Kebun, Tegalan/Ladang, Sawah Irigasi, Sungai, Permukiman"
+      }
+    }
+  ]
+}

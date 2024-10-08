@@ -31,7 +31,7 @@ const Navbar = () => {
           {/* Tombol untuk mengarah ke ApplicationSection */}
           <button
             onClick={() => handleScrollToSection('application-section')}
-            className="bg-[#6A9C89] text-white px-4 py-2 rounded hover:bg-opacity-80 transition duration-300"
+            className="bg-[#16423C]/80 text-white px-4 py-2 rounded hover:bg-opacity-80 transition duration-300"
           >
             Aplikasi WebGIS
           </button>
