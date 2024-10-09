@@ -3,7 +3,7 @@ import L from 'leaflet';
 import 'leaflet/dist/leaflet.css';
 import 'leaflet.locatecontrol/dist/L.Control.Locate.min.css';
 import 'leaflet.locatecontrol/dist/L.Control.Locate.min.js';
-import { FaLayerGroup, FaInfoCircle } from 'react-icons/fa'; // Import icon dari react-icons
+import { FaLayerGroup, FaInfoCircle, FaCalendarAlt } from 'react-icons/fa'; // Import icon dari react-icons
 import logo from '../assets/logo.png'; // Sesuaikan jalur logo
 
 const RiverWaterQualityMap = () => {
@@ -25,6 +25,8 @@ const RiverWaterQualityMap = () => {
   
   const [isLayerListOpen, setIsLayerListOpen] = useState(false); // State untuk toggle Layer List
   const [isLegendOpen, setIsLegendOpen] = useState(false); // State untuk toggle Legend
+  const [isYearFilterOpen, setIsYearFilterOpen] = useState(false); // State untuk toggle Year Filter
+  const [selectedYear, setSelectedYear] = useState(2023); // State untuk tahun terpilih
 
   // Warna yang ditetapkan untuk setiap kabupaten
   const kabupatenColors = {
@@ -256,6 +258,15 @@ const RiverWaterQualityMap = () => {
     }
   };
 
+  // Fungsi untuk menangani perubahan tahun
+  const handleYearChange = (year) => {
+    setSelectedYear(year);
+    setIsYearFilterOpen(false);
+    // Implementasikan logika untuk memuat data berdasarkan tahun jika diperlukan
+    // Misalnya:
+    // loadDataForYear(year);
+  };
+
   return (
     <div>
       {/* Navbar */}
@@ -265,12 +276,21 @@ const RiverWaterQualityMap = () => {
           <h1 style={{ margin: 0, color: 'white', fontSize: '1.3 rem' }}>Peta Titik Pemantauan Kualitas Air Sungai DIY</h1>
         </div>
 
-        {/* Icon Layer List */}
+        {/* Icon Group */}
         <div style={{ display: 'flex', alignItems: 'center' }}>
+          {/* Icon Layer List */}
           <FaLayerGroup
             style={{ fontSize: '1.5rem', color: 'white', cursor: 'pointer', marginRight: '20px' }}
             onClick={() => setIsLayerListOpen(!isLayerListOpen)}
           />
+
+          {/* Icon Year Filter */}~
+          <FaCalendarAlt
+            style={{ fontSize: '1.5rem', color: 'white', cursor: 'pointer', marginRight: '20px' }}
+            onClick={() => setIsYearFilterOpen(!isYearFilterOpen)}
+          />
+
+          {/* Icon Legend */}
           <FaInfoCircle
             style={{ fontSize: '1.5rem', color: 'white', cursor: 'pointer' }}
             onClick={() => setIsLegendOpen(!isLegendOpen)}
@@ -279,67 +299,80 @@ const RiverWaterQualityMap = () => {
 
         {/* Layer List Pop-up */}
         {isLayerListOpen && (
-          <div style={{ position: 'absolute', top: '60px', right: '50px', backgroundColor: 'white', padding: '10px', borderRadius: '8px', boxShadow: '0 0 10px rgba(0,0,0,0.2)', zIndex: 999 }}>
-            <h3>Layer List</h3>
-            <label>
+          <div style={popupStyle}>
+            <h3 style={popupHeaderStyle}>Layer List</h3>
+            <label style={checkboxLabelStyle}>
               <input type="checkbox" checked={showBoundary} onChange={(e) => handleLayerToggle(e.target.checked, 'boundary')} />
               Batas Kabupaten
             </label>
             <br />
-            <label>
+            <label style={checkboxLabelStyle}>
               <input type="checkbox" checked={showFebLayer} onChange={(e) => handleLayerToggle(e.target.checked, 'february')} />
               Periode Februari
             </label>
             <br />
-            <label>
+            <label style={checkboxLabelStyle}>
               <input type="checkbox" checked={showJunLayer} onChange={(e) => handleLayerToggle(e.target.checked, 'june')} />
               Periode Juni
             </label>
             <br />
-            <label
-                    >
+            <label style={checkboxLabelStyle}>
               <input type="checkbox" checked={showOktLayer} onChange={(e) => handleLayerToggle(e.target.checked, 'october')} />
               Periode Oktober
             </label>
             <br />
-            <label>
+            <label style={checkboxLabelStyle}>
               <input type="checkbox" checked={showIkaLayer} onChange={(e) => handleLayerToggle(e.target.checked, 'ika')} />
               Nilai IKA DIY
             </label>
             <br />
-            <label>
-              <input type="checkbox" checked={showSubDas} onChange={(e) => handleLayerToggle(e.target.checked, 'subdas')} />
+            <label style={checkboxLabelStyle}>
+              <input type="checkbox" checked={showSubDas} onChange={(e) => handleLayerToggle(e.target.checked, 'subDas')} />
               Batas Sub Das DIY
             </label>
           </div>
         )}
 
+        {/* Year Filter Pop-up */}
+        {isYearFilterOpen && (
+          <div style={popupStyle}>
+            <h3 style={popupHeaderStyle}>Filter Tahun</h3>
+            <select 
+              value={selectedYear} 
+              onChange={(e) => handleYearChange(e.target.value)} 
+              style={{ width: '100%', padding: '5px', fontSize: '1rem' }}
+            >
+              <option value={2024}>2024</option>
+              <option value={2023}>2023</option>
+              <option value={2022}>2022</option>
+              <option value={2021}>2021</option>
+            </select>
+          </div>
+        )}
+
         {/* Legend Pop-up */}
         {isLegendOpen && (
-          <div style={{ position: 'absolute', top: '60px', right: '100px', backgroundColor: 'white', padding: '10px', borderRadius: '8px', boxShadow: '0 0 10px rgba(0,0,0,0.2)', zIndex: 999 }}>
-            <h3>Legenda</h3>
-            <div>
+          <div style={popupStyle}>
+            <h3 style={popupHeaderStyle}>Legenda</h3>
+            <div style={{ marginBottom: '10px' }}>
               <b>Titik Pemantauan Kualitas Air Sungai</b>
-              <div><span style={{ backgroundColor: pointColors.februari, width: '20px', height: '20px', display: 'inline-block' }}></span> Februari</div>
-              <div><span style={{ backgroundColor: pointColors.juni, width: '20px', height: '20px', display: 'inline-block' }}></span> Juni</div>
-              <div><span style={{ backgroundColor: pointColors.oktober, width: '20px', height: '20px', display: 'inline-block' }}></span> Oktober</div>
+              <div style={legendItemStyle}><span style={{ ...legendColorStyle, backgroundColor: pointColors.februari }}></span> Februari</div>
+              <div style={legendItemStyle}><span style={{ ...legendColorStyle, backgroundColor: pointColors.juni }}></span> Juni</div>
+              <div style={legendItemStyle}><span style={{ ...legendColorStyle, backgroundColor: pointColors.oktober }}></span> Oktober</div>
             </div>
-            <br /> 
-            <div>
-              <b>Batas Kecamatan</b>
+            <div style={{ marginBottom: '10px' }}>
+              <b>Batas Kabupaten</b>
               {Object.keys(kabupatenColors).map(kabupaten => (
-                <div key={kabupaten}>
-                  <span style={{ backgroundColor: kabupatenColors[kabupaten], width: '20px', height: '20px', display: 'inline-block' }}></span> {kabupaten}
+                <div key={kabupaten} style={legendItemStyle}>
+                  <span style={{ ...legendColorStyle, backgroundColor: kabupatenColors[kabupaten] }}></span> {kabupaten}
                 </div>
-                 ))}
-            </div
-              >
-            <br />
+              ))}
+            </div>
             <div>
-            <b>Batas Sub DAS</b>
+              <b>Batas Sub DAS</b>
               {Object.keys(subDasColors).map(subDasLayer => (
-                <div key={subDasLayer}>
-                  <span style={{ backgroundColor: subDasColors[subDasLayer], width: '20px', height: '20px', display: 'inline-block' }}></span> {subDasLayer}
+                <div key={subDasLayer} style={legendItemStyle}>
+                  <span style={{ ...legendColorStyle, backgroundColor: subDasColors[subDasLayer] }}></span> {subDasLayer}
                 </div>
               ))}
             </div>
@@ -348,7 +381,7 @@ const RiverWaterQualityMap = () => {
       </nav>
 
       {/* Peta */}
-      <div id="map" style={{ height: '595px' }}></div>
+      <div id="map" style={{ height: '615px' }}></div>
 
       {/* Koordinat */}
       {coords.lat && coords.lng && (
@@ -358,6 +391,57 @@ const RiverWaterQualityMap = () => {
       )}
     </div>
   );
+};
+
+// Gaya CSS untuk pop-up
+const popupStyle = {
+  position: 'absolute',
+  top: '60px',
+  right: '50px',
+  backgroundColor: 'white',
+  padding: '15px',
+  borderRadius: '8px',
+  boxShadow: '0 0 15px rgba(0,0,0,0.3)',
+  zIndex: 1000,
+  maxWidth: '250px',
+  width: 'auto'
+};
+
+const popupHeaderStyle = {
+  margin: '0 0 10px 0',
+  fontSize: '1.2rem',
+  borderBottom: '1px solid #ccc',
+  paddingBottom: '5px'
+};
+
+const checkboxLabelStyle = {
+  fontSize: '1rem',
+  marginBottom: '5px'
+};
+
+const legendItemStyle = {
+  display: 'flex',
+  alignItems: 'center',
+  marginTop: '5px'
+};
+
+const legendColorStyle = {
+  display: 'inline-block',
+  width: '15px',
+  height: '15px',
+  borderRadius: '50%',
+  marginRight: '10px'
+};
+
+const coordStyle = {
+  position: 'absolute',
+  bottom: '10px',
+  left: '10px',
+  backgroundColor: 'rgba(255, 255, 255, 0.8)',
+  padding: '5px 10px',
+  borderRadius: '4px',
+  fontSize: '1rem',
+  zIndex: 1000
 };
 
 export default RiverWaterQualityMap;
