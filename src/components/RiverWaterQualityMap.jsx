@@ -307,32 +307,32 @@ const RiverWaterQualityMap = () => {
         <div style={popupStyle}>
           <h3 style={popupHeaderStyle}>Layer List</h3>
           <label style={{ ...checkboxLabelStyle, ...popupContentStyle }}>
-            <input type="checkbox" checked={showBoundary} onChange={(e) => handleLayerToggle(e.target.checked, 'boundary')} />
+            <input type="checkbox" checked={showBoundary} onChange={(e) => handleLayerToggle(e.target.checked, 'boundary')} style={inputStyle} />
             Batas Kabupaten
           </label>
           <br />
           <label style={{ ...checkboxLabelStyle, ...popupContentStyle }}>
-            <input type="checkbox" checked={showFebLayer} onChange={(e) => handleLayerToggle(e.target.checked, 'february')} />
+            <input type="checkbox" checked={showFebLayer} onChange={(e) => handleLayerToggle(e.target.checked, 'february')} style={inputStyle} />
             Periode Februari
           </label>
           <br />
           <label style={{ ...checkboxLabelStyle, ...popupContentStyle }}>
-            <input type="checkbox" checked={showJunLayer} onChange={(e) => handleLayerToggle(e.target.checked, 'june')} />
+            <input type="checkbox" checked={showJunLayer} onChange={(e) => handleLayerToggle(e.target.checked, 'june')} style={inputStyle} />
             Periode Juni
           </label>
           <br />
           <label style={{ ...checkboxLabelStyle, ...popupContentStyle }}>
-            <input type="checkbox" checked={showOktLayer} onChange={(e) => handleLayerToggle(e.target.checked, 'october')} />
+            <input type="checkbox" checked={showOktLayer} onChange={(e) => handleLayerToggle(e.target.checked, 'october')} style={inputStyle} />
             Periode Oktober
           </label>
           <br />
           <label style={{ ...checkboxLabelStyle, ...popupContentStyle }}>
-            <input type="checkbox" checked={showIkaLayer} onChange={(e) => handleLayerToggle(e.target.checked, 'ika')} />
+            <input type="checkbox" checked={showIkaLayer} onChange={(e) => handleLayerToggle(e.target.checked, 'ika')} style={inputStyle} />
             Nilai IKA DIY
           </label>
           <br />
           <label style={{ ...checkboxLabelStyle, ...popupContentStyle }}>
-            <input type="checkbox" checked={showSubDas} onChange={(e) => handleLayerToggle(e.target.checked, 'subDas')} />
+            <input type="checkbox" checked={showSubDas} onChange={(e) => handleLayerToggle(e.target.checked, 'subDas')} style={inputStyle}/>
             Batas Sub Das DIY
           </label>
         </div>
@@ -348,7 +348,7 @@ const RiverWaterQualityMap = () => {
               name="year"
               value="2023"
               checked={selectedYear === 2023}
-              onChange={() => handleYearChange(2023)}
+              onChange={() => handleYearChange(2023)} style={inputStyle}
             />
             2023
           </label>
@@ -359,7 +359,7 @@ const RiverWaterQualityMap = () => {
               name="year"
               value="2022"
               checked={selectedYear === 2022}
-              onChange={() => handleYearChange(2022)}
+              onChange={() => handleYearChange(2022)} style={inputStyle}
             />
             2022
           </label>
@@ -370,7 +370,7 @@ const RiverWaterQualityMap = () => {
               name="year"
               value="2021"
               checked={selectedYear === 2021}
-              onChange={() => handleYearChange(2021)}
+              onChange={() => handleYearChange(2021)} style={inputStyle}
             />
             2021
           </label>
@@ -381,17 +381,17 @@ const RiverWaterQualityMap = () => {
       {isLegendOpen && (
         <div style={popupStyle}>
           <h3 style={popupHeaderStyle}>Legenda</h3>
-          <div style={{ marginBottom: '10px', ...popupContentStyle }}>
+          <div style={popupContentStyle}>
             <b>Titik Pemantauan Kualitas Air Sungai</b>
-            <div style={legendItemStyle}><span style={{ ...legendColorStyle, backgroundColor: pointColors.februari }}></span> Februari</div>
-            <div style={legendItemStyle}><span style={{ ...legendColorStyle, backgroundColor: pointColors.juni }}></span> Juni</div>
-            <div style={legendItemStyle}><span style={{ ...legendColorStyle, backgroundColor: pointColors.oktober }}></span> Oktober</div>
+            <div style={legendItemStyle}><span style={{ ...legendCircleStyle, backgroundColor: pointColors.februari }}></span> Februari</div>
+            <div style={legendItemStyle}><span style={{ ...legendCircleStyle, backgroundColor: pointColors.juni }}></span> Juni</div>
+            <div style={legendItemStyle}><span style={{ ...legendCircleStyle, backgroundColor: pointColors.oktober }}></span> Oktober</div>
           </div>
-          <div style={{ marginBottom: '10px', ...popupContentStyle }}>
+          <div style={popupContentStyle }>
             <b>Batas Kabupaten</b>
             {Object.keys(kabupatenColors).map(kabupaten => (
               <div key={kabupaten} style={legendItemStyle}>
-                <span style={{ ...legendColorStyle, backgroundColor: kabupatenColors[kabupaten] }}></span> {kabupaten}
+                <span style={{ ...legendSquareStyle, backgroundColor: kabupatenColors[kabupaten] }}></span> {kabupaten}
               </div>
             ))}
           </div>
@@ -399,7 +399,7 @@ const RiverWaterQualityMap = () => {
             <b>Batas Sub DAS</b>
             {Object.keys(subDasColors).map(subDasLayer => (
               <div key={subDasLayer} style={legendItemStyle}>
-                <span style={{ ...legendColorStyle, backgroundColor: subDasColors[subDasLayer] }}></span> {subDasLayer}
+                <span style={{ ...legendSquareStyle, backgroundColor: subDasColors[subDasLayer] }}></span> {subDasLayer}
               </div>
             ))}
           </div>
@@ -423,14 +423,14 @@ const RiverWaterQualityMap = () => {
 // Gaya CSS untuk pop-up
 const popupStyle = {
   position: 'absolute',
-  top: '60px',
-  right: '50px',
+  top: '55px',
+  right: '7px',
   backgroundColor: 'white',
-  padding: '15px',
+  padding: '20px',
   borderRadius: '8px',
   boxShadow: '0 0 15px rgba(0,0,0,0.3)',
   zIndex: 1000,
-  maxWidth: '250px',
+  minWidth: '230px',
   width: 'auto'
 };
 
@@ -439,33 +439,50 @@ const popupHeaderStyle = {
   fontSize: '0.7rem', // Ukuran font yang diinginkan
   fontWeight: 'bold', // Menjadikan teks bold
   borderBottom: '1px solid #ccc',
-  paddingBottom: '5px',
+  paddingBottom: '10px',
+  marginBottom: '10px'
 };
 
 const popupContentStyle = {
-  margin: '0',
+  marginBottom: '10px',
   fontSize: '0.7rem', // Ukuran font yang sama dengan header
   fontWeight: 'normal', // Teks tidak bold
   fontFamily: 'Arial, sans-serif', // Ganti dengan tipe font yang diinginkan
 };
 
 const checkboxLabelStyle = {
-  fontSize: '1rem',
-  marginBottom: '5px'
+  alignItems: 'center', // Untuk memastikan checkbox dan teks sejajar
+  fontSize: '0.7rem',
+  marginBottom: '10px',
+  display: 'inline-block', // Supaya labelnya tidak terlalu panjang
+  verticalAlign: 'middle' // Supaya sejajar secara vertikal
+};
+
+const inputStyle = {
+  verticalAlign: 'middle', // Untuk menyejajarkan input dengan teks
+  marginRight: '5px' // Jarak antara checkbox/radio button dengan teks
 };
 
 const legendItemStyle = {
-  display: 'flex',
   alignItems: 'center',
   marginTop: '5px'
 };
 
-const legendColorStyle = {
+// Gaya untuk lingkaran (Titik Pemantauan)
+const legendCircleStyle = {
   display: 'inline-block',
-  width: '15px',
-  height: '15px',
-  borderRadius: '50%',
+  width: '10px',
+  height: '10px',
+  borderRadius: '50%', // Tetap menggunakan lingkaran
   marginRight: '10px'
+};
+
+// Gaya untuk persegi (Batas Kabupaten dan Sub DAS)
+const legendSquareStyle = {
+  display: 'inline-block',
+  width: '10px',
+  height: '10px',
+  marginRight: '10px' // Tanpa borderRadius agar tetap berbentuk persegi
 };
 
 const coordStyle = {
