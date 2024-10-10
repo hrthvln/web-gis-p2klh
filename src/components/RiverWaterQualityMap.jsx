@@ -39,17 +39,17 @@ const RiverWaterQualityMap = () => {
 
     // Warna yang ditetapkan untuk setiap kabupaten
     const subDasColors = {
-      'SubDAS1': '#2c7fb8',
-      'SubDAS2': '#2c7fb8',
-      'SubDAS3': '#2c7fb8',
-      'SubDAS4': '#2c7fb8',
-      'SubDAS5': '#2c7fb8',
-      'SubDAS6': '#2c7fb8',
-      'SubDAS7': '#2c7fb8',
-      'SubDAS8': '#2c7fb8',
-      'SubDAS9': '#2c7fb8',
-      'SubDAS10': '#2c7fb8',
-      'SubDAS11': '#2c7fb8'
+    'SubDAS1': '#ff4500',
+    'SubDAS2': '#ff6347',
+    'SubDAS3': '#ffa07a',
+    'SubDAS4': '#20b2aa',
+    'SubDAS5': '#4682b4',
+    'SubDAS6': '#8a2be2',
+    'SubDAS7': '#5f9ea0',
+    'SubDAS8': '#d2691e',
+    'SubDAS9': '#ff69b4',
+    'SubDAS10': '#cd5c5c',
+    'SubDAS11': '#ffa500'
     };
 
   // Warna untuk setiap periode
@@ -262,17 +262,22 @@ const RiverWaterQualityMap = () => {
   const handleYearChange = (year) => {
     setSelectedYear(year);
     setIsYearFilterOpen(false);
-    // Implementasikan logika untuk memuat data berdasarkan tahun jika diperlukan
-    // Misalnya:
-    // loadDataForYear(year);
+    
+    if (year === 2023) {
+      // Tampilkan layer list atau data untuk tahun 2023
+      showLayerList();
+    } else {
+      // Sembunyikan layer list jika tahun bukan 2023
+      hideLayerList();
+    }
   };
 
   return (
     <div>
-      {/* Navbar */}
-      <nav style={{ backgroundColor: '#79AC78', padding: '5px', display: 'flex', alignItems: 'center', justifyContent: 'space-between' }}>
-        <div style={{ display: 'flex', alignItems: 'center' }}>
-          <img src={logo} alt="Logo" style={{ height: '40px', marginRight: '10px' }} />
+  {/* Navbar */}
+  <nav style={{ backgroundColor: '#79AC78', padding: '5px', display: 'flex', alignItems: 'center', justifyContent: 'space-between' }}>
+    <div style={{ display: 'flex', alignItems: 'center' }}>
+      <img src={logo} alt="Logo" style={{ height: '40px', marginRight: '10px' }} />
           <h1 style={{ margin: 0, color: 'white', fontSize: '1.3 rem' }}>Peta Titik Pemantauan Kualitas Air Sungai DIY</h1>
         </div>
 
@@ -280,108 +285,130 @@ const RiverWaterQualityMap = () => {
         <div style={{ display: 'flex', alignItems: 'center' }}>
           {/* Icon Layer List */}
           <FaLayerGroup
-            style={{ fontSize: '1.5rem', color: 'white', cursor: 'pointer', marginRight: '20px' }}
+            style={{ fontSize: '1.3rem', color: 'white', cursor: 'pointer', marginRight: '20px' }}
             onClick={() => setIsLayerListOpen(!isLayerListOpen)}
           />
 
-          {/* Icon Year Filter */}~
+          {/* Icon Year Filter */}
           <FaCalendarAlt
-            style={{ fontSize: '1.5rem', color: 'white', cursor: 'pointer', marginRight: '20px' }}
+            style={{ fontSize: '1.3rem', color: 'white', cursor: 'pointer', marginRight: '20px' }}
             onClick={() => setIsYearFilterOpen(!isYearFilterOpen)}
           />
 
           {/* Icon Legend */}
           <FaInfoCircle
-            style={{ fontSize: '1.5rem', color: 'white', cursor: 'pointer' }}
+            style={{ fontSize: '1.3rem', color: 'white', cursor: 'pointer', marginRight: '20px' }}
             onClick={() => setIsLegendOpen(!isLegendOpen)}
           />
         </div>
 
         {/* Layer List Pop-up */}
         {isLayerListOpen && (
-          <div style={popupStyle}>
-            <h3 style={popupHeaderStyle}>Layer List</h3>
-            <label style={checkboxLabelStyle}>
-              <input type="checkbox" checked={showBoundary} onChange={(e) => handleLayerToggle(e.target.checked, 'boundary')} />
-              Batas Kabupaten
-            </label>
-            <br />
-            <label style={checkboxLabelStyle}>
-              <input type="checkbox" checked={showFebLayer} onChange={(e) => handleLayerToggle(e.target.checked, 'february')} />
-              Periode Februari
-            </label>
-            <br />
-            <label style={checkboxLabelStyle}>
-              <input type="checkbox" checked={showJunLayer} onChange={(e) => handleLayerToggle(e.target.checked, 'june')} />
-              Periode Juni
-            </label>
-            <br />
-            <label style={checkboxLabelStyle}>
-              <input type="checkbox" checked={showOktLayer} onChange={(e) => handleLayerToggle(e.target.checked, 'october')} />
-              Periode Oktober
-            </label>
-            <br />
-            <label style={checkboxLabelStyle}>
-              <input type="checkbox" checked={showIkaLayer} onChange={(e) => handleLayerToggle(e.target.checked, 'ika')} />
-              Nilai IKA DIY
-            </label>
-            <br />
-            <label style={checkboxLabelStyle}>
-              <input type="checkbox" checked={showSubDas} onChange={(e) => handleLayerToggle(e.target.checked, 'subDas')} />
-              Batas Sub Das DIY
-            </label>
-          </div>
-        )}
+        <div style={popupStyle}>
+          <h3 style={popupHeaderStyle}>Layer List</h3>
+          <label style={{ ...checkboxLabelStyle, ...popupContentStyle }}>
+            <input type="checkbox" checked={showBoundary} onChange={(e) => handleLayerToggle(e.target.checked, 'boundary')} />
+            Batas Kabupaten
+          </label>
+          <br />
+          <label style={{ ...checkboxLabelStyle, ...popupContentStyle }}>
+            <input type="checkbox" checked={showFebLayer} onChange={(e) => handleLayerToggle(e.target.checked, 'february')} />
+            Periode Februari
+          </label>
+          <br />
+          <label style={{ ...checkboxLabelStyle, ...popupContentStyle }}>
+            <input type="checkbox" checked={showJunLayer} onChange={(e) => handleLayerToggle(e.target.checked, 'june')} />
+            Periode Juni
+          </label>
+          <br />
+          <label style={{ ...checkboxLabelStyle, ...popupContentStyle }}>
+            <input type="checkbox" checked={showOktLayer} onChange={(e) => handleLayerToggle(e.target.checked, 'october')} />
+            Periode Oktober
+          </label>
+          <br />
+          <label style={{ ...checkboxLabelStyle, ...popupContentStyle }}>
+            <input type="checkbox" checked={showIkaLayer} onChange={(e) => handleLayerToggle(e.target.checked, 'ika')} />
+            Nilai IKA DIY
+          </label>
+          <br />
+          <label style={{ ...checkboxLabelStyle, ...popupContentStyle }}>
+            <input type="checkbox" checked={showSubDas} onChange={(e) => handleLayerToggle(e.target.checked, 'subDas')} />
+            Batas Sub Das DIY
+          </label>
+        </div>
+      )}
 
-        {/* Year Filter Pop-up */}
-        {isYearFilterOpen && (
-          <div style={popupStyle}>
-            <h3 style={popupHeaderStyle}>Filter Tahun</h3>
-            <select 
-              value={selectedYear} 
-              onChange={(e) => handleYearChange(e.target.value)} 
-              style={{ width: '100%', padding: '5px', fontSize: '1rem' }}
-            >
-              <option value={2024}>2024</option>
-              <option value={2023}>2023</option>
-              <option value={2022}>2022</option>
-              <option value={2021}>2021</option>
-            </select>
-          </div>
-        )}
+      {/* Year Filter Pop-up */}
+      {isYearFilterOpen && (
+        <div style={popupStyle}>
+          <h3 style={popupHeaderStyle}>Filter Tahun</h3>
+          <label style={{ ...checkboxLabelStyle, ...popupContentStyle }}>
+            <input
+              type="radio"
+              name="year"
+              value="2023"
+              checked={selectedYear === 2023}
+              onChange={() => handleYearChange(2023)}
+            />
+            2023
+          </label>
+          <br />
+          <label style={{ ...checkboxLabelStyle, ...popupContentStyle }}>
+            <input
+              type="radio"
+              name="year"
+              value="2022"
+              checked={selectedYear === 2022}
+              onChange={() => handleYearChange(2022)}
+            />
+            2022
+          </label>
+          <br />
+          <label style={{ ...checkboxLabelStyle, ...popupContentStyle }}>
+            <input
+              type="radio"
+              name="year"
+              value="2021"
+              checked={selectedYear === 2021}
+              onChange={() => handleYearChange(2021)}
+            />
+            2021
+          </label>
+        </div>
+      )}
 
-        {/* Legend Pop-up */}
-        {isLegendOpen && (
-          <div style={popupStyle}>
-            <h3 style={popupHeaderStyle}>Legenda</h3>
-            <div style={{ marginBottom: '10px' }}>
-              <b>Titik Pemantauan Kualitas Air Sungai</b>
-              <div style={legendItemStyle}><span style={{ ...legendColorStyle, backgroundColor: pointColors.februari }}></span> Februari</div>
-              <div style={legendItemStyle}><span style={{ ...legendColorStyle, backgroundColor: pointColors.juni }}></span> Juni</div>
-              <div style={legendItemStyle}><span style={{ ...legendColorStyle, backgroundColor: pointColors.oktober }}></span> Oktober</div>
-            </div>
-            <div style={{ marginBottom: '10px' }}>
-              <b>Batas Kabupaten</b>
-              {Object.keys(kabupatenColors).map(kabupaten => (
-                <div key={kabupaten} style={legendItemStyle}>
-                  <span style={{ ...legendColorStyle, backgroundColor: kabupatenColors[kabupaten] }}></span> {kabupaten}
-                </div>
-              ))}
-            </div>
-            <div>
-              <b>Batas Sub DAS</b>
-              {Object.keys(subDasColors).map(subDasLayer => (
-                <div key={subDasLayer} style={legendItemStyle}>
-                  <span style={{ ...legendColorStyle, backgroundColor: subDasColors[subDasLayer] }}></span> {subDasLayer}
-                </div>
-              ))}
-            </div>
+      {/* Legend Pop-up */}
+      {isLegendOpen && (
+        <div style={popupStyle}>
+          <h3 style={popupHeaderStyle}>Legenda</h3>
+          <div style={{ marginBottom: '10px', ...popupContentStyle }}>
+            <b>Titik Pemantauan Kualitas Air Sungai</b>
+            <div style={legendItemStyle}><span style={{ ...legendColorStyle, backgroundColor: pointColors.februari }}></span> Februari</div>
+            <div style={legendItemStyle}><span style={{ ...legendColorStyle, backgroundColor: pointColors.juni }}></span> Juni</div>
+            <div style={legendItemStyle}><span style={{ ...legendColorStyle, backgroundColor: pointColors.oktober }}></span> Oktober</div>
           </div>
-        )}
-      </nav>
+          <div style={{ marginBottom: '10px', ...popupContentStyle }}>
+            <b>Batas Kabupaten</b>
+            {Object.keys(kabupatenColors).map(kabupaten => (
+              <div key={kabupaten} style={legendItemStyle}>
+                <span style={{ ...legendColorStyle, backgroundColor: kabupatenColors[kabupaten] }}></span> {kabupaten}
+              </div>
+            ))}
+          </div>
+          <div style={popupContentStyle}>
+            <b>Batas Sub DAS</b>
+            {Object.keys(subDasColors).map(subDasLayer => (
+              <div key={subDasLayer} style={legendItemStyle}>
+                <span style={{ ...legendColorStyle, backgroundColor: subDasColors[subDasLayer] }}></span> {subDasLayer}
+              </div>
+            ))}
+          </div>
+        </div>
+      )}
+    </nav>
 
       {/* Peta */}
-      <div id="map" style={{ height: '615px' }}></div>
+      <div id="map" style={{ height: '581px' }}></div>
 
       {/* Koordinat */}
       {coords.lat && coords.lng && (
@@ -409,9 +436,17 @@ const popupStyle = {
 
 const popupHeaderStyle = {
   margin: '0 0 10px 0',
-  fontSize: '1.2rem',
+  fontSize: '0.7rem', // Ukuran font yang diinginkan
+  fontWeight: 'bold', // Menjadikan teks bold
   borderBottom: '1px solid #ccc',
-  paddingBottom: '5px'
+  paddingBottom: '5px',
+};
+
+const popupContentStyle = {
+  margin: '0',
+  fontSize: '0.7rem', // Ukuran font yang sama dengan header
+  fontWeight: 'normal', // Teks tidak bold
+  fontFamily: 'Arial, sans-serif', // Ganti dengan tipe font yang diinginkan
 };
 
 const checkboxLabelStyle = {
