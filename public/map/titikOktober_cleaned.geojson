@@ -17,7 +17,16 @@
         "IP_Okt": 9.2066,
         "Status": "CEMAR SEDANG",
         "Lokasi": "Jembatan Pules Lor Suradadi, Girikerto, Turi, Kabupaten Sleman",
-        "PL": "Perkebunan/Kebun, Sawah Irigasi, Permukiman, Sungai"
+        "PL": "Perkebunan/Kebun, Sawah Irigasi, Permukiman, Sungai",
+        "TSS": 2,
+        "DO": 8,
+        "COD": 3.18,
+        "pH": 7.7,
+        "Nitrat": 0.4,
+        "T_Fosfat": 0.13,
+        "BOD": 1,
+        "BKT": 240000,
+        "Image": ""
       }
     },
     {
@@ -36,7 +45,16 @@
         "IP_Okt": 10.1122,
         "Status": "CEMAR BERAT",
         "Lokasi": "Jembatan Karangasem, Pandowoharjo, Kabupaten Sleman",
-        "PL": "Semak/Belukar, Perkebunan/Kebun, Tegalan/Ladang, Sawah Irigasi, Danau/Waduk, Permukiman, Kolam Air Tawar, Lapangan, Industri"
+        "PL": "Semak/Belukar, Perkebunan/Kebun, Tegalan/Ladang, Sawah Irigasi, Danau/Waduk, Permukiman, Kolam Air Tawar, Lapangan, Industri",
+        "TSS": 1,
+        "DO": 7,
+        "COD": 29,
+        "pH": 7.6,
+        "Nitrat": 1,
+        "T_Fosfat": 0.16,
+        "BOD": 4,
+        "BKT": 430000,
+        "Image": " "
       }
     },
     {
@@ -55,7 +73,16 @@
         "IP_Okt": 7.7686,
         "Status": "CEMAR SEDANG",
         "Lokasi": "Jembatan Jatimulyo, Kricak, Yogyakarta",
-        "PL": "Semak/Belukar, Rumput/Tanah Kosong, Sawah Irigasi, Sungai, Permukiman"
+        "PL": "Semak/Belukar, Rumput/Tanah Kosong, Sawah Irigasi, Sungai, Permukiman",
+        "TSS": 3,
+        "DO": 8,
+        "COD": 3.18,
+        "pH": 7.8,
+        "Nitrat": 2,
+        "T_Fosfat": 0.17,
+        "BOD": 1,
+        "BKT": 94000,
+        "Image": ""
       }
     },
     {
@@ -74,7 +101,16 @@
         "IP_Okt": 9.2245,
         "Status": "CEMAR SEDANG",
         "Lokasi": "Jembatan Jlagran, Bumijo, Yogyakarta",
-        "PL": "Sawah Irigasi, Sungai, Permukiman"
+        "PL": "Sawah Irigasi, Sungai, Permukiman",
+        "TSS": 5,
+        "DO": 8,
+        "COD": 5,
+        "pH": 7.8,
+        "Nitrat": 2,
+        "T_Fosfat": 0.15,
+        "BOD": 2,
+        "BKT": 240000,
+        "Image": " "
       }
     },
     {
@@ -93,7 +129,16 @@
         "IP_Okt": 10.1203,
         "Status": "CEMAR BERAT",
         "Lokasi": "Jembatan Tamansari, Wirobrajan, Yogyakarta",
-        "PL": "Perkebunan/Kebun, Rumput/Tanah Kosong, Sawah Irigasi, Sungai, Permukiman"
+        "PL": "Perkebunan/Kebun, Rumput/Tanah Kosong, Sawah Irigasi, Sungai, Permukiman",
+        "TSS": 3,
+        "DO": 6,
+        "COD": 3.18,
+        "pH": 7.4,
+        "Nitrat": 3,
+        "T_Fosfat": 0.104,
+        "BOD": 1,
+        "BKT": 430000,
+        "Image": ""
       }
     },
     {
@@ -112,7 +157,16 @@
         "IP_Okt": 11.2895,
         "Status": "CEMAR BERAT",
         "Lokasi": "Jembatan Dongkelan, Kasihan, Kabupaten Bantul",
-        "PL": "Perkebunan/Kebun, Sawah Irigasi, Sungai, Permukiman"
+        "PL": "Perkebunan/Kebun, Sawah Irigasi, Sungai, Permukiman",
+        "TSS": 3,
+        "DO": 7,
+        "COD": 3.18,
+        "pH": 7.2,
+        "Nitrat": 3,
+        "T_Fosfat": 0.14,
+        "BOD": 1,
+        "BKT": 920000,
+        "Image": ""
       }
     },
     {
@@ -131,7 +185,16 @@
         "IP_Okt": 4.1696,
         "Status": "CEMAR RINGAN",
         "Lokasi": "Jembatan Bakulan, Jetis, Kabupaten Bantul",
-        "PL": "Perkebunan/Kebun, Sawah Irigasi, Sungai, Permukiman"
+        "PL": "Perkebunan/Kebun, Sawah Irigasi, Sungai, Permukiman",
+        "TSS": 4,
+        "DO": 5,
+        "COD": 3.18,
+        "pH": 7,
+        "Nitrat": 1,
+        "T_Fosfat": 0.31,
+        "BOD": 1,
+        "BKT": 9100,
+        "Image": ""
       }
     },
     {
@@ -150,7 +213,16 @@
         "IP_Okt": 5.5304,
         "Status": "CEMAR SEDANG",
         "Lokasi": "Jembatan Mojo, Gading, Kretek, Kabupaten Bantul",
-        "PL": "Perkebunan/Kebun, Tegalan/Ladang, Sawah Irigasi, Sungai, Permukiman"
+        "PL": "Perkebunan/Kebun, Tegalan/Ladang, Sawah Irigasi, Sungai, Permukiman",
+        "TSS": 3,
+        "DO": 5,
+        "COD": 3.18,
+        "pH": 7.4,
+        "Nitrat": 1,
+        "T_Fosfat": 0.23,
+        "BOD": 1,
+        "BKT": 22000,
+        "Image": ""
       }
     },
     {
@@ -169,7 +241,16 @@
         "IP_Okt": 4.1932,
         "Status": "CEMAR RINGAN",
         "Lokasi": "Jembatan Tanen, Hargobinangun, Pakem, Kabupaten Sleman",
-        "PL": "Semak/Belukar, Perkebunan/Kebun, Tegalan/Ladang, Sawah Irigasi, Sungai, Danau/Waduk, Permukiman"
+        "PL": "Semak/Belukar, Perkebunan/Kebun, Tegalan/Ladang, Sawah Irigasi, Sungai, Danau/Waduk, Permukiman",
+        "TSS": 1,
+        "DO": 7,
+        "COD": 4,
+        "pH": 8,
+        "Nitrat": 0.4,
+        "T_Fosfat": 0.04,
+        "BOD": 0.47,
+        "BKT": 9400,
+        "Image": "https://i.imgur.com/hHjzSaT.jpeg"
       }
     },
     {
@@ -188,7 +269,16 @@
         "IP_Okt": 0.5704,
         "Status": "MEMENUHI",
         "Lokasi": "Jembatan Pelang, Condongcatur, Depok, Kabupaten Sleman",
-        "PL": "Perkebunan/Kebun, Sawah Irigasi, Permukiman"
+        "PL": "Perkebunan/Kebun, Sawah Irigasi, Permukiman",
+        "TSS": 0,
+        "DO": 0,
+        "COD": 0,
+        "pH": 0,
+        "Nitrat": 0,
+        "T_Fosfat": 0,
+        "BOD": 0,
+        "BKT": 0,
+        "Image": "https://i.imgur.com/YJrqMlM.jpeg"
       }
     },
     {
@@ -207,7 +297,16 @@
         "IP_Okt": 10.1238,
         "Status": "CEMAR BERAT",
         "Lokasi": "Jembatan IAIN, Caturtunggal, Depok, Kabupaten Sleman",
-        "PL": "Perkebunan/Kebun, Sawah Irigasi, Sungai, Permukiman"
+        "PL": "Perkebunan/Kebun, Sawah Irigasi, Sungai, Permukiman",
+        "TSS": 2,
+        "DO": 4,
+        "COD": 9,
+        "pH": 7.4,
+        "Nitrat": 4,
+        "T_Fosfat": 0.3,
+        "BOD": 4,
+        "BKT": 430000,
+        "Image": "https://i.imgur.com/QxkIK80.jpeg"
       }
     },
     {
@@ -226,7 +325,16 @@
         "IP_Okt": 10.1208,
         "Status": "CEMAR BERAT",
         "Lokasi": "Jembatan Muja-muju, Umbulharjo, Yogyakarta",
-        "PL": "Perkebunan/Kebun, Tegalan/Ladang, Sawah Irigasi, Sungai, Permukiman, Kolam Air Tawar"
+        "PL": "Perkebunan/Kebun, Tegalan/Ladang, Sawah Irigasi, Sungai, Permukiman, Kolam Air Tawar",
+        "TSS": 3,
+        "DO": 6,
+        "COD": 3.18,
+        "pH": 6.7,
+        "Nitrat": 4,
+        "T_Fosfat": 0.38,
+        "BOD": 1,
+        "BKT": 430000,
+        "Image": ""
       }
     },
     {
@@ -245,7 +353,16 @@
         "IP_Okt": 9.2125,
         "Status": "CEMAR SEDANG",
         "Lokasi": "Jembatan Peleman, Rejowinangun, Kotagede, Yogyakarta",
-        "PL": "Sungai, Permukiman"
+        "PL": "Sungai, Permukiman",
+        "TSS": 3,
+        "DO": 6,
+        "COD": 3.18,
+        "pH": 6.9,
+        "Nitrat": 3,
+        "T_Fosfat": 0.32,
+        "BOD": 1,
+        "BKT": 240000,
+        "Image": ""
       }
     },
     {
@@ -264,7 +381,16 @@
         "IP_Okt": 10.1105,
         "Status": "CEMAR BERAT",
         "Lokasi": "Jembatan Tegalgendu, Kotagede, Yogyakarta",
-        "PL": "Sungai, Permukiman"
+        "PL": "Sungai, Permukiman",
+        "TSS": 3,
+        "DO": 6,
+        "COD": 3.18,
+        "pH": 7.1,
+        "Nitrat": 3,
+        "T_Fosfat": 0.46,
+        "BOD": 1,
+        "BKT": 430000,
+        "Image": ""
       }
     },
     {
@@ -283,7 +409,16 @@
         "IP_Okt": 6.5647,
         "Status": "CEMAR SEDANG",
         "Lokasi": "Jembatan Grojogan, Wirokerten, Banguntapan, Kabupaten Bantul",
-        "PL": "Perkebunan/Kebun, Rumput/Tanah Kosong, Tegalan/Ladang, Sawah Irigasi, Sungai, Permukiman, Emplasemen, Kolam Air Tawar"
+        "PL": "Perkebunan/Kebun, Rumput/Tanah Kosong, Tegalan/Ladang, Sawah Irigasi, Sungai, Permukiman, Emplasemen, Kolam Air Tawar",
+        "TSS": 4,
+        "DO": 5,
+        "COD": 7,
+        "pH": 7,
+        "Nitrat": 3,
+        "T_Fosfat": 0.41,
+        "BOD": 2,
+        "BKT": 43000,
+        "Image": ""
       }
     },
     {
@@ -302,7 +437,16 @@
         "IP_Okt": 9.2263,
         "Status": "CEMAR SEDANG",
         "Lokasi": "Jembatan Kanggotan, Wonokromo, Pleret, Kabupaten Bantul",
-        "PL": "Perkebunan/Kebun, Tegalan/Ladang, Sawah Irigasi, Sungai, Permukiman"
+        "PL": "Perkebunan/Kebun, Tegalan/Ladang, Sawah Irigasi, Sungai, Permukiman",
+        "TSS": 3,
+        "DO": 8,
+        "COD": 3.18,
+        "pH": 7.4,
+        "Nitrat": 2,
+        "T_Fosfat": 0.44,
+        "BOD": 1,
+        "BKT": 240000,
+        "Image": ""
       }
     },
     {
@@ -321,7 +465,16 @@
         "IP_Okt": 6.5551,
         "Status": "CEMAR SEDANG",
         "Lokasi": "Jembatan Medari, Jl Magelang Km 14, Kabupaten Sleman",
-        "PL": "Semak/Belukar, Perkebunan/Kebun, Sawah Tadah Hujan, Tegalan/Ladang, Sawah Irigasi, Permukiman, Makam, Lapangan, Industri"
+        "PL": "Semak/Belukar, Perkebunan/Kebun, Sawah Tadah Hujan, Tegalan/Ladang, Sawah Irigasi, Permukiman, Makam, Lapangan, Industri",
+        "TSS": 3,
+        "DO": 7,
+        "COD": 15,
+        "pH": 7.4,
+        "Nitrat": 0.009,
+        "T_Fosfat": 0.23,
+        "BOD": 3,
+        "BKT": 43000,
+        "Image": ""
       }
     },
     {
@@ -340,7 +493,16 @@
         "IP_Okt": 7.7767,
         "Status": "CEMAR SEDANG",
         "Lokasi": "Jembatan Klajuran, Gesikan, Sidoarum, Godean, Kabupaten Sleman",
-        "PL": "Perkebunan/Kebun, Tegalan/Ladang, Sawah Irigasi, Sungai, Permukiman, Kolam Air Tawar"
+        "PL": "Perkebunan/Kebun, Tegalan/Ladang, Sawah Irigasi, Sungai, Permukiman, Kolam Air Tawar",
+        "TSS": 1,
+        "DO": 7,
+        "COD": 7,
+        "pH": 7.2,
+        "Nitrat": 0.04,
+        "T_Fosfat": 0.37,
+        "BOD": 1,
+        "BKT": 94000,
+        "Image": ""
       }
     },
     {
@@ -359,7 +521,16 @@
         "IP_Okt": 5.5394,
         "Status": "CEMAR SEDANG",
         "Lokasi": "Jembatan Pasekan Balecatur, Gamping, Kabupaten Sleman",
-        "PL": "Perkebunan/Kebun, Sawah Irigasi, Sungai, Permukiman"
+        "PL": "Perkebunan/Kebun, Sawah Irigasi, Sungai, Permukiman",
+        "TSS": 2,
+        "DO": 6,
+        "COD": 10,
+        "pH": 7.1,
+        "Nitrat": 0.008,
+        "T_Fosfat": 0.39,
+        "BOD": 2,
+        "BKT": 22000,
+        "Image": ""
       }
     },
     {
@@ -378,7 +549,16 @@
         "IP_Okt": 4.1853,
         "Status": "CEMAR RINGAN",
         "Lokasi": "Sungai Argorejo (dekat Perum Pondok Sedayu), Sedayu, Kabupaten Bantul",
-        "PL": "Perkebunan/Kebun, Rumput/Tanah Kosong, Sawah Irigasi, Sungai, Permukiman"
+        "PL": "Perkebunan/Kebun, Rumput/Tanah Kosong, Sawah Irigasi, Sungai, Permukiman",
+        "TSS": 7,
+        "DO": 7,
+        "COD": 11,
+        "pH": 7.9,
+        "Nitrat": 0.01,
+        "T_Fosfat": 0.37,
+        "BOD": 3,
+        "BKT": 9100,
+        "Image": ""
       }
     },
     {
@@ -397,7 +577,16 @@
         "IP_Okt": 4.2027,
         "Status": "CEMAR RINGAN",
         "Lokasi": "Jembatan Sungai Bedog, Jalan Magelang Sleman",
-        "PL": "Perkebunan/Kebun, Sawah Irigasi, Sungai, Permukiman, Kolam Air Tawar"
+        "PL": "Perkebunan/Kebun, Sawah Irigasi, Sungai, Permukiman, Kolam Air Tawar",
+        "TSS": 1,
+        "DO": 7,
+        "COD": 9,
+        "pH": 7.3,
+        "Nitrat": 0.004,
+        "T_Fosfat": 0.05,
+        "BOD": 2,
+        "BKT": 9400,
+        "Image": "https://i.imgur.com/5hhE7mU.jpeg"
       }
     },
     {
@@ -416,7 +605,16 @@
         "IP_Okt": 9.2182,
         "Status": "CEMAR SEDANG",
         "Lokasi": "Jembatan Gamping, Sleman",
-        "PL": "Perkebunan/Kebun, Sawah Irigasi, Sungai, Permukiman, Lapangan"
+        "PL": "Perkebunan/Kebun, Sawah Irigasi, Sungai, Permukiman, Lapangan",
+        "TSS": 1,
+        "DO": 7,
+        "COD": 16,
+        "pH": 7.4,
+        "Nitrat": 0.01,
+        "T_Fosfat": 0.32,
+        "BOD": 3,
+        "BKT": 240000,
+        "Image": "https://i.imgur.com/X1lFsEf.jpeg"
       }
     },
     {
@@ -435,7 +633,16 @@
         "IP_Okt": 10.1164,
         "Status": "CEMAR BERAT",
         "Lokasi": "Jembatan Kasongan, Kasihan, Tirtonirmolo, Bantul",
-        "PL": "Perkebunan/Kebun, Sawah Irigasi, Sungai, Permukiman"
+        "PL": "Perkebunan/Kebun, Sawah Irigasi, Sungai, Permukiman",
+        "TSS": 3,
+        "DO": 8,
+        "COD": 15,
+        "pH": 7.8,
+        "Nitrat": 0.02,
+        "T_Fosfat": 0.51,
+        "BOD": 2,
+        "BKT": 430000,
+        "Image": "https://i.imgur.com/y41pXMk.jpeg"
       }
     },
     {
@@ -454,7 +661,16 @@
         "IP_Okt": 7.8894,
         "Status": "CEMAR SEDANG",
         "Lokasi": "Jembatan Gantung Tegaldowo, Guwosari, Pajangan, Bantul",
-        "PL": "Perkebunan/Kebun, Tegalan/Ladang, Sawah Irigasi, Sungai, Permukiman"
+        "PL": "Perkebunan/Kebun, Tegalan/Ladang, Sawah Irigasi, Sungai, Permukiman",
+        "TSS": 5,
+        "DO": 6,
+        "COD": 33,
+        "pH": 8,
+        "Nitrat": 0.4,
+        "T_Fosfat": 1.2,
+        "BOD": 6,
+        "BKT": 94000,
+        "Image": "https://i.imgur.com/ccl6Nc1.jpeg"
       }
     },
     {
@@ -473,7 +689,16 @@
         "IP_Okt": 4.1906,
         "Status": "CEMAR RINGAN",
         "Lokasi": "Tempuran Bedog-Progo",
-        "PL": "Perkebunan/Kebun, Rumput/Tanah Kosong, Tegalan/Ladang, Sawah Irigasi, Sungai, Permukiman"
+        "PL": "Perkebunan/Kebun, Rumput/Tanah Kosong, Tegalan/Ladang, Sawah Irigasi, Sungai, Permukiman",
+        "TSS": 12,
+        "DO": 7,
+        "COD": 34,
+        "pH": 8.3,
+        "Nitrat": 0.008,
+        "T_Fosfat": 0.17,
+        "BOD": 6,
+        "BKT": 9100,
+        "Image": "https://i.imgur.com/3cXC1kM.jpeg"
       }
     },
     {
@@ -492,7 +717,16 @@
         "IP_Okt": 2.9822,
         "Status": "CEMAR RINGAN",
         "Lokasi": "Jembatan Kedungwates, Semin, Gunungkidul",
-        "PL": "Semak/Belukar, Perkebunan/Kebun, Sawah Tadah Hujan, Tegalan/Ladang, Sawah Irigasi, Sungai, Permukiman"
+        "PL": "Semak/Belukar, Perkebunan/Kebun, Sawah Tadah Hujan, Tegalan/Ladang, Sawah Irigasi, Sungai, Permukiman",
+        "TSS": 2,
+        "DO": 8,
+        "COD": 23,
+        "pH": 8,
+        "Nitrat": 1,
+        "T_Fosfat": 0.017,
+        "BOD": 3,
+        "BKT": 4300,
+        "Image": "https://i.imgur.com/0FceJHj.jpeg"
       }
     },
     {
@@ -511,7 +745,16 @@
         "IP_Okt": 4.1767,
         "Status": "CEMAR RINGAN",
         "Lokasi": "Jembatan Bunder, Patuk, Gunungkidul",
-        "PL": "Semak/Belukar, Perkebunan/Kebun, Tegalan/Ladang, Sungai, Permukiman, Hutan Konservasi, Hutan Produksi"
+        "PL": "Semak/Belukar, Perkebunan/Kebun, Tegalan/Ladang, Sungai, Permukiman, Hutan Konservasi, Hutan Produksi",
+        "TSS": 1,
+        "DO": 8,
+        "COD": 16,
+        "pH": 8.5,
+        "Nitrat": 0.2,
+        "T_Fosfat": 0.017,
+        "BOD": 2,
+        "BKT": 9100,
+        "Image": ""
       }
     },
     {
@@ -530,7 +773,16 @@
         "IP_Okt": 4.1628,
         "Status": "CEMAR RINGAN",
         "Lokasi": "Jembatan Dodogan, Jatimulyo, Dlingo, Bantul",
-        "PL": "Semak/Belukar, Perkebunan/Kebun, Sawah Tadah Hujan, Tegalan/Ladang, Sawah Irigasi, Sungai, Permukiman, Hutan Lindung, Hutan Produksi"
+        "PL": "Semak/Belukar, Perkebunan/Kebun, Sawah Tadah Hujan, Tegalan/Ladang, Sawah Irigasi, Sungai, Permukiman, Hutan Lindung, Hutan Produksi",
+        "TSS": 1,
+        "DO": 8,
+        "COD": 19,
+        "pH": 8.1,
+        "Nitrat": 0.2,
+        "T_Fosfat": 0.017,
+        "BOD": 2,
+        "BKT": 9100,
+        "Image": "https://i.imgur.com/SpUXbuK.jpeg"
       }
     },
     {
@@ -549,7 +801,16 @@
         "IP_Okt": 3.4241,
         "Status": "CEMAR RINGAN",
         "Lokasi": "Jembatan Dogongan, Siluk, Imogiri, Bantul",
-        "PL": "Perkebnan/Kebun, Sawah Tadah Hujan, Tegalan/Ladang, Sawah Irigasi, Sungai, Permukiman, Emplasemen"
+        "PL": "Perkebnan/Kebun, Sawah Tadah Hujan, Tegalan/Ladang, Sawah Irigasi, Sungai, Permukiman, Emplasemen",
+        "TSS": 6,
+        "DO": 8,
+        "COD": 14,
+        "pH": 7.8,
+        "Nitrat": 0.5,
+        "T_Fosfat": 0.017,
+        "BOD": 2,
+        "BKT": 5600,
+        "Image": ""
       }
     },
     {
@@ -568,7 +829,16 @@
         "IP_Okt": 4.1918,
         "Status": "CEMAR RINGAN",
         "Lokasi": "Jembatan Pacar, Wonokromo, Pleret, Bantul",
-        "PL": "Tegalan/Ladang, Sawah Irigasi, Sungai, Permukiman, Emplasemen"
+        "PL": "Tegalan/Ladang, Sawah Irigasi, Sungai, Permukiman, Emplasemen",
+        "TSS": 3,
+        "DO": 8,
+        "COD": 7,
+        "pH": 7.5,
+        "Nitrat": 2,
+        "T_Fosfat": 0.19,
+        "BOD": 1,
+        "BKT": 9100,
+        "Image": ""
       }
     },
     {
@@ -587,7 +857,16 @@
         "IP_Okt": 9.2596,
         "Status": "CEMAR SEDANG",
         "Lokasi": "Jembatan Abang Ngoto, Sewon, Bantul",
-        "PL": "Rumput/Tanah Kosong, Tegalan/Ladang, Sawah Irigasi, Sungai, Permukiman, Emplasemen"
+        "PL": "Rumput/Tanah Kosong, Tegalan/Ladang, Sawah Irigasi, Sungai, Permukiman, Emplasemen",
+        "TSS": 4,
+        "DO": 8,
+        "COD": 18,
+        "pH": 7.5,
+        "Nitrat": 2,
+        "T_Fosfat": 0.23,
+        "BOD": 4,
+        "BKT": 240000,
+        "Image": "https://i.imgur.com/k1jW0Ld.jpeg"
       }
     },
     {
@@ -606,7 +885,16 @@
         "IP_Okt": 10.138,
         "Status": "CEMAR BERAT",
         "Lokasi": "Jembatan Tungkak, Mergangsan, Yogyakarta",
-        "PL": "Tegalan/Ladang, Sawah Irigasi, Sungai, Permukiman"
+        "PL": "Tegalan/Ladang, Sawah Irigasi, Sungai, Permukiman",
+        "TSS": 8,
+        "DO": 8,
+        "COD": 15,
+        "pH": 7.7,
+        "Nitrat": 3,
+        "T_Fosfat": 0.093,
+        "BOD": 3,
+        "BKT": 430000,
+        "Image": "https://i.imgur.com/L3XKgxA.jpeg"
       }
     },
     {
@@ -625,7 +913,16 @@
         "IP_Okt": 9.2249,
         "Status": "CEMAR SEDANG",
         "Lokasi": "Taman Wisata Keluarga Gerbang Banyu Langit Bantul",
-        "PL": "Perkebunan/Kebun, Tegalan/Ladang, Sawah Irigasi, Sungai, Permukiman, Emplasemen"
+        "PL": "Perkebunan/Kebun, Tegalan/Ladang, Sawah Irigasi, Sungai, Permukiman, Emplasemen",
+        "TSS": 3,
+        "DO": 7,
+        "COD": 25,
+        "pH": 7.1,
+        "Nitrat": 1,
+        "T_Fosfat": 0.21,
+        "BOD": 3,
+        "BKT": 240000,
+        "Image": ""
       }
     },
     {
@@ -644,7 +941,16 @@
         "IP_Okt": 2.2458,
         "Status": "CEMAR RINGAN",
         "Lokasi": "Cageran, Tamanmartani, Kalasan, Sleman",
-        "PL": "Perkebunan/Kebun, Tegalan/Ladang, Sawah Irigasi, Sungai, Permukiman"
+        "PL": "Perkebunan/Kebun, Tegalan/Ladang, Sawah Irigasi, Sungai, Permukiman",
+        "TSS": 2,
+        "DO": 9,
+        "COD": 14,
+        "pH": 7.5,
+        "Nitrat": 0.3,
+        "T_Fosfat": 0.33,
+        "BOD": 2,
+        "BKT": 560,
+        "Image": ""
       }
     },
     {
@@ -663,7 +969,16 @@
         "IP_Okt": 6.5818,
         "Status": "CEMAR SEDANG",
         "Lokasi": "Jembatan Kewek, Kotabaru, Yogyakarta",
-        "PL": "Sungai, Permukiman"
+        "PL": "Sungai, Permukiman",
+        "TSS": 10,
+        "DO": 6,
+        "COD": 4,
+        "pH": 7.3,
+        "Nitrat": 2,
+        "T_Fosfat": 0.05,
+        "BOD": 1,
+        "BKT": 43000,
+        "Image": "https://i.imgur.com/z11sPX1.jpeg"
       }
     },
     {
@@ -682,7 +997,16 @@
         "IP_Okt": 5.5449,
         "Status": "CEMAR SEDANG",
         "Lokasi": "Jembatan Lojajar, Sariharjo, Ngaglik Slemanarjo, Ngaglik Sleman",
-        "PL": "Perkebunan/Kebun, Sawah Irigasi, Sungai, Permukiman, Industri"
+        "PL": "Perkebunan/Kebun, Sawah Irigasi, Sungai, Permukiman, Industri",
+        "TSS": 3,
+        "DO": 8,
+        "COD": 9,
+        "pH": 7.4,
+        "Nitrat": 2,
+        "T_Fosfat": 0.26,
+        "BOD": 3,
+        "BKT": 240000,
+        "Image": "https://i.imgur.com/6eC7ios.jpeg"
       }
     },
     {
@@ -701,7 +1025,16 @@
         "IP_Okt": 4.2391,
         "Status": "CEMAR RINGAN",
         "Lokasi": "Jembatan Kemiri, Pakem, Sleman",
-        "PL": "Semak/Belukar, Perkebunan/Kebun, Rumput/Tanah Kosong, Tegalan/Ladang, Sawah Irigasi, Sungai, Permukiman"
+        "PL": "Semak/Belukar, Perkebunan/Kebun, Rumput/Tanah Kosong, Tegalan/Ladang, Sawah Irigasi, Sungai, Permukiman",
+        "TSS": 70,
+        "DO": 8,
+        "COD": 21,
+        "pH": 7.6,
+        "Nitrat": 0.5,
+        "T_Fosfat": 0.03,
+        "BOD": 4,
+        "BKT": 9400,
+        "Image": "https://i.imgur.com/OYHNSe6.jpeg"
       }
     },
     {
@@ -720,7 +1053,16 @@
         "IP_Okt": 4.1573,
         "Status": "CEMAR RINGAN",
         "Lokasi": "Jembatan Kuning, Jalan Wonosari, Sendangtirto, Berbah, Sleman",
-        "PL": "Perkebunan/Kebun, Tegalan/Ladang, Sawah Irigasi, Sungai, Permukiman, Kolam Air Tawar"
+        "PL": "Perkebunan/Kebun, Tegalan/Ladang, Sawah Irigasi, Sungai, Permukiman, Kolam Air Tawar",
+        "TSS": 2,
+        "DO": 6,
+        "COD": 3.18,
+        "pH": 7.5,
+        "Nitrat": 1,
+        "T_Fosfat": 0.16,
+        "BOD": 1,
+        "BKT": 9100,
+        "Image": ""
       }
     },
     {
@@ -739,7 +1081,16 @@
         "IP_Okt": 5.5302,
         "Status": "CEMAR SEDANG",
         "Lokasi": "Jembatan Sorogenen, Jalan Solo, Purwomartani, Kalasan, Sleman",
-        "PL": "Bandara, Perkebunan/Kebun, Rumput/Tanah Kosong, Tegalan/Ladang, Sawah Irigasi, Sungai"
+        "PL": "Bandara, Perkebunan/Kebun, Rumput/Tanah Kosong, Tegalan/Ladang, Sawah Irigasi, Sungai",
+        "TSS": 2,
+        "DO": 7,
+        "COD": 7,
+        "pH": 7.4,
+        "Nitrat": 1,
+        "T_Fosfat": 0.22,
+        "BOD": 2,
+        "BKT": 22000,
+        "Image": ""
       }
     },
     {
@@ -758,7 +1109,16 @@
         "IP_Okt": 7.7506,
         "Status": "CEMAR SEDANG",
         "Lokasi": "Jembatan Ngemplak, Sleman",
-        "PL": "Perkebunan/Kebun, Tegalan/Ladang, Sawah Irigasi, Sungai, Permukiman"
+        "PL": "Perkebunan/Kebun, Tegalan/Ladang, Sawah Irigasi, Sungai, Permukiman",
+        "TSS": 1,
+        "DO": 4,
+        "COD": 3.18,
+        "pH": 6.5,
+        "Nitrat": 2,
+        "T_Fosfat": 0.25,
+        "BOD": 0.28,
+        "BKT": 94000,
+        "Image": ""
       }
     },
     {
@@ -777,7 +1137,16 @@
         "IP_Okt": 5.4394,
         "Status": "CEMAR SEDANG",
         "Lokasi": "Jembatan Pokoh, Pakem, Sleman",
-        "PL": "Semak/Belukar, Perkebunan/Kebun, Tegalan/Ladang, Sawah Irigasi, Sungai, Permukiman, Makam, Kolam Air Tawar"
+        "PL": "Semak/Belukar, Perkebunan/Kebun, Tegalan/Ladang, Sawah Irigasi, Sungai, Permukiman, Makam, Kolam Air Tawar",
+        "TSS": 2,
+        "DO": 9,
+        "COD": 15,
+        "pH": 7.7,
+        "Nitrat": 0.2,
+        "T_Fosfat": 0.08,
+        "BOD": 2,
+        "BKT": 21000,
+        "Image": ""
       }
     },
     {
@@ -796,7 +1165,16 @@
         "IP_Okt": 6.5432,
         "Status": "CEMAR SEDANG",
         "Lokasi": "Jembatan Plosokuning Dusun Plosokuning Ngaglik Sleman",
-        "PL": "Perkebunan/Kebun, Tegalan/Ladang, Sawah Irigasi, Sungai, Permukiman"
+        "PL": "Perkebunan/Kebun, Tegalan/Ladang, Sawah Irigasi, Sungai, Permukiman",
+        "TSS": 1,
+        "DO": 6,
+        "COD": 9,
+        "pH": 7.5,
+        "Nitrat": 1,
+        "T_Fosfat": 0.31,
+        "BOD": 2,
+        "BKT": 22000,
+        "Image": ""
       }
     },
     {
@@ -815,7 +1193,16 @@
         "IP_Okt": 10.1148,
         "Status": "CEMAR BERAT",
         "Lokasi": "Jembatan Hotel Jayakarta, Caturtunggal, Depok, Sleman",
-        "PL": "Bandara, Perkebunan/Kebun, Rumput/Tanah Kosong, Tegalan/Ladang, Sawah Irigasi, Sungai, Permukiman, Kolam Air Tawar"
+        "PL": "Bandara, Perkebunan/Kebun, Rumput/Tanah Kosong, Tegalan/Ladang, Sawah Irigasi, Sungai, Permukiman, Kolam Air Tawar",
+        "TSS": 7,
+        "DO": 7,
+        "COD": 21,
+        "pH": 7.5,
+        "Nitrat": 1,
+        "T_Fosfat": 0.31,
+        "BOD": 3,
+        "BKT": 27000,
+        "Image": ""
       }
     },
     {
@@ -834,7 +1221,16 @@
         "IP_Okt": 5.8429,
         "Status": "CEMAR SEDANG",
         "Lokasi": "Jembatan Sekarsuli, Jl. Wonosari, Sendangtirto, Berbah, Bantul",
-        "PL": "Perkebunan/Kebun, Sawah Tadah Hujan, Tegalan/Ladang, Sawah Irigasi, Sungai, Permukiman, Emplasemen, Kolam Air Tawar, Lapangan"
+        "PL": "Perkebunan/Kebun, Sawah Tadah Hujan, Tegalan/Ladang, Sawah Irigasi, Sungai, Permukiman, Emplasemen, Kolam Air Tawar, Lapangan",
+        "TSS": 2,
+        "DO": 4,
+        "COD": 3.18,
+        "pH": 7.4,
+        "Nitrat": 1,
+        "T_Fosfat": 0.23,
+        "BOD": 1,
+        "BKT": 430000,
+        "Image": ""
       }
     },
     {
@@ -853,7 +1249,16 @@
         "IP_Okt": 5.5208,
         "Status": "CEMAR SEDANG",
         "Lokasi": "Tempuran Tambakbayan-Opak, Talang Pamotan, Jambidan, Baturetno Banguntapan",
-        "PL": "Perkebunan/Kebun, Sawah Tadah Hujan, Tegalan/Ladang, Sawah irigasi, Sungai, Permukiman, Emplasemen"
+        "PL": "Perkebunan/Kebun, Sawah Tadah Hujan, Tegalan/Ladang, Sawah irigasi, Sungai, Permukiman, Emplasemen",
+        "TSS": 4,
+        "DO": 6,
+        "COD": 7,
+        "pH": 7.5,
+        "Nitrat": 1,
+        "T_Fosfat": 0.24,
+        "BOD": 1,
+        "BKT": 43000,
+        "Image": ""
       }
     },
     {
@@ -872,7 +1277,16 @@
         "IP_Okt": 7.7664,
         "Status": "CEMAR SEDANG",
         "Lokasi": "Jembatan Ngaglik, Timbulharjo, Sewon, Bantul",
-        "PL": "Perkebunan/Kebun, Tegalan/Ladang, Sawah Irigasi, Permukiman"
+        "PL": "Perkebunan/Kebun, Tegalan/Ladang, Sawah Irigasi, Permukiman",
+        "TSS": 2,
+        "DO": 2,
+        "COD": 11,
+        "pH": 7.4,
+        "Nitrat": 1,
+        "T_Fosfat": 0.23,
+        "BOD": 2,
+        "BKT": 94000,
+        "Image": ""
       }
     },
     {
@@ -891,7 +1305,16 @@
         "IP_Okt": 5.8561,
         "Status": "CEMAR SEDANG",
         "Lokasi": "Jembatan Pulo Kadang, Canden, Jetis, Bantul",
-        "PL": "Perkebunan/Kebun, Tegalan/Ladang, Sawah Irigasi, Sungai, Permukiman"
+        "PL": "Perkebunan/Kebun, Tegalan/Ladang, Sawah Irigasi, Sungai, Permukiman",
+        "TSS": 2,
+        "DO": 2,
+        "COD": 9,
+        "pH": 7.3,
+        "Nitrat": 1,
+        "T_Fosfat": 0.33,
+        "BOD": 2,
+        "BKT": 27000,
+        "Image": ""
       }
     },
     {
@@ -910,7 +1333,16 @@
         "IP_Okt": 12.8778,
         "Status": "CEMAR BERAT",
         "Lokasi": "Jembatan Wisdom Park UGM, Karang Malang, Caturtunggal, Depok,Sleman",
-        "PL": "Sungai,  Permukiman"
+        "PL": "Sungai,  Permukiman",
+        "TSS": 13,
+        "DO": 8,
+        "COD": 25,
+        "pH": 8.3,
+        "Nitrat": 1,
+        "T_Fosfat": 1.42,
+        "BOD": 8,
+        "BKT": 2400000,
+        "Image": ""
       }
     },
     {
@@ -929,7 +1361,16 @@
         "IP_Okt": 8.5122,
         "Status": "CEMAR SEDANG",
         "Lokasi": "Jembatan Nitikan, Umbulharjo, Pandeyan, Yogyakarta",
-        "PL": "Sawah Irigasi, Permukiman"
+        "PL": "Sawah Irigasi, Permukiman",
+        "TSS": 7,
+        "DO": 3,
+        "COD": 6,
+        "pH": 7.2,
+        "Nitrat": 2,
+        "T_Fosfat": 0.55,
+        "BOD": 3,
+        "BKT": 430000,
+        "Image": ""
       }
     },
     {
@@ -948,7 +1389,16 @@
         "IP_Okt": 9.029,
         "Status": "CEMAR SEDANG",
         "Lokasi": "Jembatan Wonokromo, Pleret, Bantul",
-        "PL": "Semak/Belukar, Perkebunan/Kebun, Tegalan/Ladang, Sawah Irigasi, Sungai, Permukiman"
+        "PL": "Semak/Belukar, Perkebunan/Kebun, Tegalan/Ladang, Sawah Irigasi, Sungai, Permukiman",
+        "TSS": 5,
+        "DO": 3,
+        "COD": 10,
+        "pH": 7.3,
+        "Nitrat": 1,
+        "T_Fosfat": 0.72,
+        "BOD": 3,
+        "BKT": 210000,
+        "Image": ""
       }
     }
   ]

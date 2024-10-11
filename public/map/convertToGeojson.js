@@ -1,7 +1,7 @@
 import { promises as fs } from 'fs';
 
 // Membaca file JSON yang berisi data sungai
-const data = JSON.parse(await fs.readFile('Oktober_PenggunaanLahan.json', 'utf8'));
+const data = JSON.parse(await fs.readFile('oktober.json', 'utf8'));
 
 // Fungsi untuk membersihkan nilai null dan 0 dari koordinat
 function clean_coordinates(x, y) {
@@ -30,7 +30,16 @@ const geoJsonData = {
                     "IP_Okt": item.properties.IP_Okt,
                     "Status": item.properties.Status,
                     "Lokasi": item.properties.Lokasi,
-                    "PL": item.properties.PL
+                    "PL": item.properties.PL,
+                    "TSS": item.properties.TSS,
+                    "DO": item.properties.DO,
+                    "COD": item.properties.COD,
+                    "pH": item.properties.pH,
+                    "Nitrat": item.properties.Nitrat,
+                    "T_Fosfat": item.properties.T_Fosfat,
+                    "BOD": item.properties.BOD,
+                    "BKT": item.properties.BKT,
+                    "Image": item.properties.Image // Menambahkan properti Image
                 }
             };
         }

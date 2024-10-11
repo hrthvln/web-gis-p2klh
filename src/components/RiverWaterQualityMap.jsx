@@ -205,16 +205,30 @@ const handlePopupToggle = (popupName) => {
         });
       },
       onEachFeature: (feature, layer) => {
-        const { Sungai, Lokasi, PL, Status } = feature.properties;
+        const { Sungai, Lokasi, PL, Status, Image, TSS, DO, COD, pH, Nitrat, T_Fosfat, BOD, BKT } = feature.properties; // Menambahkan semua properti yang diperlukan
         const [lng, lat] = feature.geometry.coordinates; // Pastikan urutannya benar (lng, lat)
-        const ipValue = feature.properties[ipField];
+        
+        // Ambil nilai indeks pencemaran sesuai periode
+        const ipDisplay = feature.properties[ipField] !== undefined ? feature.properties[ipField] : 'Data tidak tersedia';
+
         layer.bindPopup(`
-          <h3>Nama Sungai: ${Sungai}</h3>
-          <b>Koordinat:</b> x: ${lng}, y: ${lat}<br/>
-          <b>Lokasi:</b> ${Lokasi}<br/>
-          <b>Penggunaan Lahan:</b> ${PL}<br/>
-          <b>Indeks Pencemaran:</b> ${ipValue}<br/>
-          <b>Status:</b> ${Status}
+          <h3 style="font-size: 14px; font-weight: bold;">${Sungai}</h3> <!-- Nama sungai dengan ukuran font kecil dan bold -->
+          <img src="${Image}" alt="Foto Lokasi" style="width: 100%; height: auto;"/><br/> <!-- Gambar lokasi -->
+          <table style="font-size: 12px; width: 100%;">
+            <tr><td><b>Koordinat:</b></td><td>x: ${lng}, y: ${lat}</td></tr>
+            <tr><td><b>Lokasi:</b></td><td>${Lokasi}</td></tr>
+            <tr><td><b>Penggunaan Lahan Radius 1000m:</b></td><td>${PL}</td></tr>
+            <tr><td><b>Indeks Pencemaran:</b></td><td>${ipDisplay}</td></tr>
+            <tr><td><b>Status:</b></td><td>${Status}</td></tr>
+            <tr><td><b>Residu Tersuspensi (TSS):</b></td><td>${TSS}</td></tr>
+            <tr><td><b>Oksigen Terlarut (DO):</b></td><td>${DO}</td></tr>
+            <tr><td><b>COD:</b></td><td>${COD}</td></tr>
+            <tr><td><b>pH:</b></td><td>${pH}</td></tr>
+            <tr><td><b>Nitrat:</b></td><td>${Nitrat}</td></tr>
+            <tr><td><b>Total Fosfat:</b></td><td>${T_Fosfat}</td></tr>
+            <tr><td><b>BOD:</b></td><td>${BOD}</td></tr>
+            <tr><td><b>Bakteri Koli Tinja:</b></td><td>${BKT}</td></tr>
+          </table>
         `);
       }
     }).addTo(map);
