@@ -27,6 +27,7 @@ const RiverWaterQualityMap = () => {
   const [isLegendOpen, setIsLegendOpen] = useState(false); // State untuk toggle Legend
   const [isYearFilterOpen, setIsYearFilterOpen] = useState(false); // State untuk toggle Year Filter
   const [selectedYear, setSelectedYear] = useState(2023); // State untuk tahun terpilih
+  const [activePopup, setActivePopup] = useState(null);
 
   // Warna yang ditetapkan untuk setiap kabupaten
   const kabupatenColors = {
@@ -108,6 +109,26 @@ const RiverWaterQualityMap = () => {
       initialMap.remove();
     };
   }, []);
+
+  // Fungsi untuk toggle pop-up, memastikan hanya satu pop-up terbuka pada satu waktu
+const handlePopupToggle = (popupName) => {
+  if (popupName === 'isLayerListOpen') {
+    setIsLayerListOpen(!isLayerListOpen);
+    setIsLegendOpen(false); // Tutup yang lain
+    setIsYearFilterOpen(false); // Tutup yang lain
+  } else if (popupName === 'isLegendOpen') {
+    setIsLegendOpen(!isLegendOpen);
+    setIsLayerListOpen(false); // Tutup yang lain
+    setIsYearFilterOpen(false); // Tutup yang lain
+  } else if (popupName === 'isYearFilterOpen') {
+    setIsYearFilterOpen(!isYearFilterOpen);
+    setIsLayerListOpen(false); // Tutup yang lain
+    setIsLegendOpen(false); // Tutup yang lain
+  }
+
+  // Perbarui state activePopup dengan nama popup yang aktif
+  setActivePopup((prevPopup) => (prevPopup === popupName ? null : popupName));
+};
 
   // Fungsi untuk memuat dan mengaktifkan boundary layer (batas kabupaten)
   const toggleBoundaryLayer = async () => {
@@ -286,24 +307,24 @@ const RiverWaterQualityMap = () => {
           {/* Icon Layer List */}
           <FaLayerGroup
             style={{ fontSize: '1.3rem', color: 'white', cursor: 'pointer', marginRight: '20px' }}
-            onClick={() => setIsLayerListOpen(!isLayerListOpen)}
+            onClick={() => handlePopupToggle('isLayerListOpen')}
           />
 
           {/* Icon Year Filter */}
           <FaCalendarAlt
             style={{ fontSize: '1.3rem', color: 'white', cursor: 'pointer', marginRight: '20px' }}
-            onClick={() => setIsYearFilterOpen(!isYearFilterOpen)}
+            onClick={() => handlePopupToggle('isYearFilterOpen')}
           />
 
           {/* Icon Legend */}
           <FaInfoCircle
             style={{ fontSize: '1.3rem', color: 'white', cursor: 'pointer', marginRight: '20px' }}
-            onClick={() => setIsLegendOpen(!isLegendOpen)}
+            onClick={() => handlePopupToggle('isLegendOpen')}
           />
         </div>
 
         {/* Layer List Pop-up */}
-        {isLayerListOpen && (
+        {activePopup === 'isLayerListOpen' && (
         <div style={popupStyle}>
           <h3 style={popupHeaderStyle}>Layer List</h3>
           <label style={{ ...checkboxLabelStyle, ...popupContentStyle }}>
@@ -339,7 +360,7 @@ const RiverWaterQualityMap = () => {
       )}
 
       {/* Year Filter Pop-up */}
-      {isYearFilterOpen && (
+      {activePopup === 'isYearFilterOpen' && (
         <div style={popupStyle}>
           <h3 style={popupHeaderStyle}>Filter Tahun</h3>
           <label style={{ ...checkboxLabelStyle, ...popupContentStyle }}>
@@ -378,7 +399,7 @@ const RiverWaterQualityMap = () => {
       )}
 
       {/* Legend Pop-up */}
-      {isLegendOpen && (
+      {activePopup === 'isLegendOpen' && (
         <div style={popupStyle}>
           <h3 style={popupHeaderStyle}>Legenda</h3>
           <div style={popupContentStyle}>
@@ -408,7 +429,7 @@ const RiverWaterQualityMap = () => {
     </nav>
 
       {/* Peta */}
-      <div id="map" style={{ height: '581px' }}></div>
+      <div id="map" style={{ height: '615px' }}></div>
 
       {/* Koordinat */}
       {coords.lat && coords.lng && (
