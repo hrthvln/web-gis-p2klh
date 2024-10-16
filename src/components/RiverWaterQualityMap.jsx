@@ -9,19 +9,19 @@ import logo from '../assets/logo.png'; // Sesuaikan jalur logo
 const RiverWaterQualityMap = () => {
   const [map, setMap] = useState(null);
   const [boundaryLayer, setBoundaryLayer] = useState(null);
+  const [subDasLayer, setSubDasLayer] = useState(null);
   const [febLayer, setFebLayer] = useState(null);
   const [junLayer, setJunLayer] = useState(null);
   const [oktLayer, setOktLayer] = useState(null);
   const [ikaLayer, setIkaLayer] = useState(null);
   const [coords, setCoords] = useState({ lat: null, lng: null });
-  const [subDasLayer, setSubDasLayer] = useState(null);
 
   const [showBoundary, setShowBoundary] = useState(true);
+  const [showSubDas, setShowSubDas] = useState(true);
   const [showFebLayer, setShowFebLayer] = useState(true);
   const [showJunLayer, setShowJunLayer] = useState(true);
   const [showOktLayer, setShowOktLayer] = useState(true);
   const [showIkaLayer, setShowIkaLayer] = useState(true);
-  const [showSubDas, setShowSubDas] = useState(true);
   
   const [isLayerListOpen, setIsLayerListOpen] = useState(false); // State untuk toggle Layer List
   const [isLegendOpen, setIsLegendOpen] = useState(false); // State untuk toggle Legend
@@ -38,20 +38,20 @@ const RiverWaterQualityMap = () => {
     'Kota Yogyakarta': '#dd1c77'
   };
 
-    // Warna yang ditetapkan untuk setiap kabupaten
-    const subDasColors = {
-    'SubDAS1': '#ff4500',
-    'SubDAS2': '#ff6347',
-    'SubDAS3': '#ffa07a',
-    'SubDAS4': '#20b2aa',
-    'SubDAS5': '#4682b4',
-    'SubDAS6': '#8a2be2',
-    'SubDAS7': '#5f9ea0',
-    'SubDAS8': '#d2691e',
-    'SubDAS9': '#ff69b4',
-    'SubDAS10': '#cd5c5c',
-    'SubDAS11': '#ffa500'
-    };
+  // Warna yang ditetapkan untuk setiap SubDAS sesuai dengan nama SubDAS di GeoJSON
+  const subDasColors = {
+    'SUB DAS BULUS': '#ff4500',
+    'SUB DAS OYO': '#ff6347',
+    'SUB DAS OPAK': '#ffa07a',
+    'SUB DAS KUNING': '#20b2aa',
+    'SUB DAS KONTENG': '#4682b4',
+    'SUB DAS GAJAH WONG': '#8a2be2',
+    'SUB DAS CODE': '#5f9ea0',
+    'SUB DAS BELIK': '#d2691e',
+    'SUB DAS BEDOG': '#ff69b4',
+    'SUB DAS TAMBAKBAYAN': '#cd5c5c',
+    'SUB DAS WINONGO': '#ffa500'
+  };
 
   // Warna untuk setiap periode
   const pointColors = {
@@ -72,43 +72,84 @@ const RiverWaterQualityMap = () => {
       return null;
     }
   };
-
+  
   useEffect(() => {
     // Inisialisasi peta
-    const initialMap = L.map('map').setView([-7.797068, 110.370529], 10); // Koordinat DIY
-
+    const initialMap = L.map('map', {
+      zoomControl: false, // Disable default zoom control
+    }).setView([-7.797068, 110.370529], 10); // Koordinat DIY
+  
     // Tambahkan tile layer
     L.tileLayer('https://{s}.google.com/vt/lyrs=m&x={x}&y={y}&z={z}', {
       subdomains: ['mt0', 'mt1', 'mt2', 'mt3'],
       maxZoom: 20,
       attribution: 'Map data © Google',
     }).addTo(initialMap);
-
-    // Tambahkan Locate Control untuk menentukan lokasi pengguna
+  
+    // T  // Tambahkan Locate Control untuk menentukan lokasi pengguna
     L.control.locate({
-      position: 'topleft',
+      position: 'bottomright',
       flyTo: true,
       strings: {
-        title: "Temukan Lokasi Saya"
+        title: "Lokasi Saya"
       }
     }).addTo(initialMap);
 
-    // Event listener untuk menampilkan koordinat kursor
+    // Setelah kontrol ditambahkan, atur gaya CSS untuk memindahkannya lebih rendah
+    setTimeout(() => {
+      document.querySelector('.leaflet-control-locate').style.marginBottom = '4px'; // Atur jarak ke bawah
+    }, 0);
+  
+    // Tambahkan kontrol zoom dengan ukuran yang disesuaikan dan posisi di bawah kiri
+    const zoomControl = L.control.zoom({
+      position: 'bottomright' // Atur posisi kontrol zoom di pojok kiri bawah
+    }).addTo(initialMap);
+  
+    // Setelah kontrol ditambahkan, atur gaya CSS untuk memindahkannya lebih rendah
+    setTimeout(() => {
+      document.querySelector('.leaflet-control-zoom').style.marginBottom = '0px'; // Atur jarak ke bawah
+    }, 0);
+
+    // Custom styling untuk kontrol zoom dan kontrol lokasi agar memiliki ukuran yang seragam dan rapi
+    document.querySelector('.leaflet-control-zoom').style.transform = 'scale(0.8)'; // Perkecil kontrol zoom
+    document.querySelector('.leaflet-control-locate').style.transform = 'scale(0.8)'; // Perkecil kontrol lokasi
+  
+    // Posisikan kontrol zoom dan lokasi secara berdekatan dan presisi
+    document.querySelector('.leaflet-control-zoom').style.marginBottom = '10px'; // Beri jarak antara kontrol zoom dan lokasi
+  
+    // Membuat kontrol khusus untuk menampilkan koordinat di pojok kiri bawah
+    const coordsControl = L.control({ position: 'bottomleft' });
+    coordsControl.onAdd = function () {
+      const div = L.DomUtil.create('div', 'leaflet-control-latlng');
+      div.style.background = 'rgba(255, 255, 255, 0.7)';
+      div.style.padding = '2px';
+      div.style.fontSize = '11px';
+      div.innerHTML = 'Latitude: 0.000000 | Longitude: 0.000000';
+      return div;
+    };
+    coordsControl.addTo(initialMap);
+  
+    // Event listener untuk memperbarui koordinat kursor
     initialMap.on('mousemove', function (e) {
-      setCoords({ lat: e.latlng.lat.toFixed(6), lng: e.latlng.lng.toFixed(6) });
+      const { lat, lng } = e.latlng;
+      document.querySelector('.leaflet-control-latlng').innerHTML = `Latitude: ${lat.toFixed(6)} | Longitude: ${lng.toFixed(6)}`;
     });
-
-    // Menampilkan koordinat saat peta diklik
+  
+    // Event listener untuk memperbarui koordinat saat peta diklik
     initialMap.on('click', function (e) {
-      setCoords({ lat: e.latlng.lat.toFixed(6), lng: e.latlng.lng.toFixed(6) });
+      const { lat, lng } = e.latlng;
+      document.querySelector('.leaflet-control-latlng').innerHTML = `Latitude: ${lat.toFixed(6)} | Longitude: ${lng.toFixed(6)}`;
     });
-
+  
     setMap(initialMap);
-
+  
     return () => {
       initialMap.remove();
     };
   }, []);
+  
+  
+  
 
   // Fungsi untuk toggle pop-up, memastikan hanya satu pop-up terbuka pada satu waktu
 const handlePopupToggle = (popupName) => {
@@ -157,41 +198,51 @@ const handlePopupToggle = (popupName) => {
     }
   };
 
-// Fungsi untuk memuat dan mengaktifkan subDAS layer (batas sub DAS)
+// Fungsi untuk memuat dan mengaktifkan SubDAS layer (batas Sub DAS)
   const togglesubDasLayer = async () => {
     if (subDasLayer) {
       map.removeLayer(subDasLayer);
       setSubDasLayer(null);
     } else {
-      const subDasData = await loadGeoJsonData('/map/batasSubDAS_cleaned.geojson');
-      const newsubDasLayer = L.geoJSON(subDasData, {
-        style: (feature) => {
-          const subDas = feature.properties.NAMOBJ;
+      const subDasData = await loadGeoJsonData('/map/batasSubdas_cleaned.geojson');
+      const newSubDasLayer = L.geoJSON(subDasData, {
+         style: (feature) => {
+          const subDas = feature.properties.SUB_DAS_Su; 
           const color = subDasColors[subDas] || '#000000'; 
           return {
-            color: color, 
-            weight: 3,
-            opacity: 0.7,
-            fillOpacity: 0.2, 
-            fillColor: color 
-          };
-        },
-        onEachFeature: (feature, layer) => {
-          layer.bindPopup(`<h3>${feature.properties.NAMOBJ}</h3>`);
-        },
-      }).addTo(map);
-      setSubDasLayer(newsubDasLayer); 
+            color: color,
+              weight: 3,
+              opacity: 0.7,
+              fillOpacity: 0.2,
+              fillColor: color
+            };
+          },
+          onEachFeature: (feature, layer) => {
+            const subDas = feature.properties.SUB_DAS_Su; 
+            const ikaFeb = feature.properties.IKA_FEB; 
+            const ikaJun = feature.properties.IKA_JUN; 
+            const ikaOkt = feature.properties.IKA_OKT;
+
+            layer.bindPopup(`
+              <h3>${subDas}</h3>
+              <p>Nilai IKA Februari: ${ikaFeb}</p>
+              <p>Nilai IKA Juni: ${ikaJun}</p>
+              <p>Nilai IKA Oktober: ${ikaOkt}</p>
+            `);
+          },
+        }).addTo(map);
+        setSubDasLayer(newSubDasLayer);
     }
   };
 
 
-  // Fungsi untuk memuat titik-titik per periode
+
   const loadPointLayer = async (layer, setLayer, url, color, ipField) => {
     if (layer) {
       map.removeLayer(layer);
       setLayer(null);
     }
-
+  
     const pointData = await loadGeoJsonData(url);
     const newLayer = L.geoJSON(pointData, {
       pointToLayer: (feature, latlng) => {
@@ -205,37 +256,41 @@ const handlePopupToggle = (popupName) => {
         });
       },
       onEachFeature: (feature, layer) => {
-        const { Sungai, Lokasi, PL, Status, Image, TSS, DO, COD, pH, Nitrat, T_Fosfat, BOD, BKT } = feature.properties; // Menambahkan semua properti yang diperlukan
-        const [lng, lat] = feature.geometry.coordinates; // Pastikan urutannya benar (lng, lat)
-        
-        // Ambil nilai indeks pencemaran sesuai periode
+        const { Sungai, Lokasi, PL, Status, Image, TSS, DO, COD, pH, Nitrat, T_Fosfat, BOD, BKT } = feature.properties;
+        const [lng, lat] = feature.geometry.coordinates;
+  
         const ipDisplay = feature.properties[ipField] !== undefined ? feature.properties[ipField] : 'Data tidak tersedia';
-
+  
         layer.bindPopup(`
-          <h3 style="font-size: 14px; font-weight: bold;">${Sungai}</h3> <!-- Nama sungai dengan ukuran font kecil dan bold -->
-          <img src="${Image}" alt="Foto Lokasi" style="width: 100%; height: auto;"/><br/> <!-- Gambar lokasi -->
-          <table style="font-size: 12px; width: 100%;">
-            <tr><td><b>Koordinat:</b></td><td>x: ${lng}, y: ${lat}</td></tr>
-            <tr><td><b>Lokasi:</b></td><td>${Lokasi}</td></tr>
-            <tr><td><b>Penggunaan Lahan Radius 1000m:</b></td><td>${PL}</td></tr>
-            <tr><td><b>Indeks Pencemaran:</b></td><td>${ipDisplay}</td></tr>
-            <tr><td><b>Status:</b></td><td>${Status}</td></tr>
-            <tr><td><b>Residu Tersuspensi (TSS):</b></td><td>${TSS}</td></tr>
-            <tr><td><b>Oksigen Terlarut (DO):</b></td><td>${DO}</td></tr>
-            <tr><td><b>COD:</b></td><td>${COD}</td></tr>
-            <tr><td><b>pH:</b></td><td>${pH}</td></tr>
-            <tr><td><b>Nitrat:</b></td><td>${Nitrat}</td></tr>
-            <tr><td><b>Total Fosfat:</b></td><td>${T_Fosfat}</td></tr>
-            <tr><td><b>BOD:</b></td><td>${BOD}</td></tr>
-            <tr><td><b>Bakteri Koli Tinja:</b></td><td>${BKT}</td></tr>
-          </table>
+          <div style="max-height: 250px; overflow-y: auto; font-size: 12px; width: 230px;">
+            <h3 style="font-size: 14px; font-weight: bold; margin-bottom: 10px;">${Sungai}</h3>
+            <div style="width: 100%; height: 150px; overflow: hidden; display: flex; justify-content: center; align-items: center;">
+              <img src="${Image}" alt="Foto Lokasi" style="width: 100%; height: auto; object-fit: cover; max-height: 100%;"/>
+            </div>
+            <table style="font-size: 12px; width: 100%; margin-top: 10px;">
+              <tr><td><b>Koordinat:</b></td><td>x: ${lng}, y: ${lat}</td></tr>
+              <tr><td><b>Lokasi:</b></td><td>${Lokasi}</td></tr>
+              <tr><td><b>Penggunaan Lahan Radius 1000m:</b></td><td>${PL}</td></tr>
+              <tr><td><b>Indeks Pencemaran:</b></td><td>${ipDisplay}</td></tr>
+              <tr><td><b>Status:</b></td><td>${Status}</td></tr>
+              <tr><td><b>Residu Tersuspensi (TSS):</b></td><td>${TSS}</td></tr>
+              <tr><td><b>Oksigen Terlarut (DO):</b></td><td>${DO}</td></tr>
+              <tr><td><b>COD:</b></td><td>${COD}</td></tr>
+              <tr><td><b>pH:</b></td><td>${pH}</td></tr>
+              <tr><td><b>Nitrat:</b></td><td>${Nitrat}</td></tr>
+              <tr><td><b>Total Fosfat:</b></td><td>${T_Fosfat}</td></tr>
+              <tr><td><b>BOD:</b></td><td>${BOD}</td></tr>
+              <tr><td><b>Bakteri Koli Tinja:</b></td><td>${BKT}</td></tr>
+            </table>
+          </div>
         `);
+        
       }
     }).addTo(map);
-
-    newLayer.bringToFront(); // Pastikan layer titik selalu di depan
+  
+    newLayer.bringToFront();
     setLayer(newLayer);
-  };
+  };  
 
   // Toggle layer visibility based on checkbox status
   const handleLayerToggle = (checked, layerName) => {
@@ -247,6 +302,14 @@ const handlePopupToggle = (popupName) => {
         } else {
           if (boundaryLayer) map.removeLayer(boundaryLayer);
         }
+        break;
+      case 'subDas':
+        setShowSubDas(checked); // Simpan status checkbox
+        if (checked) {
+          togglesubDasLayer(); // Muat layer jika dicentang
+        } else {
+          if (subDasLayer) map.removeLayer(subDasLayer); // Hapus layer jika tidak dicentang
+        }                                                                                                                     
         break;
       case 'february':
         setShowFebLayer(checked);
@@ -279,14 +342,6 @@ const handlePopupToggle = (popupName) => {
         } else {
           if (ikaLayer) map.removeLayer(ikaLayer);
         }
-        break;
-      case 'subDas':
-        setShowSubDas(checked);
-        if (checked) {
-          togglesubDasLayer();
-        } else {
-          if (subDasLayer) map.removeLayer(subDasLayer);
-        }                                                                                                                     
         break;
       default:
         break;
@@ -347,6 +402,11 @@ const handlePopupToggle = (popupName) => {
           </label>
           <br />
           <label style={{ ...checkboxLabelStyle, ...popupContentStyle }}>
+            <input type="checkbox" checked={showSubDas} onChange={(e) => handleLayerToggle(e.target.checked, 'subDas')} style={inputStyle}/>
+            Batas Sub Das DIY
+          </label>
+          <br />
+          <label style={{ ...checkboxLabelStyle, ...popupContentStyle }}>
             <input type="checkbox" checked={showFebLayer} onChange={(e) => handleLayerToggle(e.target.checked, 'february')} style={inputStyle} />
             Periode Februari
           </label>
@@ -364,11 +424,6 @@ const handlePopupToggle = (popupName) => {
           <label style={{ ...checkboxLabelStyle, ...popupContentStyle }}>
             <input type="checkbox" checked={showIkaLayer} onChange={(e) => handleLayerToggle(e.target.checked, 'ika')} style={inputStyle} />
             Nilai IKA DIY
-          </label>
-          <br />
-          <label style={{ ...checkboxLabelStyle, ...popupContentStyle }}>
-            <input type="checkbox" checked={showSubDas} onChange={(e) => handleLayerToggle(e.target.checked, 'subDas')} style={inputStyle}/>
-            Batas Sub Das DIY
           </label>
         </div>
       )}
@@ -432,9 +487,9 @@ const handlePopupToggle = (popupName) => {
           </div>
           <div style={popupContentStyle}>
             <b>Batas Sub DAS</b>
-            {Object.keys(subDasColors).map(subDasLayer => (
-              <div key={subDasLayer} style={legendItemStyle}>
-                <span style={{ ...legendSquareStyle, backgroundColor: subDasColors[subDasLayer] }}></span> {subDasLayer}
+            {Object.keys(subDasColors).map(subDas => (
+              <div key={subDas} style={legendItemStyle}>
+                <span style={{ ...legendSquareStyle, backgroundColor: subDasColors[subDas] }}></span> {subDas}
               </div>
             ))}
           </div>
@@ -443,14 +498,8 @@ const handlePopupToggle = (popupName) => {
     </nav>
 
       {/* Peta */}
-      <div id="map" style={{ height: '615px' }}></div>
+      <div id="map" style={{ height: '580px' }}></div>
 
-      {/* Koordinat */}
-      {coords.lat && coords.lng && (
-        <div style={{ position: 'absolute', bottom: '5px', left: '5px', backgroundColor: 'white', padding: '2px', borderRadius: '2px', zIndex: '1000' }}>
-          Koordinat: {coords.lat}, {coords.lng}
-        </div>
-      )}
     </div>
   );
 };
@@ -462,11 +511,15 @@ const popupStyle = {
   right: '7px',
   backgroundColor: 'white',
   padding: '20px',
-  borderRadius: '8px',
-  boxShadow: '0 0 15px rgba(0,0,0,0.3)',
   zIndex: 1000,
   minWidth: '230px',
-  width: 'auto'
+  maxHeight: '300px', // Set max height sesuai kebutuhan
+  width: '250px', // Set width yang sama dengan layer list
+  overflowY: 'auto', // Aktifkan scroll jika konten lebih dari max height
+  borderRadius: '8px', // Opsional: tambahkan border radius untuk estetika
+  boxShadow: '0 2px 10px rgba(0, 0, 0, 0.2)', // Opsional: tambahkan shadow untuk efek pop-up
+  scrollbarWidth: 'thin', // Membuat scrollbar menjadi lebih kecil di Firefox
+  scrollbarColor: 'rgba(0, 0, 0, 0.2) rgba(0, 0, 0, 0.05)', // Warna scrollbar di Firefox
 };
 
 const popupHeaderStyle = {
@@ -520,15 +573,10 @@ const legendSquareStyle = {
   marginRight: '10px' // Tanpa borderRadius agar tetap berbentuk persegi
 };
 
-const coordStyle = {
-  position: 'absolute',
-  bottom: '10px',
-  left: '10px',
-  backgroundColor: 'rgba(255, 255, 255, 0.8)',
-  padding: '5px 10px',
-  borderRadius: '4px',
-  fontSize: '1rem',
-  zIndex: 1000
-};
+
+
+
+
+
 
 export default RiverWaterQualityMap;
