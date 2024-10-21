@@ -204,7 +204,7 @@ const handlePopupToggle = (popupName) => {
       map.removeLayer(subDasLayer);
       setSubDasLayer(null);
     } else {
-      const subDasData = await loadGeoJsonData('/map/batasSubdas_cleaned.geojson');
+      const subDasData = await loadGeoJsonData('/map/dasdiy4326.geojson');
       const newSubDasLayer = L.geoJSON(subDasData, {
          style: (feature) => {
           const subDas = feature.properties.SUB_DAS_Su; 
