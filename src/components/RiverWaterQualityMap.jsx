@@ -259,67 +259,69 @@ const handlePopupToggle = (popupName) => {
         const [lng, lat] = feature.geometry.coordinates;
   
         const ipDisplay = feature.properties[ipField] !== undefined ? feature.properties[ipField] : 'Data tidak tersedia';
-  
+ 
         layer.bindPopup(`
-          <div style="max-height: 400px; overflow-y: auto; font-size: 10px; width: 250px; padding: 10px;">
-            <h3 style="font-size: 12px; font-weight: bold; margin-bottom: 10px;">${Sungai}</h3>
-            <div style="width: 100%; height: 150px; overflow: hidden; display: flex; justify-content: center; align-items: center; margin-bottom: 10px;">
-              <img src="${Image}" alt="Foto Lokasi" style="width: 100%; height: auto; object-fit: cover; max-height: 100%;"/>
-            </div>
-            <table style="font-size: 10px; width: 100%; border-collapse: collapse;">
-              <tr>
-                <td style="padding: 2px;"><b>Koordinat</b></td>
-                <td style="padding: 2px;">x: ${lng}, y: ${lat}</td>
-              </tr>
-              <tr>
-                <td style="padding: 2px;"><b>Lokasi</b></td>
-                <td style="padding: 2px;">${Lokasi}</td>
-              </tr>
-              <tr>
-                <td style="padding: 2px;"><b>Penggunaan Lahan Radius 1000m</b></td>
-                <td style="padding: 2px;">${PL}</td>
-              </tr>
-              <tr>
-                <td style="padding: 2px;"><b>Indeks Pencemaran</b></td>
-                <td style="padding: 2px;">${ipDisplay}</td>
-              </tr>
-              <tr>
-                <td style="padding: 2px;"><b>Status</b></td>
-                <td style="padding: 2px;">${Status}</td>
-              </tr>
-              <tr>
-                <td style="padding: 2px;"><b>Residu Tersuspensi (TSS)</b></td>
-                <td style="padding: 2px;">${TSS}</td>
-              </tr>
-              <tr>
-                <td style="padding: 2px;"><b>Oksigen Terlarut (DO)</b></td>
-                <td style="padding: 2px;">${DO}</td>
-              </tr>
-              <tr>
-                <td style="padding: 2px;"><b>COD</b></td>
-                <td style="padding: 2px;">${COD}</td>
-              </tr>
-              <tr>
-                <td style="padding: 2px;"><b>pH</b></td>
-                <td style="padding: 2px;">${pH}</td>
-              </tr>
-              <tr>
-                <td style="padding: 2px;"><b>Nitrat</b></td>
-                <td style="padding: 2px;">${Nitrat}</td>
-              </tr>
-              <tr>
-                <td style="padding: 2px;"><b>Total Fosfat</b></td>
-                <td style="padding: 2px;">${T_Fosfat}</td>
-              </tr>
-              <tr>
-                <td style="padding: 2px;"><b>BOD</b></td>
-                <td style="padding: 2px;">${BOD}</td>
-              </tr>
-              <tr>
-                <td style="padding: 2px;"><b>Bakteri Koli Tinja</b></td>
-                <td style="padding: 2px;">${BKT}</td>
-              </tr>
-            </table>
+          <div style="font-size: 10px; width: 250px; padding: 10px; position: relative; font-family: Arial, sans-serif; line-height: 1.5;">
+              <h3 style="font-size: 12px; font-weight: bold; margin-bottom: 10px; text-align: center;">${Sungai}</h3>
+              <div style="width: 100%; height: 150px; overflow: hidden; display: flex; justify-content: center; align-items: center; margin-bottom: 10px;">
+                <img src="${Image}" alt="Foto Lokasi" style="width: 100%; height: auto; object-fit: cover; max-height: 100%;"/>
+              </div>
+              <div style="max-height: 120px; overflow-y: auto; margin-top: 5px; text-align: left;">
+                  <table style="font-size: 10px; width: 100%; border-collapse: collapse; text-align: left;">
+                      <tr>
+                          <td style="padding: 2px; font-weight: bold; vertical-align: top;">Koordinat</td>
+                          <td style="padding: 4px; vertical-align: top;">x: ${lng}, y: ${lat}</td>
+                      </tr>
+                      <tr>
+                          <td style="padding: 2px; font-weight: bold; vertical-align: top;">Lokasi</td>
+                          <td style="padding: 4px; vertical-align: top;">${Lokasi}</td>
+                      </tr>
+                      <tr>
+                          <td style="padding: 2px; font-weight: bold; vertical-align: top;">Penggunaan Lahan Radius 1000m</td>
+                          <td style="padding: 4px; vertical-align: top;">${PL}</td>
+                      </tr>
+                      <tr>
+                          <td style="padding: 2px; font-weight: bold; vertical-align: top;">Indeks Pencemaran</td>
+                          <td style="padding: 4px; vertical-align: top;">${ipDisplay}</td>
+                      </tr>
+                      <tr>
+                          <td style="padding: 2px; font-weight: bold; vertical-align: top;">Status</td>
+                          <td style="padding: 4px; vertical-align: top;">${Status}</td>
+                      </tr>
+                      <tr>
+                          <td style="padding: 2px; font-weight: bold; vertical-align: top;">Residu Tersuspensi (TSS)</td>
+                          <td style="padding: 4px; vertical-align: top;">${TSS}</td>
+                      </tr>
+                      <tr>
+                          <td style="padding: 2px; font-weight: bold; vertical-align: top;">Oksigen Terlarut (DO)</td>
+                          <td style="padding: 4px; vertical-align: top;">${DO}</td>
+                      </tr>
+                      <tr>
+                          <td style="padding: 2px; font-weight: bold; vertical-align: top;">COD</td>
+                          <td style="padding: 4px; vertical-align: top;">${COD}</td>
+                      </tr>
+                      <tr>
+                          <td style="padding: 2px; font-weight: bold; vertical-align: top;">pH</td>
+                          <td style="padding: 4px; vertical-align: top;">${pH}</td>
+                      </tr>
+                      <tr>
+                          <td style="padding: 2px; font-weight: bold; vertical-align: top;">Nitrat</td>
+                          <td style="padding: 4px; vertical-align: top;">${Nitrat}</td>
+                      </tr>
+                      <tr>
+                          <td style="padding: 2px; font-weight: bold; vertical-align: top;">Total Fosfat</td>
+                          <td style="padding: 4px; vertical-align: top;">${T_Fosfat}</td>
+                      </tr>
+                      <tr>
+                          <td style="padding: 2px; font-weight: bold; vertical-align: top;">BOD</td>
+                          <td style="padding: 4px; vertical-align: top;">${BOD}</td>
+                      </tr>
+                      <tr>
+                          <td style="padding: 2px; font-weight: bold; vertical-align: top;">Bakteri Koli Tinja</td>
+                          <td style="padding: 4px; vertical-align: top;">${BKT}</td>
+                      </tr>
+                  </table>
+              </div>
           </div>
         `);
       }

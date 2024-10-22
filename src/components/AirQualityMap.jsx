@@ -195,57 +195,59 @@ const AirQualityMap = () => {
               const Tahap_2_SO2 = feature.properties["Tahap_2_Kadar_SO2_(µg/m3)"];
 
               layer.bindPopup(`
-                  <div style="max-height: 400px; overflow-y: auto; font-size: 10px; width: 250px; padding: 10px;">
-                      <h3 style="font-size: 12px; font-weight: bold; margin-bottom: 10px;">${Nama_Lokasi}</h3>
-                      <div style="width: 100%; height: 150px; overflow: hidden; display: flex; justify-content: center; align-items: center; margin-bottom: 10px;">
-                          <img src="${Foto}" alt="Foto Lokasi" style="width: 100%; height: auto; object-fit: cover; max-height: 100%;"/>
-                      </div>
-                      <table style="font-size: 10px; width: 100%; border-collapse: collapse;">
-                          <tr>
-                              <td style="padding: 2px;"><b>Kode</b></td>
-                              <td style="padding: 2px;">${Kode}</td>
-                          </tr>
-                          <tr>
-                              <td style="padding: 2px;"><b>Kabupaten</b></td>
-                              <td style="padding: 2px;">${Kabupaten}</td>
-                          </tr>
-                          <tr>
-                              <td style="padding: 2px;"><b>Koordinat</b></td>
-                              <td style="padding: 2px;">x: ${x.toFixed(6)}, y: ${y.toFixed(6)}</td>
-                          </tr>
-                          <tr>
-                              <td style="padding: 2px;"><b>Kategori</b></td>
-                              <td style="padding: 2px;">${Kategori}</td>
-                          </tr>
-                          <tr>
-                              <td style="padding: 2px;"><b>Nama Lokasi</b></td>
-                              <td style="padding: 2px;">${Nama_Lokasi}</td>
-                          </tr>
-                          <tr>
-                              <td style="padding: 2px;"><b>Alamat Lokasi</b></td>
-                              <td style="padding: 2px;">${Alamat}</td>
-                          </tr>
-                          <tr>
-                              <td style="padding: 2px;"><b>Kadar NO2 Tahap 1 (µg/m³)</b></td>
-                              <td style="padding: 2px;">${Tahap_1_NO2}</td>
-                          </tr>
-                          <tr>
-                              <td style="padding: 2px;"><b>Kadar NO2 Tahap 2 (µg/m³)</b></td>
-                              <td style="padding: 2px;">${Tahap_2_NO2}</td>
-                          </tr>
-                          <tr>
-                              <td style="padding: 2px;"><b>Kadar SO2 Tahap 1 (µg/m³)</b></td>
-                              <td style="padding: 2px;">${Tahap_1_SO2}</td>
-                          </tr>
-                          <tr>
-                              <td style="padding: 2px;"><b>Kadar SO2 Tahap 2 (µg/m³)</b></td>
-                              <td style="padding: 2px;">${Tahap_2_SO2}</td>
-                          </tr>
-                      </table>
-                  </div>
-              `);
-          }
-      }).addTo(map);
+                <div style="font-size: 10px; width: 250px; padding: 10px; position: relative; font-family: Arial, sans-serif; line-height: 1.5;">
+                    <h3 style="font-size: 12px; font-weight: bold; margin-bottom: 10px; text-align: center;">${Nama_Lokasi}</h3>
+                    <div style="width: 100%; height: 150px; overflow: hidden; display: flex; justify-content: center; align-items: center; margin-bottom: 10px;">
+                     <img src="${Foto}" alt="Foto Lokasi" style="width: 100%; height: auto; object-fit: cover; max-height: 100%;"/>
+                    </div>
+                    <div style="max-height: 120px; overflow-y: auto; margin-top: 5px; text-align: left;">
+                        <table style="font-size: 10px; width: 100%; border-collapse: collapse; text-align: left;">
+                            <tr>
+                                <td style="padding: 2px; font-weight: bold; vertical-align: top;">Kode</td>
+                                <td style="padding: 4px; vertical-align: top;">${Kode}</td>
+                            </tr>
+                            <tr>
+                                <td style="padding: 2px; font-weight: bold; vertical-align: top;">Kabupaten</td>
+                                <td style="padding: 4px; vertical-align: top;">${Kabupaten}</td>
+                            </tr>
+                            <tr>
+                                <td style="padding: 2px; font-weight: bold; vertical-align: top;">Koordinat</td>
+                                <td style="padding: 4px; vertical-align: top;">x: ${x.toFixed(6)}, y: ${y.toFixed(6)}</td>
+                            </tr>
+                            <tr>
+                                <td style="padding: 2px; font-weight: bold; vertical-align: top;">Kategori</td>
+                                <td style="padding: 4px; vertical-align: top;">${Kategori}</td>
+                            </tr>
+                            <tr>
+                                <td style="padding: 2px; font-weight: bold; vertical-align: top;">Nama Lokasi</td>
+                                <td style="padding: 4px; vertical-align: top;">${Nama_Lokasi}</td>
+                            </tr>
+                            <tr>
+                                <td style="padding: 2px; font-weight: bold; vertical-align: top;">Alamat</td>
+                                <td style="padding: 4px; vertical-align: top;">${Alamat}</td>
+                            </tr>
+                            <tr>
+                                <td style="padding: 2px; font-weight: bold; vertical-align: top;">Kadar NO2 Tahap 1 (µg/m3)</td>
+                                <td style="padding: 4px; vertical-align: top;">${Tahap_1_NO2}</td>
+                            </tr>
+                            <tr>
+                                <td style="padding: 2px; font-weight: bold; vertical-align: top;">Kadar NO2 Tahap 2 (µg/m3)</td>
+                                <td style="padding: 4px; vertical-align: top;">${Tahap_2_NO2}</td>
+                            </tr>
+                            <tr>
+                                <td style="padding: 2px; font-weight: bold; vertical-align: top;">Kadar SO2 Tahap 1 (µg/m3)</td>
+                                <td style="padding: 4px; vertical-align: top;">${Tahap_1_SO2}</td>
+                            </tr>
+                            <tr>
+                                <td style="padding: 2px; font-weight: bold; vertical-align: top;">Kadar SO2 Tahap 2 (µg/m3)</td>
+                                <td style="padding: 4px; vertical-align: top;">${Tahap_2_SO2}</td>
+                            </tr>
+                        </table>
+                    </div>
+                </div>
+            `);
+        }
+    }).addTo(map);
 
       newLayer.bringToFront();
       setLayer(newLayer);
