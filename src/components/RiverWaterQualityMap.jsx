@@ -377,9 +377,40 @@ const handlePopupToggle = (popupName) => {
       case 'ika':
         setShowIkaLayer(checked);
         if (checked) {
-          loadPointLayer(ikaLayer, setIkaLayer, '/map/titikIKA_cleaned.geojson', pointColors.ika, 'IP_Ika');
+          // Create a popup manually with large content
+          const popupContent = `
+            <div style="font-family: Arial, sans-serif; width: 100%; max-width: 400px; padding: 15px;">
+              <h2 style="font-size: 16px; font-weight: bold; text-align: center; margin-bottom: 15px;">NILAI IKA 2023</h2>
+              <div style="margin-bottom: 15px;">
+                <h4 style="font-size: 14px; font-weight: bold;">• Nilai IKA Agregasi (Kabupaten/Kota, Provinsi, Pusat)</h4>
+                <p style="font-size: 12px; line-height: 1.6;">Nilai Indeks Kualitas Air (IKA) sungai di Daerah Istimewa Yogyakarta (DIY) pada tahun 2023 menunjukkan hasil sebesar 40,28. Angka ini merupakan hasil dari pengukuran komprehensif yang melibatkan berbagai tingkat pemerintahan, mulai dari pusat, provinsi, hingga kabupaten/kota, dengan tujuan untuk memberikan gambaran umum tentang kondisi kualitas air sungai di wilayah tersebut.</p>
+              </div>
+              <div>
+                <h4 style="font-size: 14px; font-weight: bold;">• Nilai IKA Provinsi (Hasil pemantauan 11 sungai)</h4>
+                <p style="font-size: 12px; line-height: 1.6;">Nilai IKA Provinsi didapatkan rata-rata sebesar 33,20 yang didapatkan dari hasil pemantauan terhadap 11 sungai di Daerah Istimewa Yogyakarta (DIY) untuk nilai Indeks Kualitas Air (IKA) tahun 2023 menunjukkan fluktuasi sebagai berikut:</p>
+                <ol style="font-size: 12px; padding-left: 20px; line-height: 1.6;">
+                  <li>Periode 1: Nilai IKA sebesar 34,40</li>
+                  <li>Periode 2: Nilai IKA sebesar 34,40</li>
+                  <li>Periode 3: Nilai IKA sebesar 30,82</li>
+                </ol>
+              </div>
+            </div>
+          `;
+
+          // Create a popup in the center of the map
+          const popup = L.popup({
+            maxWidth: 500,
+            closeButton: true,
+            autoClose: false,
+            closeOnClick: false,
+            className: 'ika-popup'  // Optional: use for custom styling
+          })
+          .setLatLng(map.getCenter())  // Position the popup at the center of the map
+          .setContent(popupContent)
+          .openOn(map);
         } else {
-          if (ikaLayer) map.removeLayer(ikaLayer);
+          // If unchecked, close the popup
+          map.closePopup();
         }
         break;
       default:
