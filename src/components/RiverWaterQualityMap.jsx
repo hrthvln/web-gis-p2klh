@@ -14,7 +14,6 @@ const RiverWaterQualityMap = () => {
   const [junLayer, setJunLayer] = useState(null);
   const [oktLayer, setOktLayer] = useState(null);
   const [ikaLayer, setIkaLayer] = useState(null);
-  const [coords, setCoords] = useState({ lat: null, lng: null });
 
   const [showBoundary, setShowBoundary] = useState(true);
   const [showSubDas, setShowSubDas] = useState(true);
@@ -262,29 +261,67 @@ const handlePopupToggle = (popupName) => {
         const ipDisplay = feature.properties[ipField] !== undefined ? feature.properties[ipField] : 'Data tidak tersedia';
   
         layer.bindPopup(`
-          <div style="max-height: 250px; overflow-y: auto; font-size: 12px; width: 230px;">
-            <h3 style="font-size: 14px; font-weight: bold; margin-bottom: 10px;">${Sungai}</h3>
-            <div style="width: 100%; height: 150px; overflow: hidden; display: flex; justify-content: center; align-items: center;">
+          <div style="max-height: 400px; overflow-y: auto; font-size: 10px; width: 250px; padding: 10px;">
+            <h3 style="font-size: 12px; font-weight: bold; margin-bottom: 10px;">${Sungai}</h3>
+            <div style="width: 100%; height: 150px; overflow: hidden; display: flex; justify-content: center; align-items: center; margin-bottom: 10px;">
               <img src="${Image}" alt="Foto Lokasi" style="width: 100%; height: auto; object-fit: cover; max-height: 100%;"/>
             </div>
-            <table style="font-size: 12px; width: 100%; margin-top: 10px;">
-              <tr><td><b>Koordinat:</b></td><td>x: ${lng}, y: ${lat}</td></tr>
-              <tr><td><b>Lokasi:</b></td><td>${Lokasi}</td></tr>
-              <tr><td><b>Penggunaan Lahan Radius 1000m:</b></td><td>${PL}</td></tr>
-              <tr><td><b>Indeks Pencemaran:</b></td><td>${ipDisplay}</td></tr>
-              <tr><td><b>Status:</b></td><td>${Status}</td></tr>
-              <tr><td><b>Residu Tersuspensi (TSS):</b></td><td>${TSS}</td></tr>
-              <tr><td><b>Oksigen Terlarut (DO):</b></td><td>${DO}</td></tr>
-              <tr><td><b>COD:</b></td><td>${COD}</td></tr>
-              <tr><td><b>pH:</b></td><td>${pH}</td></tr>
-              <tr><td><b>Nitrat:</b></td><td>${Nitrat}</td></tr>
-              <tr><td><b>Total Fosfat:</b></td><td>${T_Fosfat}</td></tr>
-              <tr><td><b>BOD:</b></td><td>${BOD}</td></tr>
-              <tr><td><b>Bakteri Koli Tinja:</b></td><td>${BKT}</td></tr>
+            <table style="font-size: 10px; width: 100%; border-collapse: collapse;">
+              <tr>
+                <td style="padding: 2px;"><b>Koordinat</b></td>
+                <td style="padding: 2px;">x: ${lng}, y: ${lat}</td>
+              </tr>
+              <tr>
+                <td style="padding: 2px;"><b>Lokasi</b></td>
+                <td style="padding: 2px;">${Lokasi}</td>
+              </tr>
+              <tr>
+                <td style="padding: 2px;"><b>Penggunaan Lahan Radius 1000m</b></td>
+                <td style="padding: 2px;">${PL}</td>
+              </tr>
+              <tr>
+                <td style="padding: 2px;"><b>Indeks Pencemaran</b></td>
+                <td style="padding: 2px;">${ipDisplay}</td>
+              </tr>
+              <tr>
+                <td style="padding: 2px;"><b>Status</b></td>
+                <td style="padding: 2px;">${Status}</td>
+              </tr>
+              <tr>
+                <td style="padding: 2px;"><b>Residu Tersuspensi (TSS)</b></td>
+                <td style="padding: 2px;">${TSS}</td>
+              </tr>
+              <tr>
+                <td style="padding: 2px;"><b>Oksigen Terlarut (DO)</b></td>
+                <td style="padding: 2px;">${DO}</td>
+              </tr>
+              <tr>
+                <td style="padding: 2px;"><b>COD</b></td>
+                <td style="padding: 2px;">${COD}</td>
+              </tr>
+              <tr>
+                <td style="padding: 2px;"><b>pH</b></td>
+                <td style="padding: 2px;">${pH}</td>
+              </tr>
+              <tr>
+                <td style="padding: 2px;"><b>Nitrat</b></td>
+                <td style="padding: 2px;">${Nitrat}</td>
+              </tr>
+              <tr>
+                <td style="padding: 2px;"><b>Total Fosfat</b></td>
+                <td style="padding: 2px;">${T_Fosfat}</td>
+              </tr>
+              <tr>
+                <td style="padding: 2px;"><b>BOD</b></td>
+                <td style="padding: 2px;">${BOD}</td>
+              </tr>
+              <tr>
+                <td style="padding: 2px;"><b>Bakteri Koli Tinja</b></td>
+                <td style="padding: 2px;">${BKT}</td>
+              </tr>
             </table>
           </div>
         `);
-        
       }
     }).addTo(map);
   
@@ -365,29 +402,29 @@ const handlePopupToggle = (popupName) => {
   return (
     <div>
   {/* Navbar */}
-  <nav style={{ backgroundColor: '#79AC78', padding: '5px', display: 'flex', alignItems: 'center', justifyContent: 'space-between' }}>
+  <nav style={{ backgroundColor: '#ffffff', padding: '5px', display: 'flex', alignItems: 'center', justifyContent: 'space-between' }}>
     <div style={{ display: 'flex', alignItems: 'center' }}>
-      <img src={logo} alt="Logo" style={{ height: '40px', marginRight: '10px' }} />
-          <h1 style={{ margin: 0, color: 'white', fontSize: '1.3 rem' }}>Peta Titik Pemantauan Kualitas Air Sungai DIY</h1>
+      <img src={logo} alt="Logo" style={{ height: '35px', marginRight: '10px' }} />
+          <h1 style={{ margin: 0, color: 'black', fontSize: '0.9rem' }}>Peta Titik Pemantauan Kualitas Air Sungai DIY</h1>
         </div>
 
         {/* Icon Group */}
         <div style={{ display: 'flex', alignItems: 'center' }}>
           {/* Icon Layer List */}
           <FaLayerGroup
-            style={{ fontSize: '1.3rem', color: 'white', cursor: 'pointer', marginRight: '20px' }}
+            style={{ fontSize: '1.1rem', color: '0466c8', cursor: 'pointer', marginRight: '20px' }}
             onClick={() => handlePopupToggle('isLayerListOpen')}
           />
 
           {/* Icon Year Filter */}
           <FaCalendarAlt
-            style={{ fontSize: '1.3rem', color: 'white', cursor: 'pointer', marginRight: '20px' }}
+            style={{ fontSize: '1.1rem', color: '0466c8', cursor: 'pointer', marginRight: '20px' }}
             onClick={() => handlePopupToggle('isYearFilterOpen')}
           />
 
           {/* Icon Legend */}
           <FaInfoCircle
-            style={{ fontSize: '1.3rem', color: 'white', cursor: 'pointer', marginRight: '20px' }}
+            style={{ fontSize: '1.1rem', color: '0466c8', cursor: 'pointer', marginRight: '20px' }}
             onClick={() => handlePopupToggle('isLegendOpen')}
           />
         </div>
@@ -498,7 +535,7 @@ const handlePopupToggle = (popupName) => {
     </nav>
 
       {/* Peta */}
-      <div id="map" style={{ height: '580px' }}></div>
+      <div id="map" style={{ height: '585px' }}></div>
 
     </div>
   );
@@ -507,13 +544,13 @@ const handlePopupToggle = (popupName) => {
 // Gaya CSS untuk pop-up
 const popupStyle = {
   position: 'absolute',
-  top: '55px',
+  top: '50px',
   right: '7px',
   backgroundColor: 'white',
-  padding: '20px',
+  padding: '10px',
   zIndex: 1000,
   minWidth: '230px',
-  maxHeight: '300px', // Set max height sesuai kebutuhan
+  maxHeight: '400px', // Set max height sesuai kebutuhan
   width: '250px', // Set width yang sama dengan layer list
   overflowY: 'auto', // Aktifkan scroll jika konten lebih dari max height
   borderRadius: '8px', // Opsional: tambahkan border radius untuk estetika

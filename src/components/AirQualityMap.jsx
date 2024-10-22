@@ -12,11 +12,20 @@ const AirQualityMap = () => {
   const [coords, setCoords] = useState({ lat: null, lng: null });
   const [showBoundary, setShowBoundary] = useState(true);
 
-  const [isLayerListOpen, setIsLayerListOpen] = useState(false); // State untuk toggle Layer List
-  const [isLegendOpen, setIsLegendOpen] = useState(false); // State untuk toggle Legend
-  const [isYearFilterOpen, setIsYearFilterOpen] = useState(false); // State untuk toggle Year Filter
-  const [selectedYear, setSelectedYear] = useState(2023); // State untuk tahun terpilih
-  const [activePopup, setActivePopup] = useState(null);
+  // State untuk toggle Layer List, Legend, dan Year Filter
+  const [isLayerListOpen, setIsLayerListOpen] = useState(false); 
+  const [isLegendOpen, setIsLegendOpen] = useState(false);
+  const [isYearFilterOpen, setIsYearFilterOpen] = useState(false); 
+
+  // State untuk tahun terpilih
+  const [selectedYear, setSelectedYear] = useState(2023); 
+
+  // State untuk popup aktif
+  const [activePopup, setActivePopup] = useState(null); 
+
+  // State untuk layer pemantauan udara
+  const [udaraLayer, setUdaraLayer] = useState(null); 
+  const [showUdaraLayer, setShowUdaraLayer] = useState(true); // Visibility dari layer udara
 
   // Warna yang ditetapkan untuk setiap kabupaten
   const kabupatenColors = {
@@ -26,6 +35,12 @@ const AirQualityMap = () => {
     'Kulon Progo': '#379237',
     'Kota Yogyakarta': '#dd1c77'
   };
+
+// Warna untuk setiap periode
+  const pointColors = {
+    udara: "#ff7800"
+  };
+
 
   // Fungsi untuk memuat data GeoJSON
   const loadGeoJsonData = async (url) => {
@@ -150,6 +165,93 @@ const AirQualityMap = () => {
     }
   }, [map]);
 
+  // Fungsi untuk memuat layer titik pemantauan udara
+    const loadAirPointLayer = async (layer, setLayer, url, color) => {
+      if (layer) {
+          map.removeLayer(layer);
+          setLayer(null);
+      }
+
+      const pointData = await loadGeoJsonData(url);
+      const newLayer = L.geoJSON(pointData, {
+          pointToLayer: (feature, latlng) => {
+              return L.circleMarker(latlng, {
+                  radius: 6,
+                  fillColor: color,
+                  color: "#000",
+                  weight: 1,
+                  opacity: 1,
+                  fillOpacity: 0.8
+              });
+          },
+          onEachFeature: (feature, layer) => {
+              const { Kode, Kabupaten, Nama_Lokasi, Kategori, Alamat, Foto } = feature.properties;
+              const { x, y } = feature.properties;
+
+              // Mengakses properti dengan tanda kurung menggunakan bracket notation
+              const Tahap_1_NO2 = feature.properties["Tahap_1_Kadar_NO2_(µg/m3)"];
+              const Tahap_2_NO2 = feature.properties["Tahap_2_Kadar_NO2_(µg/m3)"];
+              const Tahap_1_SO2 = feature.properties["Tahap_1_Kadar_SO2_(µg/m3)"];
+              const Tahap_2_SO2 = feature.properties["Tahap_2_Kadar_SO2_(µg/m3)"];
+
+              layer.bindPopup(`
+                  <div style="max-height: 400px; overflow-y: auto; font-size: 10px; width: 250px; padding: 10px;">
+                      <h3 style="font-size: 12px; font-weight: bold; margin-bottom: 10px;">${Nama_Lokasi}</h3>
+                      <div style="width: 100%; height: 150px; overflow: hidden; display: flex; justify-content: center; align-items: center; margin-bottom: 10px;">
+                          <img src="${Foto}" alt="Foto Lokasi" style="width: 100%; height: auto; object-fit: cover; max-height: 100%;"/>
+                      </div>
+                      <table style="font-size: 10px; width: 100%; border-collapse: collapse;">
+                          <tr>
+                              <td style="padding: 2px;"><b>Kode</b></td>
+                              <td style="padding: 2px;">${Kode}</td>
+                          </tr>
+                          <tr>
+                              <td style="padding: 2px;"><b>Kabupaten</b></td>
+                              <td style="padding: 2px;">${Kabupaten}</td>
+                          </tr>
+                          <tr>
+                              <td style="padding: 2px;"><b>Koordinat</b></td>
+                              <td style="padding: 2px;">x: ${x.toFixed(6)}, y: ${y.toFixed(6)}</td>
+                          </tr>
+                          <tr>
+                              <td style="padding: 2px;"><b>Kategori</b></td>
+                              <td style="padding: 2px;">${Kategori}</td>
+                          </tr>
+                          <tr>
+                              <td style="padding: 2px;"><b>Nama Lokasi</b></td>
+                              <td style="padding: 2px;">${Nama_Lokasi}</td>
+                          </tr>
+                          <tr>
+                              <td style="padding: 2px;"><b>Alamat Lokasi</b></td>
+                              <td style="padding: 2px;">${Alamat}</td>
+                          </tr>
+                          <tr>
+                              <td style="padding: 2px;"><b>Kadar NO2 Tahap 1 (µg/m³)</b></td>
+                              <td style="padding: 2px;">${Tahap_1_NO2}</td>
+                          </tr>
+                          <tr>
+                              <td style="padding: 2px;"><b>Kadar NO2 Tahap 2 (µg/m³)</b></td>
+                              <td style="padding: 2px;">${Tahap_2_NO2}</td>
+                          </tr>
+                          <tr>
+                              <td style="padding: 2px;"><b>Kadar SO2 Tahap 1 (µg/m³)</b></td>
+                              <td style="padding: 2px;">${Tahap_1_SO2}</td>
+                          </tr>
+                          <tr>
+                              <td style="padding: 2px;"><b>Kadar SO2 Tahap 2 (µg/m³)</b></td>
+                              <td style="padding: 2px;">${Tahap_2_SO2}</td>
+                          </tr>
+                      </table>
+                  </div>
+              `);
+          }
+      }).addTo(map);
+
+      newLayer.bringToFront();
+      setLayer(newLayer);
+  };
+
+
   // Toggle layer visibility based on checkbox status
   const handleLayerToggle = (checked, layerName) => {
     switch (layerName) {
@@ -161,6 +263,14 @@ const AirQualityMap = () => {
           if (boundaryLayer) map.removeLayer(boundaryLayer);
         }
         break;
+      case 'udara':
+        setShowUdaraLayer(checked);
+        if (checked) {
+          loadAirPointLayer(udaraLayer, setUdaraLayer, '/map/titikUdara.geojson', pointColors.udara);
+        } else {
+          if (udaraLayer) map.removeLayer(udaraLayer);
+        }
+      break;
       default:
         break;
     }
@@ -212,14 +322,33 @@ const AirQualityMap = () => {
 
         {/* Layer List Pop-up */}
         {activePopup === 'isLayerListOpen' && (
-        <div style={popupStyle}>
-          <h3 style={popupHeaderStyle}>Layer List</h3>
-          <label style={{ ...checkboxLabelStyle, ...popupContentStyle }}>
-            <input type="checkbox" checked={showBoundary} onChange={(e) => handleLayerToggle(e.target.checked, 'boundary')} style={inputStyle} />
-            Batas Kabupaten
-          </label>
-        </div>
-      )}
+          <div style={popupStyle}>
+            <h3 style={popupHeaderStyle}>Layer List</h3>
+
+            {/* Checkbox untuk Batas Kabupaten */}
+            <label style={{ ...checkboxLabelStyle, ...popupContentStyle }}>
+              <input 
+                type="checkbox" 
+                checked={showBoundary} 
+                onChange={(e) => handleLayerToggle(e.target.checked, 'boundary')} 
+                style={inputStyle} 
+              />
+              Batas Kabupaten
+            </label>
+            <br />
+            {/* Checkbox untuk Layer Pemantauan Udara */}
+            <label style={{ ...checkboxLabelStyle, ...popupContentStyle }}>
+              <input 
+                type="checkbox" 
+                checked={showUdaraLayer} 
+                onChange={(e) => handleLayerToggle(e.target.checked, 'udara')} 
+                style={inputStyle} 
+              />
+              Titik Pemantauan Udara
+            </label>
+          </div>
+        )}
+
 
       {/* Year Filter Pop-up */}
       {activePopup === 'isYearFilterOpen' && (
@@ -264,21 +393,27 @@ const AirQualityMap = () => {
       {activePopup === 'isLegendOpen' && (
         <div style={popupStyle}>
           <h3 style={popupHeaderStyle}>Legenda</h3>
-          <div style={popupContentStyle}>
-            <b>Titik Pemantauan Kualitas Air Sungai</b>
-            <div style={legendItemStyle}><span style={{ ...legendCircleStyle, backgroundColor: pointColors.februari }}></span> Februari</div>
-          </div>
-          <div style={popupContentStyle }>
-            <b>Batas Kabupaten</b>
-            {Object.keys(kabupatenColors).map(kabupaten => (
-              <div key={kabupaten} style={legendItemStyle}>
-                <span style={{ ...legendSquareStyle, backgroundColor: kabupatenColors[kabupaten] }}></span> {kabupaten}
+          
+          {/* Legenda Titik Pemantauan Udara */}
+            <div style={popupContentStyle}>
+              <b>Titik Pemantauan Kualitas Udara</b>
+              <div style={legendItemStyle}>
+                <span style={{ ...legendCircleStyle, backgroundColor: pointColors.udara }}></span> Udara Pemantauan
               </div>
-            ))}
+            </div>
+
+          {/* Legenda Batas Kabupaten */}
+            <div style={popupContentStyle}>
+              <b>Batas Kabupaten</b>
+              {Object.keys(kabupatenColors).map(kabupaten => (
+                <div key={kabupaten} style={legendItemStyle}>
+                  <span style={{ ...legendSquareStyle, backgroundColor: kabupatenColors[kabupaten] }}></span> {kabupaten}
+                </div>
+              ))}
+            </div>
           </div>
-        </div>
-      )}
-    </nav>
+        )}
+        </nav>
 
       {/* Peta */}
       <div id="map" style={{ height: '580px' }}></div>
@@ -299,7 +434,7 @@ const popupStyle = {
   top: '55px',
   right: '7px',
   backgroundColor: 'white',
-  padding: '20px',
+  padding: '10px',
   borderRadius: '8px',
   boxShadow: '0 0 15px rgba(0,0,0,0.3)',
   zIndex: 1000,
