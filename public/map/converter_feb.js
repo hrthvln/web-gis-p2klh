@@ -1,7 +1,7 @@
 import { promises as fs } from 'fs';
 
 // Membaca file JSON yang berisi data sungai
-const data = JSON.parse(await fs.readFile('oktober.json', 'utf8'));
+const data = JSON.parse(await fs.readFile('februari.json', 'utf8'));
 
 // Fungsi untuk membersihkan nilai null dan 0 dari koordinat
 function clean_coordinates(x, y) {
@@ -17,6 +17,8 @@ const geoJsonData = {
     features: data.features.map(item => {
         const coordinates = clean_coordinates(item.properties.X, item.properties.Y);
         if (coordinates) {
+            console.log(`Processing item: ${JSON.stringify(item.properties)}`);
+
             return {
                 type: 'Feature',
                 geometry: {
@@ -46,7 +48,11 @@ const geoJsonData = {
     }).filter(Boolean) // Filter untuk menghapus data yang memiliki koordinat null
 };
 
-// Menyimpan hasil yang sudah dikonversi dan dibersihkan ke file GeoJSON baru
-await fs.writeFile('titikOktober_cleaned.geojson', JSON.stringify(geoJsonData, null, 2));
+// Log jumlah fitur yang ada
+console.log(`GeoJSON features count: ${geoJsonData.features.length}`);
 
-console.log('File JSON telah dikonversi dan dibersihkan sebagai titikOktober_cleaned.geojson');
+// Menyimpan hasil yang sudah dikonversi dan dibersihkan ke file GeoJSON baru
+await fs.writeFile('titikFeb_cleaned.geojson', JSON.stringify(geoJsonData, null, 2));
+
+// Memperbaiki nama file di log
+console.log('File JSON telah dikonversi dan dibersihkan sebagai titikFeb_cleaned.geojson');

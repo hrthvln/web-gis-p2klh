@@ -13,7 +13,6 @@ const RiverWaterQualityMap = () => {
   const [febLayer, setFebLayer] = useState(null);
   const [junLayer, setJunLayer] = useState(null);
   const [oktLayer, setOktLayer] = useState(null);
-  const [ikaLayer, setIkaLayer] = useState(null);
 
   const [showBoundary, setShowBoundary] = useState(true);
   const [showSubDas, setShowSubDas] = useState(true);
@@ -85,38 +84,35 @@ const RiverWaterQualityMap = () => {
       attribution: 'Map data © Google',
     }).addTo(initialMap);
   
-    // T  // Tambahkan Locate Control untuk menentukan lokasi pengguna
+    // Tambahkan Locate Control untuk menentukan lokasi pengguna
     L.control.locate({
       position: 'bottomright',
       flyTo: true,
       strings: {
-        title: "Lokasi Saya"
-      }
+        title: "Lokasi Saya",
+      },
     }).addTo(initialMap);
-
-    // Setelah kontrol ditambahkan, atur gaya CSS untuk memindahkannya lebih rendah
-    setTimeout(() => {
-      document.querySelector('.leaflet-control-locate').style.marginBottom = '4px'; // Atur jarak ke bawah
-    }, 0);
   
-    // Tambahkan kontrol zoom dengan ukuran yang disesuaikan dan posisi di bawah kiri
+    // Tambahkan kontrol zoom di pojok kanan bawah
     const zoomControl = L.control.zoom({
-      position: 'bottomright' // Atur posisi kontrol zoom di pojok kiri bawah
+      position: 'bottomright',
     }).addTo(initialMap);
   
-    // Setelah kontrol ditambahkan, atur gaya CSS untuk memindahkannya lebih rendah
+    // Atur gaya CSS secara bersamaan setelah kontrol ditambahkan
     setTimeout(() => {
-      document.querySelector('.leaflet-control-zoom').style.marginBottom = '0px'; // Atur jarak ke bawah
+      const locateControl = document.querySelector('.leaflet-control-locate');
+      const zoomControl = document.querySelector('.leaflet-control-zoom');
+  
+      // Gaya untuk kontrol lokasi
+      locateControl.style.marginBottom = '7px';
+      locateControl.style.transform = 'scale(0.8)';
+  
+      // Gaya untuk kontrol zoom
+      zoomControl.style.marginBottom = '4px'; // Beri jarak antara kontrol zoom dan lokasi
+      zoomControl.style.transform = 'scale(0.8)';
     }, 0);
-
-    // Custom styling untuk kontrol zoom dan kontrol lokasi agar memiliki ukuran yang seragam dan rapi
-    document.querySelector('.leaflet-control-zoom').style.transform = 'scale(0.8)'; // Perkecil kontrol zoom
-    document.querySelector('.leaflet-control-locate').style.transform = 'scale(0.8)'; // Perkecil kontrol lokasi
   
-    // Posisikan kontrol zoom dan lokasi secara berdekatan dan presisi
-    document.querySelector('.leaflet-control-zoom').style.marginBottom = '10px'; // Beri jarak antara kontrol zoom dan lokasi
-  
-    // Membuat kontrol khusus untuk menampilkan koordinat di pojok kiri bawah
+    // Kontrol khusus untuk menampilkan koordinat di pojok kiri bawah
     const coordsControl = L.control({ position: 'bottomleft' });
     coordsControl.onAdd = function () {
       const div = L.DomUtil.create('div', 'leaflet-control-latlng');
@@ -146,8 +142,6 @@ const RiverWaterQualityMap = () => {
       initialMap.remove();
     };
   }, []);
-  
-  
   
 
   // Fungsi untuk toggle pop-up, memastikan hanya satu pop-up terbuka pada satu waktu
@@ -234,8 +228,14 @@ const handlePopupToggle = (popupName) => {
     }
   };
 
+  // Memanggil fungsi untuk menampilkan batas kabupaten saat komponen pertama kali dimuat
+  useEffect(() => {
+    if (map) {
+      toggleBoundaryLayer();
+    }
+  }, [map]);
 
-
+  // Fungsi untuk memuat layer titik pemantauan air sungai
   const loadPointLayer = async (layer, setLayer, url, color, ipField) => {
     if (layer) {
       map.removeLayer(layer);
@@ -353,7 +353,7 @@ const handlePopupToggle = (popupName) => {
       case 'february':
         setShowFebLayer(checked);
         if (checked) {
-          loadPointLayer(febLayer, setFebLayer, '/map/titikFebruari_cleaned.geojson', pointColors.februari, 'IP_Feb');
+          loadPointLayer(febLayer, setFebLayer, '/map/titikFeb_cleaned.geojson', pointColors.februari, 'IP_Feb');
         } else {
           if (febLayer) map.removeLayer(febLayer);
         }
@@ -361,7 +361,7 @@ const handlePopupToggle = (popupName) => {
       case 'june':
         setShowJunLayer(checked);
         if (checked) {
-          loadPointLayer(junLayer, setJunLayer, '/map/titikJuni_cleaned.geojson', pointColors.juni, 'IP_Jun');
+          loadPointLayer(junLayer, setJunLayer, '/map/titikSungai_Jun.geojson', pointColors.juni, 'IP_Jun');
         } else {
           if (junLayer) map.removeLayer(junLayer);
         }
@@ -369,7 +369,7 @@ const handlePopupToggle = (popupName) => {
       case 'october':
         setShowOktLayer(checked);
         if (checked) {
-          loadPointLayer(oktLayer, setOktLayer, '/map/titikOktober_cleaned.geojson', pointColors.oktober, 'IP_Okt');
+          loadPointLayer(oktLayer, setOktLayer, '/map/titikSungai_Okt.geojson', pointColors.oktober, 'IP_Okt');
         } else {
           if (oktLayer) map.removeLayer(oktLayer);
         }
@@ -435,29 +435,29 @@ const handlePopupToggle = (popupName) => {
   return (
     <div>
   {/* Navbar */}
-  <nav style={{ backgroundColor: '#ffffff', padding: '5px', display: 'flex', alignItems: 'center', justifyContent: 'space-between' }}>
+  <nav style={{ backgroundColor: '#0096c7', padding: '5px', display: 'flex', alignItems: 'center', justifyContent: 'space-between' }}>
     <div style={{ display: 'flex', alignItems: 'center' }}>
       <img src={logo} alt="Logo" style={{ height: '35px', marginRight: '10px' }} />
-          <h1 style={{ margin: 0, color: 'black', fontSize: '0.9rem' }}>Peta Titik Pemantauan Kualitas Air Sungai DIY</h1>
+          <h1 style={{ margin: 0, color: 'white', fontSize: '0.9rem' }}>Peta Titik Pemantauan Kualitas Air Sungai DIY</h1>
         </div>
 
         {/* Icon Group */}
         <div style={{ display: 'flex', alignItems: 'center' }}>
           {/* Icon Layer List */}
           <FaLayerGroup
-            style={{ fontSize: '1.1rem', color: '0466c8', cursor: 'pointer', marginRight: '20px' }}
+            style={{ fontSize: '1.1rem', color: 'white', cursor: 'pointer', marginRight: '20px' }}
             onClick={() => handlePopupToggle('isLayerListOpen')}
           />
 
           {/* Icon Year Filter */}
           <FaCalendarAlt
-            style={{ fontSize: '1.1rem', color: '0466c8', cursor: 'pointer', marginRight: '20px' }}
+            style={{ fontSize: '1.1rem', color: 'white', cursor: 'pointer', marginRight: '20px' }}
             onClick={() => handlePopupToggle('isYearFilterOpen')}
           />
 
           {/* Icon Legend */}
           <FaInfoCircle
-            style={{ fontSize: '1.1rem', color: '0466c8', cursor: 'pointer', marginRight: '20px' }}
+            style={{ fontSize: '1.1rem', color: 'white', cursor: 'pointer', marginRight: '20px' }}
             onClick={() => handlePopupToggle('isLegendOpen')}
           />
         </div>
@@ -642,11 +642,5 @@ const legendSquareStyle = {
   height: '10px',
   marginRight: '10px' // Tanpa borderRadius agar tetap berbentuk persegi
 };
-
-
-
-
-
-
 
 export default RiverWaterQualityMap;

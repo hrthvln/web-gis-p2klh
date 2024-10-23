@@ -4,7 +4,7 @@ import Logo from "../assets/logo.png"; // Pastikan logo ini ada di folder assets
 
 const Footer = () => {
   return (
-    <footer className="bg-[#16423C]/25 p-6 mt-8 font-cardo text-black text-sm"> {/* Background 95% transparan */}
+    <footer className="bg-[#a4c3b2] p-6 mt-8 font-cardo text-black text-sm"> {/* Background 95% transparan */}
       <div className="container mx-auto text-center">
         {/* Logo */}
         <div className="flex justify-center mb-4">

@@ -9,7 +9,6 @@ import logo from '../assets/logo.png'; // Sesuaikan jalur logo
 const AirQualityMap = () => {
   const [map, setMap] = useState(null);
   const [boundaryLayer, setBoundaryLayer] = useState(null);
-  const [coords, setCoords] = useState({ lat: null, lng: null });
   const [showBoundary, setShowBoundary] = useState(true);
 
   // State untuk toggle Layer List, Legend, dan Year Filter
@@ -26,6 +25,7 @@ const AirQualityMap = () => {
   // State untuk layer pemantauan udara
   const [udaraLayer, setUdaraLayer] = useState(null); 
   const [showUdaraLayer, setShowUdaraLayer] = useState(true); // Visibility dari layer udara
+  const [showIkuLayer, setShowIkuLayer] = useState(true);
 
   // Warna yang ditetapkan untuk setiap kabupaten
   const kabupatenColors = {
@@ -38,7 +38,7 @@ const AirQualityMap = () => {
 
 // Warna untuk setiap periode
   const pointColors = {
-    udara: "#ff7800"
+    udara: "#0000ff"
   };
 
 
@@ -55,77 +55,97 @@ const AirQualityMap = () => {
   };
 
   useEffect(() => {
-  // Inisialisasi peta
-  const initialMap = L.map('map').setView([-7.797068, 110.370529], 10); // Koordinat DIY
-
-  // Tambahkan tile layer
-  L.tileLayer('https://{s}.google.com/vt/lyrs=m&x={x}&y={y}&z={z}', {
-    subdomains: ['mt0', 'mt1', 'mt2', 'mt3'],
-    maxZoom: 20,
-    attribution: 'Map data © Google',
-  }).addTo(initialMap);
-
-  // Tambahkan Locate Control untuk menentukan lokasi pengguna
-  L.control.locate({
-    position: 'topleft',
-    flyTo: true,
-    strings: {
-      title: "Temukan Lokasi Saya"
-    }
-  }).addTo(initialMap);
-
-  // Membuat kontrol khusus untuk menampilkan koordinat di pojok kiri bawah
-  const coordsControl = L.control({ position: 'bottomleft' });
-  coordsControl.onAdd = function () {
-    const div = L.DomUtil.create('div', 'leaflet-control-latlng');
-    div.style.background = 'rgba(255, 255, 255, 0.7)';
-    div.style.padding = '5px';
-    div.style.borderRadius = '3px';
-    div.style.fontSize = '12px';
-    div.innerHTML = 'Longitude: 0.000000 | Latitude: 0.000000';
-    return div;
-  };
-  coordsControl.addTo(initialMap);
-
-  // Event listener untuk memperbarui koordinat kursor
-  initialMap.on('mousemove', function (e) {
-    const { lat, lng } = e.latlng;
-    document.querySelector('.leaflet-control-latlng').innerHTML = `Longitude: ${lng.toFixed(6)} | Latitude: ${lat.toFixed(6)}`;
-  });
-
-  // Event listener untuk memperbarui koordinat saat peta diklik
-  initialMap.on('click', function (e) {
-    const { lat, lng } = e.latlng;
-    document.querySelector('.leaflet-control-latlng').innerHTML = `Longitude: ${lng.toFixed(6)} | Latitude: ${lat.toFixed(6)}`;
-  });
-
-  setMap(initialMap);
-
-  return () => {
-    initialMap.remove();
-  };
-}, []);
+    // Inisialisasi peta
+    const initialMap = L.map('map', {
+      zoomControl: false, // Disable default zoom control
+    }).setView([-7.797068, 110.370529], 10); // Koordinat DIY
+  
+    // Tambahkan tile layer
+    L.tileLayer('https://{s}.google.com/vt/lyrs=m&x={x}&y={y}&z={z}', {
+      subdomains: ['mt0', 'mt1', 'mt2', 'mt3'],
+      maxZoom: 20,
+      attribution: 'Map data © Google',
+    }).addTo(initialMap);
+  
+    // Tambahkan Locate Control untuk menentukan lokasi pengguna
+    L.control.locate({
+      position: 'bottomright',
+      flyTo: true,
+      strings: {
+        title: "Lokasi Saya",
+      },
+    }).addTo(initialMap);
+  
+    // Tambahkan kontrol zoom di pojok kanan bawah
+    const zoomControl = L.control.zoom({
+      position: 'bottomright',
+    }).addTo(initialMap);
+  
+    // Atur gaya CSS secara bersamaan setelah kontrol ditambahkan
+    setTimeout(() => {
+      const locateControl = document.querySelector('.leaflet-control-locate');
+      const zoomControl = document.querySelector('.leaflet-control-zoom');
+  
+      // Gaya untuk kontrol lokasi
+      locateControl.style.marginBottom = '7px';
+      locateControl.style.transform = 'scale(0.8)';
+  
+      // Gaya untuk kontrol zoom
+      zoomControl.style.marginBottom = '4px'; // Beri jarak antara kontrol zoom dan lokasi
+      zoomControl.style.transform = 'scale(0.8)';
+    }, 0);
+  
+    // Kontrol khusus untuk menampilkan koordinat di pojok kiri bawah
+    const coordsControl = L.control({ position: 'bottomleft' });
+    coordsControl.onAdd = function () {
+      const div = L.DomUtil.create('div', 'leaflet-control-latlng');
+      div.style.background = 'rgba(255, 255, 255, 0.7)';
+      div.style.padding = '2px';
+      div.style.fontSize = '11px';
+      div.innerHTML = 'Latitude: 0.000000 | Longitude: 0.000000';
+      return div;
+    };
+    coordsControl.addTo(initialMap);
+  
+    // Event listener untuk memperbarui koordinat kursor
+    initialMap.on('mousemove', function (e) {
+      const { lat, lng } = e.latlng;
+      document.querySelector('.leaflet-control-latlng').innerHTML = `Latitude: ${lat.toFixed(6)} | Longitude: ${lng.toFixed(6)}`;
+    });
+  
+    // Event listener untuk memperbarui koordinat saat peta diklik
+    initialMap.on('click', function (e) {
+      const { lat, lng } = e.latlng;
+      document.querySelector('.leaflet-control-latlng').innerHTML = `Latitude: ${lat.toFixed(6)} | Longitude: ${lng.toFixed(6)}`;
+    });
+  
+    setMap(initialMap);
+  
+    return () => {
+      initialMap.remove();
+    };
+  }, []);
+  
 
   // Fungsi untuk toggle pop-up, memastikan hanya satu pop-up terbuka pada satu waktu
-  const handlePopupToggle = (popupName) => {
-    if (popupName === 'isLayerListOpen') {
-      setIsLayerListOpen(!isLayerListOpen);
-      setIsLegendOpen(false); // Tutup yang lain
-      setIsYearFilterOpen(false); // Tutup yang lain
-    } else if (popupName === 'isLegendOpen') {
-      setIsLegendOpen(!isLegendOpen);
-      setIsLayerListOpen(false); // Tutup yang lain
-      setIsYearFilterOpen(false); // Tutup yang lain
-    } else if (popupName === 'isYearFilterOpen') {
-      setIsYearFilterOpen(!isYearFilterOpen);
-      setIsLayerListOpen(false); // Tutup yang lain
-      setIsLegendOpen(false); // Tutup yang lain
-    }
+const handlePopupToggle = (popupName) => {
+  if (popupName === 'isLayerListOpen') {
+    setIsLayerListOpen(!isLayerListOpen);
+    setIsLegendOpen(false); // Tutup yang lain
+    setIsYearFilterOpen(false); // Tutup yang lain
+  } else if (popupName === 'isLegendOpen') {
+    setIsLegendOpen(!isLegendOpen);
+    setIsLayerListOpen(false); // Tutup yang lain
+    setIsYearFilterOpen(false); // Tutup yang lain
+  } else if (popupName === 'isYearFilterOpen') {
+    setIsYearFilterOpen(!isYearFilterOpen);
+    setIsLayerListOpen(false); // Tutup yang lain
+    setIsLegendOpen(false); // Tutup yang lain
+  }
 
   // Perbarui state activePopup dengan nama popup yang aktif
   setActivePopup((prevPopup) => (prevPopup === popupName ? null : popupName));
-  };
-
+};
 
   // Fungsi untuk memuat dan mengaktifkan boundary layer (batas kabupaten)
   const toggleBoundaryLayer = async () => {
@@ -137,20 +157,16 @@ const AirQualityMap = () => {
       const newBoundaryLayer = L.geoJSON(boundariesData, {
         style: (feature) => {
           const kabupaten = feature.properties.NAMOBJ;
-          console.log("Kabupaten ditemukan:", kabupaten); // Debugging untuk memastikan nama kabupaten
-          
-          // Tetapkan warna dari daftar kabupatenColors atau gunakan warna default jika kabupaten tidak ada dalam daftar
           const color = kabupatenColors[kabupaten] || '#000000'; 
           return {
-            color: color, // Warna ditetapkan dari kabupatenColors
+            color: color, 
             weight: 3,
             opacity: 0.7,
-            fillOpacity: 0.2, // Pastikan ada fillOpacity agar warna muncul
-            fillColor: color // Tambahkan fillColor agar batasnya berwarna
+            fillOpacity: 0.2, 
+            fillColor: color 
           };
         },
         onEachFeature: (feature, layer) => {
-          // Tampilkan popup dengan nama kabupaten
           layer.bindPopup(`<h3>${feature.properties.NAMOBJ}</h3>`);
         },
       }).addTo(map);
@@ -273,6 +289,46 @@ const AirQualityMap = () => {
           if (udaraLayer) map.removeLayer(udaraLayer);
         }
       break;
+      case 'iku':
+        setShowIkuLayer(checked);
+        if (checked) {
+          // Create a popup manually with informasi Indeks Kualitas Udara (IKU)
+          const popupContent = `
+            <div style="font-family: Arial, sans-serif; width: 100%; max-width: 400px; padding: 15px;">
+              <h2 style="font-size: 16px; font-weight: bold; text-align: center; margin-bottom: 15px;">NILAI IKU DIY 2023</h2>
+              <div style="margin-bottom: 15px;">
+                <h4 style="font-size: 14px; font-weight: bold;">• Nilai IKU Kabupaten/Kota 2023</h4>
+                <p style="font-size: 12px; line-height: 1.6;">
+                  <b>Kulon Progo:</b> IKU tertinggi 94,41 – kualitas udara sangat baik.<br>
+                  <b>Bantul:</b> IKU 92,58 – kualitas udara sangat baik.<br>
+                  <b>Gunungkidul:</b> IKU 91,27 – kualitas udara baik.<br>
+                  <b>Sleman:</b> IKU 88,95 – kualitas udara cukup baik.<br>
+                  <b>Kota Yogyakarta:</b> IKU 86,55 – kualitas udara cukup baik, perlu perhatian lebih.
+                </p>
+              </div>
+              <div>
+                <h4 style="font-size: 14px; font-weight: bold;">• Nilai IKU Provinsi 2023</h4>
+                <p style="font-size: 12px; line-height: 1.6;">Provinsi Daerah Istimewa Yogyakarta (DIY) mencatatkan nilai IKU sebesar 90,75, yang mencerminkan kualitas udara yang baik secara keseluruhan di wilayah DIY.</p>
+              </div>
+            </div>
+          `;
+    
+          // Buat pop-up di tengah peta dengan konten yang diperbarui
+          const popup = L.popup({
+            maxWidth: 500,
+            closeButton: true,
+            autoClose: false,
+            closeOnClick: false,
+            className: 'iku-popup'  // Kelas opsional untuk penyesuaian gaya
+          })
+          .setLatLng(map.getCenter())  // Posisi pop-up di tengah peta
+          .setContent(popupContent)
+          .openOn(map);
+        } else {
+          // Tutup pop-up jika checkbox tidak dicentang
+          map.closePopup();
+        }
+        break;    
       default:
         break;
     }
@@ -295,29 +351,29 @@ const AirQualityMap = () => {
   return (
     <div>
   {/* Navbar */}
-  <nav style={{ backgroundColor: '#79AC78', padding: '5px', display: 'flex', alignItems: 'center', justifyContent: 'space-between' }}>
+  <nav style={{ backgroundColor: '#0096c7', padding: '5px', display: 'flex', alignItems: 'center', justifyContent: 'space-between' }}>
     <div style={{ display: 'flex', alignItems: 'center' }}>
-      <img src={logo} alt="Logo" style={{ height: '40px', marginRight: '10px' }} />
-          <h1 style={{ margin: 0, color: 'white', fontSize: '1.3 rem' }}>Peta Titik Pemantauan Kualitas Air Sungai DIY</h1>
+      <img src={logo} alt="Logo" style={{ height: '35px', marginRight: '10px' }} />
+          <h1 style={{ margin: 0, color: 'white', fontSize: '0.9rem' }}>Peta Titik Pemantauan Kualitas Air Sungai DIY</h1>
         </div>
 
         {/* Icon Group */}
         <div style={{ display: 'flex', alignItems: 'center' }}>
           {/* Icon Layer List */}
           <FaLayerGroup
-            style={{ fontSize: '1.3rem', color: 'white', cursor: 'pointer', marginRight: '20px' }}
+            style={{ fontSize: '1.1rem', color: 'white', cursor: 'pointer', marginRight: '20px' }}
             onClick={() => handlePopupToggle('isLayerListOpen')}
           />
 
           {/* Icon Year Filter */}
           <FaCalendarAlt
-            style={{ fontSize: '1.3rem', color: 'white', cursor: 'pointer', marginRight: '20px' }}
+            style={{ fontSize: '1.1rem', color: 'white', cursor: 'pointer', marginRight: '20px' }}
             onClick={() => handlePopupToggle('isYearFilterOpen')}
           />
 
           {/* Icon Legend */}
           <FaInfoCircle
-            style={{ fontSize: '1.3rem', color: 'white', cursor: 'pointer', marginRight: '20px' }}
+            style={{ fontSize: '1.1rem', color: 'white', cursor: 'pointer', marginRight: '20px' }}
             onClick={() => handlePopupToggle('isLegendOpen')}
           />
         </div>
@@ -347,6 +403,17 @@ const AirQualityMap = () => {
                 style={inputStyle} 
               />
               Titik Pemantauan Udara
+            </label>
+            <br />
+            {/* Checkbox untuk Layer Nilai IKU DIY */}
+            <label style={{ ...checkboxLabelStyle, ...popupContentStyle }}>
+              <input 
+                type="checkbox" 
+                checked={showIkuLayer} 
+                onChange={(e) => handleLayerToggle(e.target.checked, 'iku')} 
+                style={inputStyle} 
+              />
+              Nilai IKU DIY
             </label>
           </div>
         )}
@@ -418,14 +485,8 @@ const AirQualityMap = () => {
         </nav>
 
       {/* Peta */}
-      <div id="map" style={{ height: '580px' }}></div>
+      <div id="map" style={{ height: '585px' }}></div>
 
-      {/* Koordinat */}
-      {coords.lat && coords.lng && (
-        <div style={{ position: 'absolute', bottom: '5px', left: '5px', backgroundColor: 'white', padding: '2px', borderRadius: '2px', zIndex: '1000' }}>
-          Koordinat: {coords.lat}, {coords.lng}
-        </div>
-      )}
     </div>
   );
 };
@@ -433,7 +494,7 @@ const AirQualityMap = () => {
 // Gaya CSS untuk pop-up
 const popupStyle = {
   position: 'absolute',
-  top: '55px',
+  top: '50px',
   right: '7px',
   backgroundColor: 'white',
   padding: '10px',
@@ -495,15 +556,5 @@ const legendSquareStyle = {
   marginRight: '10px' // Tanpa borderRadius agar tetap berbentuk persegi
 };
 
-const coordStyle = {
-  position: 'absolute',
-  bottom: '10px',
-  left: '10px',
-  backgroundColor: 'rgba(255, 255, 255, 0.8)',
-  padding: '5px 10px',
-  borderRadius: '4px',
-  fontSize: '1rem',
-  zIndex: 1000
-};
 
 export default AirQualityMap;
