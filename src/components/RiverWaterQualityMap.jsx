@@ -353,7 +353,7 @@ const handlePopupToggle = (popupName) => {
       case 'february':
         setShowFebLayer(checked);
         if (checked) {
-          loadPointLayer(febLayer, setFebLayer, '/map/titikFeb_cleaned.geojson', pointColors.februari, 'IP_Feb');
+          loadPointLayer(febLayer, setFebLayer, '/map/titikSungai_Feb.geojson', pointColors.februari, 'IP_Feb');
         } else {
           if (febLayer) map.removeLayer(febLayer);
         }
