@@ -177,7 +177,16 @@ const handlePopupToggle = (popupName) => {
   // Memanggil fungsi untuk menampilkan batas kabupaten saat komponen pertama kali dimuat
   useEffect(() => {
     if (map) {
-      toggleBoundaryLayer();
+      // Tambahkan layer Batas Kabupaten terlebih dahulu
+      toggleBoundaryLayer().then(() => {
+        if (boundaryLayer) boundaryLayer.bringToBack();  // Pastikan layer Batas Kabupaten berada di bawah
+  
+        // Kemudian tambahkan layer Titik Pemantauan Udara
+        loadAirPointLayer(udaraLayer, setUdaraLayer, '/map/titikUdara.geojson', pointColors.udara);
+      });
+      
+      // Jangan tampilkan Nilai IKU DIY saat halaman pertama kali dimuat
+      setShowIkuLayer(false);
     }
   }, [map]);
 
@@ -271,12 +280,13 @@ const handlePopupToggle = (popupName) => {
 
 
   // Toggle layer visibility based on checkbox status
-  const handleLayerToggle = (checked, layerName) => {
+    const handleLayerToggle = (checked, layerName) => {
     switch (layerName) {
       case 'boundary':
         setShowBoundary(checked);
         if (checked) {
           toggleBoundaryLayer();
+          if (boundaryLayer) boundaryLayer.bringToBack(); // Layer Batas Kabupaten di paling bawah
         } else {
           if (boundaryLayer) map.removeLayer(boundaryLayer);
         }
@@ -285,14 +295,15 @@ const handlePopupToggle = (popupName) => {
         setShowUdaraLayer(checked);
         if (checked) {
           loadAirPointLayer(udaraLayer, setUdaraLayer, '/map/titikUdara.geojson', pointColors.udara);
+          if (udaraLayer) udaraLayer.bringToFront(); // Layer Titik Pemantauan di atas Batas Kabupaten
         } else {
           if (udaraLayer) map.removeLayer(udaraLayer);
         }
-      break;
+        break;
       case 'iku':
         setShowIkuLayer(checked);
         if (checked) {
-          // Create a popup manually with informasi Indeks Kualitas Udara (IKU)
+          // Layer Nilai IKU DIY harus ditambahkan di atas kedua layer lainnya
           const popupContent = `
             <div style="font-family: Arial, sans-serif; width: 100%; max-width: 400px; padding: 15px;">
               <h2 style="font-size: 16px; font-weight: bold; text-align: center; margin-bottom: 15px;">NILAI IKU DIY 2023</h2>
@@ -312,23 +323,22 @@ const handlePopupToggle = (popupName) => {
               </div>
             </div>
           `;
-    
+      
           // Buat pop-up di tengah peta dengan konten yang diperbarui
           const popup = L.popup({
             maxWidth: 500,
             closeButton: true,
             autoClose: false,
             closeOnClick: false,
-            className: 'iku-popup'  // Kelas opsional untuk penyesuaian gaya
+            className: 'iku-popup'
           })
-          .setLatLng(map.getCenter())  // Posisi pop-up di tengah peta
+          .setLatLng(map.getCenter()) // Posisi pop-up di tengah peta
           .setContent(popupContent)
           .openOn(map);
         } else {
-          // Tutup pop-up jika checkbox tidak dicentang
           map.closePopup();
         }
-        break;    
+        break;
       default:
         break;
     }
@@ -354,7 +364,7 @@ const handlePopupToggle = (popupName) => {
   <nav style={{ backgroundColor: '#0096c7', padding: '5px', display: 'flex', alignItems: 'center', justifyContent: 'space-between' }}>
     <div style={{ display: 'flex', alignItems: 'center' }}>
       <img src={logo} alt="Logo" style={{ height: '35px', marginRight: '10px' }} />
-          <h1 style={{ margin: 0, color: 'white', fontSize: '0.9rem' }}>Peta Titik Pemantauan Kualitas Air Sungai DIY</h1>
+          <h1 style={{ margin: 0, color: 'white', fontSize: '0.9rem' }}>Peta Titik Pemantauan Kualitas Udara DIY</h1>
         </div>
 
         {/* Icon Group */}
