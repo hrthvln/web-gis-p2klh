@@ -228,10 +228,22 @@ const handlePopupToggle = (popupName) => {
     }
   };
 
-  // Memanggil fungsi untuk menampilkan batas kabupaten saat komponen pertama kali dimuat
+  // Memanggil fungsi untuk menampilkan batas kabupaten dan titik saat komponen pertama kali dimuat
   useEffect(() => {
     if (map) {
-      toggleBoundaryLayer();
+      // Tambahkan layer Batas Kabupaten terlebih dahulu
+      toggleBoundaryLayer().then(() => {
+        if (boundaryLayer) boundaryLayer.bringToBack();  // Pastikan layer Batas Kabupaten berada di bawah
+  
+        // Kemudian tambahkan layer Titik Februari
+        loadPointLayer(febLayer, setFebLayer, '/map/titikSungai_Feb.geojson', pointColors.februari, 'IP_Feb');
+      });
+      
+      // Jangan tampilkan saat halaman pertama kali dimuat
+      setShowSubDas(false);
+      setShowJunLayer(false);
+      setShowOktLayer(false);
+      setShowIkaLayer(false);
     }
   }, [map]);
 
