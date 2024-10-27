@@ -452,7 +452,7 @@ const handlePopupToggle = (popupName) => {
       const boundariesData = await loadGeoJsonData('/map/batasKab_cleaned.geojson');
       downloadFile(boundariesData, 'GeoJSON', 'batas_kabupaten.geojson');
   
-      const subDasData = await loadGeoJsonData('/map/dasdiy4326.geojson');
+      const subDasData = await loadGeoJsonData('/map/batasSubdas_cleaned.geojson');
       downloadFile(subDasData, 'GeoJSON', 'sub_das.geojson');
   
       const febLayerData = await loadGeoJsonData('/map/titikSungai_Feb.geojson');
@@ -471,7 +471,7 @@ const handlePopupToggle = (popupName) => {
       downloadFile(csvBData, 'CSV', 'batas_kabupaten.csv');
   
       // Konversi file GeoJSON ke CSV untuk sub DAS
-      const subDasData = await loadGeoJsonData('/map/dasdiy4326.geojson');
+      const subDasData = await loadGeoJsonData('/map/batasSubdas_cleaned.geojson');
       const csvSubDasData = convertToCSV(subDasData, "subDas");
       downloadFile(csvSubDasData, 'CSV', 'sub_das.csv');
   
