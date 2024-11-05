@@ -1,17 +1,20 @@
 import React from 'react';
 import { Link } from 'react-router-dom'; // Import Link
-import { FaWater, FaWind } from 'react-icons/fa';
-import { GiWaves } from 'react-icons/gi'; // Import ikon gelombang
 import BackgroundImage from '../assets/dlhk-diy.jpg'; // Import gambar latar belakang
+
+// Import gambar PNG
+import AirSungaiIcon from '../assets/air_sungai.png';
+import UdaraIcon from '../assets/udara.png';
+import AirLautIcon from '../assets/air_laut.png';
 
 const ApplicationSection = () => {
   return (
     <div
-      id="application-section" // Tambahkan id di sini agar bisa di-scroll
+      id="application-section"
       className="relative w-full min-h-screen bg-cover bg-center flex flex-col md:flex-row md:items-start md:justify-between py-16"
       style={{
-        backgroundImage: `linear-gradient(to bottom right, rgba(255, 255, 255, 0.9), rgba(255, 255, 255, 0)), 
-          linear-gradient(to top right, rgba(50, 89, 57, 0.1), rgba(50, 89, 57, 0)), 
+        backgroundImage: `linear-gradient(to bottom right, rgba(255, 255, 255, 0.9), rgba(255, 255, 255, 0)),
+          linear-gradient(to top right, rgba(50, 89, 57, 0.1), rgba(50, 89, 57, 0)),
           url(${BackgroundImage})`,
         backgroundBlendMode: 'overlay, overlay, normal',
       }}
@@ -34,7 +37,7 @@ const ApplicationSection = () => {
         {/* Kartu Aplikasi 1 */}
         <div id="air-sungai" className="card bg-white p-6 rounded-lg shadow-lg transform transition-transform hover:scale-105">
           <div className="bg-white border-2 border-gray-200 p-4 rounded-lg flex flex-col items-center justify-center h-60">
-            <FaWater className="text-3xl text-blue-500 mb-4" /> {/* Ikon Air */}
+            <img src={AirSungaiIcon} alt="Air Sungai" className="w-16 h-16 mb-4" /> {/* Ganti ikon Air Sungai */}
             <h3 className="text-sm font-semibold mb-2 text-center">Peta Pemantauan Kualitas Air Sungai</h3>
             <Link to="/maps/kualitas-air-sungai">
               <button className="bg-[#16423C]/80 text-white px-3 py-1 text-sm rounded hover:bg-opacity-80 transition duration-300">
@@ -47,7 +50,7 @@ const ApplicationSection = () => {
         {/* Kartu Aplikasi 2 */}
         <div id="udara" className="card bg-white p-6 rounded-lg shadow-lg transform transition-transform hover:scale-105">
           <div className="bg-white border-2 border-gray-200 p-4 rounded-lg flex flex-col items-center justify-center h-60">
-            <FaWind className="text-3xl text-green-500 mb-4" /> {/* Ikon Udara */}
+            <img src={UdaraIcon} alt="Udara" className="w-16 h-16 mb-4" /> {/* Ganti ikon Udara */}
             <h3 className="text-sm font-semibold mb-2 text-center">Peta Pemantauan Kualitas Udara</h3>
             <Link to="/maps/kualitas-udara">
               <button className="bg-[#16423C]/80 text-white px-3 py-1 text-sm rounded hover:bg-opacity-80 transition duration-300">
@@ -60,7 +63,7 @@ const ApplicationSection = () => {
         {/* Kartu Aplikasi 3 */}
         <div id="air-laut" className="card bg-white p-6 rounded-lg shadow-lg transform transition-transform hover:scale-105">
           <div className="bg-white border-2 border-gray-200 p-4 rounded-lg flex flex-col items-center justify-center h-60">
-            <GiWaves className="text-3xl text-blue-700 mb-4" /> {/* Ikon Gelombang */}
+            <img src={AirLautIcon} alt="Air Laut" className="w-16 h-16 mb-4" /> {/* Ganti ikon Air Laut */}
             <h3 className="text-sm font-semibold mb-2 text-center">Peta Pemantauan Kualitas Air Laut</h3>
             <Link to="/maps/kualitas-air-laut">
               <button className="bg-[#16423C]/80 text-white px-3 py-1 text-sm rounded hover:bg-opacity-80 transition duration-300">

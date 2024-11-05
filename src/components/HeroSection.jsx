@@ -13,10 +13,10 @@ const HeroSection = () => {
             SISTEM INFORMASI
           </h1>
           <h2 className="text-[#16423C] text-1xl sm:text-3xl font-bold mb-7">
-            PEMANTAUAN LINGKUNGAN HIDUP
+            PEMANTAUAN MUTU AIR DAN UDARA
           </h2>
           <p className="font-cardo text-black text-lg sm:text-lg max-w-xl mb-2 text-justify">
-            Dinas Lingkungan Hidup dan Kehutanan DIY menyediakan akses publik terhadap titik pemantauan kualitas air sungai, udara, dan air laut di Daerah Istimewa Yogyakarta melalui sistem WebGIS.
+            Dinas Lingkungan Hidup dan Kehutanan DIY menyediakan akses publik terhadap titik pemantauan kualitas air sungai, udara, dan air laut di Daerah Istimewa Yogyakarta.
           </p>
         </div>
 
@@ -44,10 +44,10 @@ const HeroSection = () => {
               Visualisasi geospasial interaktif—
             </h2>
             <p className="font-cardo text-black text-lg sm:text-lg max-w-xl mb-3 text-justify">
-              memungkinkan pemantauan kondisi lingkungan secara akurat, mendukung kebijakan lingkungan yang lebih baik.
+              menggambarkan pemantauan mutu air dan lingkungan secara akurat dalam mendukung perlindungan dan pengelolaan lingkungan hidup.
             </p>
             <p className="font-cardo text-black text-lg sm:text-lg max-w-xl text-justify">
-              Aplikasi ini dirancang untuk meningkatkan transparansi, memudahkan akses data, serta mendukung upaya perlindungan lingkungan di Daerah Istimewa Yogyakarta (DIY).
+              Aplikasi ini dirancang untuk memudahkan akses data dalam menginformasikan mutu air dan udara di Daerah Istimewa Yogyakarta.
             </p>
           </div>
         </div>

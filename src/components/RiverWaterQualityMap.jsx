@@ -685,22 +685,11 @@ const handlePopupToggle = (popupName) => {
             <input
               type="radio"
               name="year"
-              value="2022"
-              checked={selectedYear === 2022}
-              onChange={() => handleYearChange(2022)} style={inputStyle}
+              value="2024"
+              checked={selectedYear === 2024}
+              onChange={() => handleYearChange(2024)} style={inputStyle}
             />
-            2022
-          </label>
-          <br />
-          <label style={{ ...checkboxLabelStyle, ...popupContentStyle }}>
-            <input
-              type="radio"
-              name="year"
-              value="2021"
-              checked={selectedYear === 2021}
-              onChange={() => handleYearChange(2021)} style={inputStyle}
-            />
-            2021
+            2024
           </label>
         </div>
       )}
@@ -736,7 +725,7 @@ const handlePopupToggle = (popupName) => {
     </nav>
 
       {/* Peta */}
-      <div id="map" style={{ height: '620px' }}></div>
+      <div id="map" style={{ height: '586px' }}></div>
 
     </div>
   );
