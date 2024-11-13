@@ -238,7 +238,7 @@ const handlePopupToggle = (popupName) => {
         if (boundaryLayer) boundaryLayer.bringToBack();  // Pastikan layer Batas Kabupaten berada di bawah
   
         // Kemudian tambahkan layer Titik Februari
-        loadPointLayer(febLayer, setFebLayer, '/map/titikSungai_Feb.geojson', pointColors.februari, 'IP_Feb');
+        loadPointLayer(febLayer, setFebLayer, '/map/titikSungai_Feb2.geojson', pointColors.februari, 'IP_Feb');
       });
       
       // Jangan tampilkan saat halaman pertama kali dimuat
@@ -269,7 +269,7 @@ const handlePopupToggle = (popupName) => {
         });
       },
       onEachFeature: (feature, layer) => {
-        const { Sungai, Lokasi, PL, Status, Image, TSS, DO, COD, pH, Nitrat, T_Fosfat, BOD, BKT } = feature.properties;
+        const { Sungai, Lokasi, PL, Status, Image, TSS, DO, COD, pH, Nitrat, T_Fosfat, BOD, BKT, Keterangan, Kegiatan} = feature.properties;
         const [lng, lat] = feature.geometry.coordinates;
   
         const ipDisplay = feature.properties[ipField] !== undefined ? feature.properties[ipField] : 'Data tidak tersedia';
@@ -334,6 +334,14 @@ const handlePopupToggle = (popupName) => {
                           <td style="padding: 2px; font-weight: bold; vertical-align: top;">Bakteri Koli Tinja</td>
                           <td style="padding: 4px; vertical-align: top;">${BKT}</td>
                       </tr>
+                      <tr>
+                          <td style="padding: 2px; font-weight: bold; vertical-align: top;">Keterangan</td>
+                          <td style="padding: 4px; vertical-align: top;">${Keterangan}</td>
+                      </tr>
+                      <tr>
+                          <td style="padding: 2px; font-weight: bold; vertical-align: top;">Kegiatan</td>
+                          <td style="padding: 4px; vertical-align: top;">${Kegiatan}</td>
+                      </tr>
                   </table>
               </div>
           </div>
@@ -367,7 +375,7 @@ const handlePopupToggle = (popupName) => {
       case 'february':
         setShowFebLayer(checked);
         if (checked) {
-          loadPointLayer(febLayer, setFebLayer, '/map/titikSungai_Feb.geojson', pointColors.februari, 'IP_Feb');
+          loadPointLayer(febLayer, setFebLayer, '/map/titikSungai_Feb2.geojson', pointColors.februari, 'IP_Feb');
         } else {
           if (febLayer) map.removeLayer(febLayer);
         }
@@ -455,7 +463,7 @@ const handlePopupToggle = (popupName) => {
       const subDasData = await loadGeoJsonData('/map/batasSubdas_cleaned.geojson');
       downloadFile(subDasData, 'GeoJSON', 'sub_das.geojson');
   
-      const febLayerData = await loadGeoJsonData('/map/titikSungai_Feb.geojson');
+      const febLayerData = await loadGeoJsonData('/map/titikSungai_Feb2.geojson');
       downloadFile(febLayerData, 'GeoJSON', 'titik_sungai_feb.geojson');
   
       const junLayerData = await loadGeoJsonData('/map/titikSungai_Jun.geojson');
@@ -476,7 +484,7 @@ const handlePopupToggle = (popupName) => {
       downloadFile(csvSubDasData, 'CSV', 'sub_das.csv');
   
       // Konversi file GeoJSON ke CSV untuk titik sungai (Februari)
-      const febLayerData = await loadGeoJsonData('/map/titikSungai_Feb.geojson');
+      const febLayerData = await loadGeoJsonData('/map/titikSungai_Feb2.geojson');
       const csvFebData = convertToCSV(febLayerData, "titikSungaiFeb");
       downloadFile(csvFebData, 'CSV', 'titik_sungai_feb.csv');
   
@@ -497,24 +505,24 @@ const handlePopupToggle = (popupName) => {
   
     if (type === "titikSungaiFeb") {
       // Format CSV untuk titik sungai feb
-      csvData = "FID,No_,Sungai,X,Y,IP_Feb,Status,Lokasi,PL,TSS,DO,COD,pH,Nitrat,T_Fosfat,BOD,BKT,Image\n";
+      csvData = "FID,No_,Sungai,X,Y,IP_Feb,Status,Lokasi,PL,TSS,DO,COD,pH,Nitrat,T_Fosfat,BOD,BKT,Image,Keterangan,Kegiatan\n";
       geoJsonData.features.forEach(feature => {
-        const { FID, No_, Sungai, X, Y, IP_Feb, Status, Lokasi, PL, TSS, DO, COD, pH, Nitrat, T_Fosfat, BOD, BKT, Image } = feature.properties;
-        csvData += `${FID},${No_},${Sungai},${X},${Y},${IP_Feb},${Status},${Lokasi},${PL},${TSS},${DO},${COD},${pH},${Nitrat},${T_Fosfat},${BOD},${BKT},${Image}\n`;
+        const { FID, No_, Sungai, X, Y, IP_Feb, Status, Lokasi, PL, TSS, DO, COD, pH, Nitrat, T_Fosfat, BOD, BKT, Image, Keterangan, Kegiatan } = feature.properties;
+        csvData += `${FID},${No_},${Sungai},${X},${Y},${IP_Feb},${Status},${Lokasi},${PL},${TSS},${DO},${COD},${pH},${Nitrat},${T_Fosfat},${BOD},${BKT},${Image},${Keterangan},${Kegiatan}\n`;
       });
     } else if (type === "titikSungaiJun") {
       // Format CSV untuk titik sungai jun
-      csvData = "FID,No_,Sungai,X,Y,IP_Jun,Status,Lokasi,PL,TSS,DO,COD,pH,Nitrat,T_Fosfat,BOD,BKT,Image\n";
+      csvData = "FID,No_,Sungai,X,Y,IP_Jun,Status,Lokasi,PL,TSS,DO,COD,pH,Nitrat,T_Fosfat,BOD,BKT,Image,Keterangan,Kegiatan\n";
       geoJsonData.features.forEach(feature => {
-        const { FID, No_, Sungai, X, Y, IP_Jun, Status, Lokasi, PL, TSS, DO, COD, pH, Nitrat, T_Fosfat, BOD, BKT, Image } = feature.properties;
-        csvData += `${FID},${No_},${Sungai},${X},${Y},${IP_Jun},${Status},${Lokasi},${PL},${TSS},${DO},${COD},${pH},${Nitrat},${T_Fosfat},${BOD},${BKT},${Image}\n`;
+        const { FID, No_, Sungai, X, Y, IP_Jun, Status, Lokasi, PL, TSS, DO, COD, pH, Nitrat, T_Fosfat, BOD, BKT, Image, Keterangan, Kegiatan } = feature.properties;
+        csvData += `${FID},${No_},${Sungai},${X},${Y},${IP_Jun},${Status},${Lokasi},${PL},${TSS},${DO},${COD},${pH},${Nitrat},${T_Fosfat},${BOD},${BKT},${Image},${Keterangan},${Kegiatan}\n`;
       });
     } else if (type === "titikSungaiOkt") {
       // Format CSV untuk titik sungai okt
-      csvData = "FID,No_,Sungai,X,Y,IP_Okt,Status,Lokasi,PL,TSS,DO,COD,pH,Nitrat,T_Fosfat,BOD,BKT,Image\n";
+      csvData = "FID,No_,Sungai,X,Y,IP_Okt,Status,Lokasi,PL,TSS,DO,COD,pH,Nitrat,T_Fosfat,BOD,BKT,Image,Keterangan,Kegiatan\n";
       geoJsonData.features.forEach(feature => {
-        const { FID, No_, Sungai, X, Y, IP_Okt, Status, Lokasi, PL, TSS, DO, COD, pH, Nitrat, T_Fosfat, BOD, BKT, Image } = feature.properties;
-        csvData += `${FID},${No_},${Sungai},${X},${Y},${IP_Okt},${Status},${Lokasi},${PL},${TSS},${DO},${COD},${pH},${Nitrat},${T_Fosfat},${BOD},${BKT},${Image}\n`;
+        const { FID, No_, Sungai, X, Y, IP_Okt, Status, Lokasi, PL, TSS, DO, COD, pH, Nitrat, T_Fosfat, BOD, BKT, Image, Keterangan, Kegiatan } = feature.properties;
+        csvData += `${FID},${No_},${Sungai},${X},${Y},${IP_Okt},${Status},${Lokasi},${PL},${TSS},${DO},${COD},${pH},${Nitrat},${T_Fosfat},${BOD},${BKT},${Image},${Keterangan},${Kegiatan}\n`;
       });
     } else if (type === "subDas") {
       // Format CSV untuk sub DAS
