@@ -26,7 +26,8 @@ const RiverWaterQualityMap = () => {
   const [isYearFilterOpen, setIsYearFilterOpen] = useState(false); // State untuk toggle Year Filter
   const [selectedYear, setSelectedYear] = useState(2023); // State untuk tahun terpilih
   const [activePopup, setActivePopup] = useState(null);
-  const [selectedFormat, setSelectedFormat] = useState('GeoJSON'); // Default format
+  const [selectedFile, setSelectedFile] = useState('');
+
 
 
   // Warna yang ditetapkan untuk setiap kabupaten
@@ -454,113 +455,19 @@ const handlePopupToggle = (popupName) => {
     }
   };
 
-  const handleDownload = async () => {
-    if (selectedFormat === 'GeoJSON') {
-      // Unduh file GeoJSON secara terpisah
-      const boundariesData = await loadGeoJsonData('/map/batasKab_cleaned.geojson');
-      downloadFile(boundariesData, 'GeoJSON', 'batas_kabupaten.geojson');
-  
-      const subDasData = await loadGeoJsonData('/map/batasSubdas_cleaned.geojson');
-      downloadFile(subDasData, 'GeoJSON', 'sub_das.geojson');
-  
-      const febLayerData = await loadGeoJsonData('/map/titikSungai_Feb2.geojson');
-      downloadFile(febLayerData, 'GeoJSON', 'titik_sungai_feb.geojson');
-  
-      const junLayerData = await loadGeoJsonData('/map/titikSungai_Jun.geojson');
-      downloadFile(junLayerData, 'GeoJSON', 'titik_sungai_jun.geojson');
-  
-      const oktLayerData = await loadGeoJsonData('/map/titikSungai_Okt.geojson');
-      downloadFile(oktLayerData, 'GeoJSON', 'titik_sungai_okt.geojson');
-  
-    } else if (selectedFormat === 'CSV') {
-      // Konversi file GeoJSON ke CSV untuk batas kabupaten
-      const boundariesData = await loadGeoJsonData('/map/batasKab_cleaned.geojson');
-      const csvBData = convertToCSV(boundariesData, "batasKab");
-      downloadFile(csvBData, 'CSV', 'batas_kabupaten.csv');
-  
-      // Konversi file GeoJSON ke CSV untuk sub DAS
-      const subDasData = await loadGeoJsonData('/map/batasSubdas_cleaned.geojson');
-      const csvSubDasData = convertToCSV(subDasData, "subDas");
-      downloadFile(csvSubDasData, 'CSV', 'sub_das.csv');
-  
-      // Konversi file GeoJSON ke CSV untuk titik sungai (Februari)
-      const febLayerData = await loadGeoJsonData('/map/titikSungai_Feb2.geojson');
-      const csvFebData = convertToCSV(febLayerData, "titikSungaiFeb");
-      downloadFile(csvFebData, 'CSV', 'titik_sungai_feb.csv');
-  
-      // Konversi file GeoJSON ke CSV untuk titik sungai (Juni)
-      const junLayerData = await loadGeoJsonData('/map/titikSungai_Jun.geojson');
-      const csvJunData = convertToCSV(junLayerData, "titikSungaiJun");
-      downloadFile(csvJunData, 'CSV', 'titik_sungai_jun.csv');
-  
-      // Konversi file GeoJSON ke CSV untuk titik sungai (Oktober)
-      const oktLayerData = await loadGeoJsonData('/map/titikSungai_Okt.geojson');
-      const csvOktData = convertToCSV(oktLayerData, "titikSungaiOkt");
-      downloadFile(csvOktData, 'CSV', 'titik_sungai_okt.csv');
+  const handleDownload = () => {
+    if (selectedFile) {
+     // Gunakan import.meta.env.BASE_URL untuk Vite
+      const fileUrl = `${import.meta.env.BASE_URL}file/river/${encodeURIComponent(selectedFile)}`;
+      const link = document.createElement('a');
+      link.href = fileUrl;
+      link.download = selectedFile; // Nama file saat diunduh
+      document.body.appendChild(link);
+      link.click();
+      document.body.removeChild(link);
+    } else {
+      alert('Silakan pilih file untuk diunduh!');
     }
-  };
-  
-  const convertToCSV = (geoJsonData, type) => {
-    let csvData = "";
-  
-    if (type === "titikSungaiFeb") {
-      // Format CSV untuk titik sungai feb
-      csvData = "FID,No_,Sungai,X,Y,IP_Feb,Status,Lokasi,PL,TSS,DO,COD,pH,Nitrat,T_Fosfat,BOD,BKT,Image,Keterangan,Kegiatan\n";
-      geoJsonData.features.forEach(feature => {
-        const { FID, No_, Sungai, X, Y, IP_Feb, Status, Lokasi, PL, TSS, DO, COD, pH, Nitrat, T_Fosfat, BOD, BKT, Image, Keterangan, Kegiatan } = feature.properties;
-        csvData += `${FID},${No_},${Sungai},${X},${Y},${IP_Feb},${Status},${Lokasi},${PL},${TSS},${DO},${COD},${pH},${Nitrat},${T_Fosfat},${BOD},${BKT},${Image},${Keterangan},${Kegiatan}\n`;
-      });
-    } else if (type === "titikSungaiJun") {
-      // Format CSV untuk titik sungai jun
-      csvData = "FID,No_,Sungai,X,Y,IP_Jun,Status,Lokasi,PL,TSS,DO,COD,pH,Nitrat,T_Fosfat,BOD,BKT,Image,Keterangan,Kegiatan\n";
-      geoJsonData.features.forEach(feature => {
-        const { FID, No_, Sungai, X, Y, IP_Jun, Status, Lokasi, PL, TSS, DO, COD, pH, Nitrat, T_Fosfat, BOD, BKT, Image, Keterangan, Kegiatan } = feature.properties;
-        csvData += `${FID},${No_},${Sungai},${X},${Y},${IP_Jun},${Status},${Lokasi},${PL},${TSS},${DO},${COD},${pH},${Nitrat},${T_Fosfat},${BOD},${BKT},${Image},${Keterangan},${Kegiatan}\n`;
-      });
-    } else if (type === "titikSungaiOkt") {
-      // Format CSV untuk titik sungai okt
-      csvData = "FID,No_,Sungai,X,Y,IP_Okt,Status,Lokasi,PL,TSS,DO,COD,pH,Nitrat,T_Fosfat,BOD,BKT,Image,Keterangan,Kegiatan\n";
-      geoJsonData.features.forEach(feature => {
-        const { FID, No_, Sungai, X, Y, IP_Okt, Status, Lokasi, PL, TSS, DO, COD, pH, Nitrat, T_Fosfat, BOD, BKT, Image, Keterangan, Kegiatan } = feature.properties;
-        csvData += `${FID},${No_},${Sungai},${X},${Y},${IP_Okt},${Status},${Lokasi},${PL},${TSS},${DO},${COD},${pH},${Nitrat},${T_Fosfat},${BOD},${BKT},${Image},${Keterangan},${Kegiatan}\n`;
-      });
-    } else if (type === "subDas") {
-      // Format CSV untuk sub DAS
-      csvData = "FID,SUB_DAS_Su,IKA_FEB,IKA_JUN,IKA_OKT\n";
-      geoJsonData.features.forEach(feature => {
-        const { FID, SUB_DAS_Su, IKA_FEB, IKA_JUN, IKA_OKT } = feature.properties;
-        csvData += `${FID},${SUB_DAS_Su},${IKA_FEB},${IKA_JUN},${IKA_OKT}\n`;
-      });
-    } else if (type === "batasKab") {
-      // Format CSV untuk batas kabupaten
-      csvData = "FID,Nama_Kabupaten,Coordinates\n";
-      geoJsonData.features.forEach(feature => {
-        const { FID } = feature.properties;
-        const namaKabupaten = feature.properties.NAMOBJ || 'unknown'; // Menggunakan NAMOBJ
-        const coordinates = feature.geometry.coordinates[0].map(coord => `[${coord[1]},${coord[0]}]`).join('; ');
-        csvData += `${FID},${namaKabupaten},"${coordinates}"\n`;
-      });
-    }
-  
-    return csvData;
-  };
-  
-  const downloadFile = (data, format, fileName) => {
-    let blob;
-  
-    if (format === 'GeoJSON') {
-      blob = new Blob([JSON.stringify(data)], { type: 'application/json' });
-    } else if (format === 'CSV') {
-      blob = new Blob([data], { type: 'text/csv' });
-    }
-  
-    const url = URL.createObjectURL(blob);
-    const link = document.createElement('a');
-    link.href = url;
-    link.download = fileName;
-    document.body.appendChild(link);
-    link.click();
-    document.body.removeChild(link);
   };
   
   
@@ -574,18 +481,18 @@ const handlePopupToggle = (popupName) => {
           <h1 style={{ margin: 0, color: 'white', fontSize: '0.9rem' }}>Peta Titik Pemantauan Kualitas Air Sungai DIY</h1>
         </div>
 
-         {/* Group Elemen */}
-      <div style={{ display: 'flex', alignItems: 'center', marginRight: '20px' }}>
+        {/* Group Elemen */}
+        <div style={{ display: 'flex', alignItems: 'center', marginRight: '20px' }}>
         
         {/* Dropdown untuk memilih format unduhan */}
         <div style={{ display: 'flex', alignItems: 'center', marginRight: '5px', position: 'relative' }}>
-          <label htmlFor="format-select" style={{ color: 'white', marginRight: '5px', fontSize: '0.7rem' }}>
-            Pilih Format:
+          <label htmlFor="file-select" style={{ color: 'white', marginRight: '5px', fontSize: '0.7rem' }}>
+            Export Data:
           </label>
           <select
-            id="format-select"
-            value={selectedFormat}
-            onChange={(e) => setSelectedFormat(e.target.value)}
+            id="file-select"
+            value={selectedFile}
+            onChange={(e) => setSelectedFile(e.target.value)}
             style={{
               marginRight: '1px',
               padding: '2px 5px',
@@ -600,8 +507,9 @@ const handlePopupToggle = (popupName) => {
               paddingRight: '20px', // Untuk memberi ruang bagi tanda panah
             }}
           >
-            <option style={{ color: 'black', backgroundColor: 'white' }} value="GeoJSON">GeoJSON</option>
-            <option style={{ color: 'black', backgroundColor: 'white' }} value="CSV">CSV</option>
+            <option style={{ color: 'black', backgroundColor: 'white' }} value="">-- Pilih File --</option>
+            <option style={{ color: 'black', backgroundColor: 'white' }} value="Data Pemantauan Kualitas Air Sungai 2023.docx">Data Pemantauan Kualitas Air Sungai 2023.docx</option>
+            <option style={{ color: 'black', backgroundColor: 'white' }} value="Data IKA Tiap Sungai.xlsx">Data IKA Tiap Sungai.xlsx</option>
           </select>
           {/* Tanda panah V di sebelah kanan dropdown */}
           <span style={{

@@ -3,7 +3,7 @@ import L from 'leaflet';
 import 'leaflet/dist/leaflet.css';
 import 'leaflet.locatecontrol/dist/L.Control.Locate.min.css';
 import 'leaflet.locatecontrol/dist/L.Control.Locate.min.js';
-import { FaLayerGroup, FaInfoCircle, FaCalendarAlt } from 'react-icons/fa'; // Import icon dari react-icons
+import { FaLayerGroup, FaInfoCircle, FaCalendarAlt, FaDownload } from 'react-icons/fa'; // Import icon dari react-icons
 import logo from '../assets/logo.png'; // Sesuaikan jalur logo
 
 const SeaWaterQualityMap = () => {
@@ -23,6 +23,8 @@ const SeaWaterQualityMap = () => {
   const [showOneSeaLayer, setShowOneSeaLayer] = useState(true); // Visibility dari layer laut periode 1
   const [twoSeaLayer, setTwoSeaLayer] = useState(null); 
   const [showTwoSeaLayer, setShowTwoSeaLayer] = useState(true); // Visibility dari layer laut
+  const [selectedFile, setSelectedFile] = useState('');
+
 
 
 
@@ -311,6 +313,21 @@ const SeaWaterQualityMap = () => {
     }
   };
 
+  const handleDownload = () => {
+    if (selectedFile) {
+      // Gunakan import.meta.env.BASE_URL untuk Vite
+      const fileUrl = `${import.meta.env.BASE_URL}file/sea/${encodeURIComponent(selectedFile)}`;
+      const link = document.createElement('a');
+      link.href = fileUrl;
+      link.download = selectedFile; // Nama file saat diunduh
+      document.body.appendChild(link);
+      link.click();
+      document.body.removeChild(link);
+    } else {
+      alert('Silakan pilih file untuk diunduh!');
+    }
+  };
+
 
   return (
     <div>
@@ -323,6 +340,48 @@ const SeaWaterQualityMap = () => {
 
         {/* Group Elemen */}
          <div style={{ display: 'flex', alignItems: 'center', marginRight: '20px' }}>
+
+        {/* Dropdown untuk memilih format unduhan */}
+        <div style={{ display: 'flex', alignItems: 'center', marginRight: '5px', position: 'relative' }}>
+          <label htmlFor="file-select" style={{ color: 'white', marginRight: '5px', fontSize: '0.7rem' }}>
+            Export Data:
+          </label>
+          <select
+            id="file-select"
+            value={selectedFile}
+            onChange={(e) => setSelectedFile(e.target.value)}
+            style={{
+              marginRight: '1px',
+              padding: '2px 5px',
+              fontSize: '0.7rem',
+              color: 'white',
+              backgroundColor: 'transparent',
+              border: '1px solid white',
+              borderRadius: '4px',
+              outline: 'none',
+              appearance: 'none',
+              WebkitAppearance: 'none',
+              paddingRight: '20px', // Untuk memberi ruang bagi tanda panah
+            }}
+          >
+            <option style={{ color: 'black', backgroundColor: 'white' }} value="">-- Pilih File --</option>
+            <option style={{ color: 'black', backgroundColor: 'white' }} value="Data Kualitas Air Laut 2023.xlsx">Data Kualitas Air Laut 2023.xlsx</option>
+          </select>
+          {/* Tanda panah V di sebelah kanan dropdown */}
+          <span style={{
+            position: 'absolute',
+            right: '8px',
+            pointerEvents: 'none', // Agar tanda panah tidak mengganggu fungsi dropdown
+            color: 'white',
+            fontSize: '0.6rem',
+          }}>▼</span>
+        </div>
+
+
+        {/* Tombol untuk mengunduh data */}
+        <button onClick={handleDownload} style={{ cursor: 'pointer', fontSize: '1rem', padding: '3px 6px', marginRight: '40px', color: 'white' }}>
+          <FaDownload />
+        </button>
         
         {/* Icon Layer List */}
           <FaLayerGroup

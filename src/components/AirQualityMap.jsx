@@ -10,7 +10,7 @@ const AirQualityMap = () => {
   const [map, setMap] = useState(null);
   const [boundaryLayer, setBoundaryLayer] = useState(null);
   const [showBoundary, setShowBoundary] = useState(true);
-  const [selectedFormat, setSelectedFormat] = useState('GeoJSON'); // Default format
+  const [selectedFile, setSelectedFile] = useState('GeoJSON'); // Default format
   
   // State untuk toggle Layer List, Legend, dan Year Filter
   const [isLayerListOpen, setIsLayerListOpen] = useState(false); 
@@ -359,72 +359,19 @@ const handlePopupToggle = (popupName) => {
     }
   };
 
-  const handleDownload = async () => {
-    if (selectedFormat === 'GeoJSON') {
-      // Unduh file GeoJSON secara terpisah
-      const boundariesData = await loadGeoJsonData('/map/batasKab_cleaned.geojson');
-      downloadFile(boundariesData, 'GeoJSON', 'batas_kabupaten.geojson');
-  
-      const airPointData = await loadGeoJsonData('/map/titikUdara.geojson');
-      downloadFile(airPointData, 'GeoJSON', 'titik_udara.geojson');
-  
-    } else if (selectedFormat === 'CSV') {
-      // Konversi file GeoJSON ke CSV untuk batas kabupaten
-      const boundariesData = await loadGeoJsonData('/map/batasKab_cleaned.geojson');
-      const csvBData = convertToCSV(boundariesData, "batasKab");
-      downloadFile(csvBData, 'CSV', 'batas_kabupaten.csv');
-  
-      // Konversi file GeoJSON ke CSV untuk titik udara
-      const airPointData = await loadGeoJsonData('/map/titikUdara.geojson');
-      const csvTData = convertToCSV(airPointData, "titikUdara");
-      downloadFile(csvTData, 'CSV', 'titik_udara.csv');
+  const handleDownload = () => {
+    if (selectedFile) {
+      // Gunakan import.meta.env.BASE_URL untuk Vite
+      const fileUrl = `${import.meta.env.BASE_URL}file/air/${encodeURIComponent(selectedFile)}`;
+      const link = document.createElement('a');
+      link.href = fileUrl;
+      link.download = selectedFile; // Nama file saat diunduh
+      document.body.appendChild(link);
+      link.click();
+      document.body.removeChild(link);
+    } else {
+      alert('Silakan pilih file untuk diunduh!');
     }
-  };
-  
-  
-  const convertToCSV = (geoJsonData, type) => {
-    let csvData = "";
-  
-    if (type === "titikUdara") {
-      // Format CSV untuk titik udara
-      csvData = "FID,Kode,Kabupaten,Nama_Lokasi,Latitude,Longitude,Kategori,Alamat,Tahap_1_NO2(µg/m3),Tahap_2_NO2(µg/m3),Tahap_1_SO2(µg/m3),Tahap_2_SO2(µg/m3),Foto\n";
-      geoJsonData.features.forEach(feature => {
-        const { FID, Kode, Kabupaten, Nama_Lokasi, Kategori, Alamat, Tahap_1_Kadar_NO2_, Tahap_2_Kadar_NO2_, Tahap_1_Kadar_SO2_, Tahap_2_Kadar_SO2_, Foto } = feature.properties;
-        const [longitude, latitude] = feature.geometry.coordinates;
-        csvData += `${FID},${Kode},${Kabupaten},${Nama_Lokasi},${latitude},${longitude},${Kategori},${Alamat},${Tahap_1_Kadar_NO2_},${Tahap_2_Kadar_NO2_},${Tahap_1_Kadar_SO2_},${Tahap_2_Kadar_SO2_},${Foto}\n`;
-      });
-    } else if (type === "batasKab") {
-      // Format CSV untuk batas kabupaten
-      csvData = "FID,Nama_Kabupaten,Coordinates\n";
-      geoJsonData.features.forEach(feature => {
-        const { FID } = feature.properties;
-        const namaKabupaten = feature.properties.NAMOBJ || 'unknown'; // Menggunakan NAMOBJ
-        const coordinates = feature.geometry.coordinates[0].map(coord => `[${coord[1]},${coord[0]}]`).join('; ');
-        csvData += `${FID},${namaKabupaten},"${coordinates}"\n`;
-      });
-    }
-    
-    
-    return csvData;
-  };
-  
-  
-  const downloadFile = (data, format, fileName) => {
-    let blob;
-    
-    if (format === 'GeoJSON') {
-      blob = new Blob([JSON.stringify(data)], { type: 'application/json' });
-    } else if (format === 'CSV') {
-      blob = new Blob([data], { type: 'text/csv' });
-    }
-    
-    const url = URL.createObjectURL(blob);
-    const link = document.createElement('a');
-    link.href = url;
-    link.download = fileName;
-    document.body.appendChild(link);
-    link.click();
-    document.body.removeChild(link);
   };
 
 
@@ -442,13 +389,13 @@ const handlePopupToggle = (popupName) => {
         
         {/* Dropdown untuk memilih format unduhan */}
         <div style={{ display: 'flex', alignItems: 'center', marginRight: '5px', position: 'relative' }}>
-          <label htmlFor="format-select" style={{ color: 'white', marginRight: '5px', fontSize: '0.7rem' }}>
-            Pilih Format:
+          <label htmlFor="file-select" style={{ color: 'white', marginRight: '5px', fontSize: '0.7rem' }}>
+            Export Data:
           </label>
           <select
-            id="format-select"
-            value={selectedFormat}
-            onChange={(e) => setSelectedFormat(e.target.value)}
+            id="file-select"
+            value={selectedFile}
+            onChange={(e) => setSelectedFile(e.target.value)}
             style={{
               marginRight: '1px',
               padding: '2px 5px',
@@ -463,8 +410,8 @@ const handlePopupToggle = (popupName) => {
               paddingRight: '20px', // Untuk memberi ruang bagi tanda panah
             }}
           >
-            <option style={{ color: 'black', backgroundColor: 'white' }} value="GeoJSON">GeoJSON</option>
-            <option style={{ color: 'black', backgroundColor: 'white' }} value="CSV">CSV</option>
+            <option style={{ color: 'black', backgroundColor: 'white' }} value="">-- Pilih File --</option>
+            <option style={{ color: 'black', backgroundColor: 'white' }} value="Perhitungan Udara-IKU 2023 P1-P2.xlsx">Perhitungan Udara-IKU 2023 P1-P2.xlsx</option>
           </select>
           {/* Tanda panah V di sebelah kanan dropdown */}
           <span style={{
