@@ -339,7 +339,7 @@ const handlePopupToggle = (popupName) => {
                           <td style="padding: 4px; vertical-align: top;">${Keterangan}</td>
                       </tr>
                       <tr>
-                          <td style="padding: 2px; font-weight: bold; vertical-align: top;">Kegiatan</td>
+                          <td style="padding: 2px; font-weight: bold; vertical-align: top;">Sumber Pencemar Radius 1000m</td>
                           <td style="padding: 4px; vertical-align: top;">${Kegiatan}</td>
                       </tr>
                   </table>
