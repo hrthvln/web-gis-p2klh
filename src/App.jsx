@@ -8,6 +8,7 @@ import Footer from './components/Footer';
 import RiverWaterQualityMap from './components/RiverWaterQualityMap';
 import AirQualityMap from './components/AirQualityMap';
 import SeaWaterQualityMap from './components/SeaWaterQualityMap';
+import InformationPage from './components/InformationPage';
 
 function App() {
   return (
@@ -41,7 +42,12 @@ function App() {
             path="/maps/kualitas-air-laut" 
             element={<SeaWaterQualityMap />} 
           />
-        </Routes>
+          {/* Information Page */}
+          <Route 
+              path="/InformationPage" 
+              element={<InformationPage />} 
+            />
+          </Routes>
       </div>
     </Router>
   );

@@ -8,7 +8,7 @@ const HeroSection = () => {
       {/* Hero Section */}
       <div className="relative w-full min-h-screen bg-white flex items-center overflow-hidden">
         {/* Teks Hero Section */}
-        <div className="text-left px-10 sm:px-16 lg:px-16 max-w-lg lg:max-w-2xl">
+        <div className="text-left px-10 sm:px-16 lg:px-16 max-w-lg lg:max-w-3xl">
           <h1 className="font-cardo text-[#16423C] text-3xl sm:text-5xl font-bold mb-4">
             SISTEM INFORMASI
           </h1>
