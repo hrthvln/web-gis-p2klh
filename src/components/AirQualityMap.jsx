@@ -411,7 +411,7 @@ const handlePopupToggle = (popupName) => {
             }}
           >
             <option style={{ color: 'black', backgroundColor: 'white' }} value="">-- Pilih File --</option>
-            <option style={{ color: 'black', backgroundColor: 'white' }} value="Perhitungan Udara-IKU 2023 P1-P2.xlsx">Perhitungan Udara-IKU 2023 P1-P2.xlsx</option>
+            <option style={{ color: 'black', backgroundColor: 'white' }} value="Perhitungan Udara-IKU 2023 P1-P2.pdf">Perhitungan Udara-IKU 2023 P1-P2.pdf</option>
           </select>
           {/* Tanda panah V di sebelah kanan dropdown */}
           <span style={{

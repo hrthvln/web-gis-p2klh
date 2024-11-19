@@ -365,7 +365,7 @@ const SeaWaterQualityMap = () => {
             }}
           >
             <option style={{ color: 'black', backgroundColor: 'white' }} value="">-- Pilih File --</option>
-            <option style={{ color: 'black', backgroundColor: 'white' }} value="Data Kualitas Air Laut 2023.xlsx">Data Kualitas Air Laut 2023.xlsx</option>
+            <option style={{ color: 'black', backgroundColor: 'white' }} value="Data Kualitas Air Laut 2023.pdf">Data Kualitas Air Laut 2023.pdf</option>
           </select>
           {/* Tanda panah V di sebelah kanan dropdown */}
           <span style={{

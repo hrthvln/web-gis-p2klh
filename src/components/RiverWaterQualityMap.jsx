@@ -29,7 +29,6 @@ const RiverWaterQualityMap = () => {
   const [selectedFile, setSelectedFile] = useState('');
 
 
-
   // Warna yang ditetapkan untuk setiap kabupaten
   const kabupatenColors = {
     'Sleman': '#2c7fb8',
@@ -145,23 +144,25 @@ const RiverWaterQualityMap = () => {
       initialMap.remove();
     };
   }, []);
+
+
   
 
   // Fungsi untuk toggle pop-up, memastikan hanya satu pop-up terbuka pada satu waktu
-const handlePopupToggle = (popupName) => {
-  if (popupName === 'isLayerListOpen') {
-    setIsLayerListOpen(!isLayerListOpen);
-    setIsLegendOpen(false); // Tutup yang lain
-    setIsYearFilterOpen(false); // Tutup yang lain
-  } else if (popupName === 'isLegendOpen') {
-    setIsLegendOpen(!isLegendOpen);
-    setIsLayerListOpen(false); // Tutup yang lain
-    setIsYearFilterOpen(false); // Tutup yang lain
-  } else if (popupName === 'isYearFilterOpen') {
-    setIsYearFilterOpen(!isYearFilterOpen);
-    setIsLayerListOpen(false); // Tutup yang lain
-    setIsLegendOpen(false); // Tutup yang lain
-  }
+  const handlePopupToggle = (popupName) => {
+    if (popupName === 'isLayerListOpen') {
+      setIsLayerListOpen(!isLayerListOpen);
+      setIsLegendOpen(false); // Tutup yang lain
+      setIsYearFilterOpen(false); // Tutup yang lain
+    } else if (popupName === 'isLegendOpen') {
+      setIsLegendOpen(!isLegendOpen);
+      setIsLayerListOpen(false); // Tutup yang lain
+      setIsYearFilterOpen(false); // Tutup yang lain
+    } else if (popupName === 'isYearFilterOpen') {
+      setIsYearFilterOpen(!isYearFilterOpen);
+      setIsLayerListOpen(false); // Tutup yang lain
+      setIsLegendOpen(false); // Tutup yang lain
+    }
 
   // Perbarui state activePopup dengan nama popup yang aktif
   setActivePopup((prevPopup) => (prevPopup === popupName ? null : popupName));
@@ -508,8 +509,19 @@ const handlePopupToggle = (popupName) => {
             }}
           >
             <option style={{ color: 'black', backgroundColor: 'white' }} value="">-- Pilih File --</option>
-            <option style={{ color: 'black', backgroundColor: 'white' }} value="Data Pemantauan Kualitas Air Sungai 2023.docx">Data Pemantauan Kualitas Air Sungai 2023.docx</option>
-            <option style={{ color: 'black', backgroundColor: 'white' }} value="Data IKA Tiap Sungai.xlsx">Data IKA Tiap Sungai.xlsx</option>
+            <option style={{ color: 'black', backgroundColor: 'white' }} value="Perhitungan Indeks Pencemaran Sungai Tambakbayan 2023.pdf">Perhitungan Indeks Pencemaran Sungai Tambakbayan 2023.pdf</option>
+            <option style={{ color: 'black', backgroundColor: 'white' }} value="Perhitungan Indeks Pencemaran Sungai Bedog 2023.pdf">Perhitungan Indeks Pencemaran Sungai Bedog 2023.pdf</option>
+            <option style={{ color: 'black', backgroundColor: 'white' }} value="Perhitungan Indeks Pencemaran Sungai Belik 2023.pdf">Perhitungan Indeks Pencemaran Sungai Belik 2023.pdf</option>
+            <option style={{ color: 'black', backgroundColor: 'white' }} value="Perhitungan Indeks Pencemaran Sungai Bulus 2023.pdf">Perhitungan Indeks Pencemaran Sungai Bulus 2023.pdf</option>
+            <option style={{ color: 'black', backgroundColor: 'white' }} value="Perhitungan Indeks Pencemaran Sungai Code 2023.pdf">Perhitungan Indeks Pencemaran Sungai Code 2023.pdf</option>
+            <option style={{ color: 'black', backgroundColor: 'white' }} value="Perhitungan Indeks Pencemaran Sungai Gadjahwong 2023.pdf">Perhitungan Indeks Pencemaran Sungai Gadjahwong 2023.pdf</option>
+            <option style={{ color: 'black', backgroundColor: 'white' }} value="Perhitungan Indeks Pencemaran Sungai Konteng 2023.pdf">Perhitungan Indeks Pencemaran Sungai Konteng 2023.pdf</option>
+            <option style={{ color: 'black', backgroundColor: 'white' }} value="Perhitungan Indeks Pencemaran Sungai Kuning 2023.pdf">Perhitungan Indeks Pencemaran Sungai Kuning 2023.pdf</option>
+            <option style={{ color: 'black', backgroundColor: 'white' }} value="Perhitungan Indeks Pencemaran Sungai Opak 2023.pdf">Perhitungan Indeks Pencemaran Sungai Opak 2023.pdf</option>
+            <option style={{ color: 'black', backgroundColor: 'white' }} value="Perhitungan Indeks Pencemaran Sungai Oyo 2023.pdf">Perhitungan Indeks Pencemaran Sungai Oyo 2023.pdf</option>
+            <option style={{ color: 'black', backgroundColor: 'white' }} value="Perhitungan Indeks Pencemaran Sungai Winongo 2023.pdf">Perhitungan Indeks Pencemaran Sungai Winongo 2023.pdf</option>
+            <option style={{ color: 'black', backgroundColor: 'white' }} value="Kategori Status Mutu Metode Indeks Pencemaran 2023.pdf">Kategori Status Mutu Metode Indeks Pencemaran 2023.pdf</option>
+            <option style={{ color: 'black', backgroundColor: 'white' }} value="Data IKA Tiap Sungai.pdf">Data IKA Tiap Sungai.pdf</option>
           </select>
           {/* Tanda panah V di sebelah kanan dropdown */}
           <span style={{
