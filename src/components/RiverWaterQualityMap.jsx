@@ -240,7 +240,7 @@ const RiverWaterQualityMap = () => {
         if (boundaryLayer) boundaryLayer.bringToBack();  // Pastikan layer Batas Kabupaten berada di bawah
   
         // Kemudian tambahkan layer Titik Februari
-        loadPointLayer(febLayer, setFebLayer, '/map/titikSungai_Feb2.geojson', pointColors.februari, 'IP_Feb');
+        loadPointLayer(febLayer, setFebLayer, '/map/titikSungai_Feb.geojson', pointColors.februari, 'IP_Feb');
       });
       
       // Jangan tampilkan saat halaman pertama kali dimuat
@@ -377,7 +377,7 @@ const RiverWaterQualityMap = () => {
       case 'february':
         setShowFebLayer(checked);
         if (checked) {
-          loadPointLayer(febLayer, setFebLayer, '/map/titikSungai_Feb2.geojson', pointColors.februari, 'IP_Feb');
+          loadPointLayer(febLayer, setFebLayer, '/map/titikSungai_Feb.geojson', pointColors.februari, 'IP_Feb');
         } else {
           if (febLayer) map.removeLayer(febLayer);
         }
