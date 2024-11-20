@@ -6,10 +6,12 @@ import MapDIY from "../assets/MapDIY.png";
 import Slide1 from "../assets/Slide1.png";
 import Slide2 from "../assets/Slide2.png";
 import Slide3 from "../assets/Slide3.png";
-import BackgroundImage from "../assets/dlhk-diy.jpg";
-import AirSungaiImage from "../assets/AirSungaiImage.png";
-import UdaraImage from "../assets/UdaraImage.png";
-import AirLautImage from "../assets/AirLautImage.png";
+import AirSungaiIcon from "../assets/AirSungaiIcon.png";
+import UdaraIcon from "../assets/UdaraIcon.png";
+import AirLautIcon from "../assets/AirLautIcon.png";
+import webgisAirSungai from "../assets/webgis-air-sungai.png";
+import webgisUdara from "../assets/webgis-udara.png";
+import webgisAirLaut from "../assets/webgis-air-laut.png";
 import { Carousel } from "react-responsive-carousel";
 import "react-responsive-carousel/lib/styles/carousel.min.css"; // Import CSS untuk carousel
 
@@ -117,21 +119,57 @@ const InformationPage = () => {
           </p>
         </div>
 
-        <div className="relative z-10 max-w-7xl px-4 sm:px-6 lg:px-8 grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-8 mt-12 md:mt-24 w-full">
+        {/* Card Grid */}
+        <div className="relative z-10 max-w-7xl px-4 sm:px-6 lg:px-8 grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-8 w-full">
           {[
-            { id: "air-sungai", icon: AirSungaiImage, title: "Peta Pemantauan Kualitas Air Sungai", link: "/maps/kualitas-air-sungai" },
-            { id: "udara", icon: UdaraImage, title: "Peta Pemantauan Kualitas Udara", link: "/maps/kualitas-udara" },
-            { id: "air-laut", icon: AirLautImage, title: "Peta Pemantauan Kualitas Air Laut", link: "/maps/kualitas-air-laut" }
+            { 
+              id: "air-sungai", 
+              bgImage: webgisAirSungai, // Ganti dengan URL gambar untuk tampilan WebGIS
+              icon: AirSungaiIcon, 
+              title: "Peta Pemantauan Kualitas Air Sungai", 
+              link: "/maps/kualitas-air-sungai" 
+            },
+            { 
+              id: "udara", 
+              bgImage: webgisUdara, 
+              icon: UdaraIcon, 
+              title: "Peta Pemantauan Kualitas Udara", 
+              link: "/maps/kualitas-udara" 
+            },
+            { 
+              id: "air-laut", 
+              bgImage: webgisAirLaut, 
+              icon: AirLautIcon, 
+              title: "Peta Pemantauan Kualitas Air Laut", 
+              link: "/maps/kualitas-air-laut" 
+            }
           ].map((app, index) => (
-            <div key={index} id={app.id} className="bg-white p-6 rounded-lg shadow-lg flex flex-col items-center">
-              <img src={app.icon} alt={app.title} className="mb-4" />
-              <h3 className="text-sm font-semibold mb-2 text-center">{app.title}</h3>
-              <Link to={app.link}>
-                <button className="bg-[#16423C]/80 text-white px-3 py-1 text-sm rounded hover:bg-opacity-80 transition duration-300">
+            <Link
+              key={index}
+              to={app.link}
+              className="group flex flex-col w-full bg-white rounded-xl shadow-lg hover:shadow-xl transition-shadow duration-300 overflow-hidden relative"
+            >
+              {/* Gambar Background */}
+              <div
+                className="h-48 w-full bg-cover bg-center"
+                style={{ backgroundImage: `url(${app.bgImage})` }}
+              />
+
+              {/* Ikon dalam lingkaran */}
+              <div className="absolute top-6 left-6 w-16 h-16 bg-white rounded-full flex items-center justify-center shadow-lg">
+                <img src={app.icon} alt={app.title} className="w-8 h-8" />
+              </div>
+
+              {/* Bagian Bawah: Title dan Button */}
+              <div className="p-6 bg-[#f9f9f9] flex flex-col items-center">
+                <h3 className="text-md font-semibold text-center text-[#16423C] mb-4">
+                  {app.title}
+                </h3>
+                <button className="border border-[#16423C] text-[#16423C] px-4 py-2 text-sm rounded-full hover:bg-[#16423C] hover:text-white transition duration-300">
                   Buka
                 </button>
-              </Link>
-            </div>
+              </div>
+            </Link>
           ))}
         </div>
       </div>
