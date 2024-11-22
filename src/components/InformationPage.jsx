@@ -43,7 +43,7 @@ const InformationPage = () => {
             </div>
             <button
               onClick={() => handleScrollToSection("application-section")}
-              className="bg-[#16423C]/80 text-white px-4 py-2 rounded hover:bg-opacity-80 transition duration-300"
+              className="bg-[#16423C] text-white px-4 py-2 rounded hover:bg-opacity-80 transition duration-300"
             >
               Aplikasi WebGIS
             </button>
@@ -52,7 +52,7 @@ const InformationPage = () => {
       </nav>
 
       {/* Hero Section Carousel */}
-      <div className="relative absolute top-0 w-full h-screen">
+      <div className="relative w-full h-screen">
         <Carousel
           showArrows={true}
           showThumbs={false}
@@ -65,10 +65,14 @@ const InformationPage = () => {
           {/* Slide 1 */}
           <div className="relative w-full h-full">
             <img src={Slide1} alt="Slide 1" className="w-full h-full object-cover" />
-            <div className="absolute top-1/4 left-10 sm:left-16 max-w-lg lg:max-w-3xl text-justify">
-              <h1 className="font-cardo text-[#16423C] text-4xl sm:text-4xl font-bold mb-4 text-justify">SISTEM INFORMASI</h1>
-              <h1 className="font-cardo text-[#16423C] text-4xl sm:text-4xl font-bold mb-7 text-justify">PEMANTAUAN MUTU AIR & UDARA</h1>
-              <p className="font-cardo text-black text-lg sm:text-lg max-w-xl mb-2 text-justify">
+            <div className="absolute top-1/4 left-10 sm:left-16 text-left max-w-lg lg:max-w-2xl">
+              <h1 className="font-cardo text-[#16423C] text-3xl sm:text-4xl font-bold mb-4">
+                SISTEM INFORMASI
+              </h1>
+              <h1 className="font-cardo text-[#16423C] text-3xl sm:text-4xl font-bold mb-7">
+                PEMANTAUAN MUTU AIR & UDARA
+              </h1>
+              <p className="font-cardo text-black text-sm sm:text-lg">
                 Dinas Lingkungan Hidup dan Kehutanan DIY menyediakan akses publik terhadap titik
                 pemantauan kualitas air sungai, udara, dan air laut di Daerah Istimewa Yogyakarta.
               </p>
@@ -88,115 +92,133 @@ const InformationPage = () => {
       </div>
 
       {/* About Section */}
-      <div className="relative w-full min-h-screen bg-white py-12 sm:py-16 flex items-center">
-        <img src={MapDIY} alt="Map Decoration" className="absolute left-28 h-96" />
-        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 flex flex-col lg:flex-row items-start lg:items-center justify-end w-full">
-          <div className="lg:w-1/2 text-left lg:pl-16 lg:pr-8">
-            <h2 className="font-cardo text-[#16423C] text-1xl sm:text-3xl font-bold mb-7">
-              Visualisasi geospasial interaktif—
-            </h2>
-            <p className="font-cardo text-black text-lg sm:text-lg max-w-xl mb-3 text-justify">
-              menggambarkan pemantauan mutu air dan lingkungan secara akurat dalam mendukung perlindungan dan pengelolaan lingkungan hidup.
-            </p>
-            <p className="font-cardo text-black text-lg sm:text-lg max-w-xl text-justify">
-              Aplikasi ini dirancang untuk memudahkan akses data dalam menginformasikan mutu air dan udara di Daerah Istimewa Yogyakarta.
-            </p>
-          </div>
-        </div>
-      </div>
+      <div className="relative w-full min-h-screen bg-white py-12 sm:py-16">
+  <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 flex flex-col lg:flex-row items-center lg:items-start">
+    {/* Gambar Peta */}
+    <div className="relative lg:w-1/2 flex justify-center lg:justify-start">
+      <img
+        src={MapDIY}
+        alt="Map Decoration"
+        className="h-64 sm:h-72 lg:h-96 w-auto max-w-xs sm:max-w-sm lg:max-w-md"
+      />
+    </div>
 
+    {/* Teks About */}
+    <div className="lg:w-1/2 text-left mt-8 lg:mt-0 lg:pl-8 lg:pt-24">
+      <h2 className="font-cardo text-[#16423C] text-2xl sm:text-3xl font-bold mb-4">
+        Visualisasi geospasial interaktif—
+      </h2>
+      <p className="font-cardo text-black text-base sm:text-lg mb-4">
+        menggambarkan pemantauan mutu air dan lingkungan secara akurat dalam mendukung perlindungan
+        dan pengelolaan lingkungan hidup.
+      </p>
+      <p className="font-cardo text-black text-base sm:text-lg">
+        Aplikasi ini dirancang untuk memudahkan akses data dalam menginformasikan mutu air dan udara
+        di Daerah Istimewa Yogyakarta.
+      </p>
+    </div>
+  </div>
+</div>
+      
       {/* Application Section */}
       <div
         id="application-section"
-        className="relative w-full bg-white flex flex-col md:flex-row md:items-start md:justify-between py-16"
+        className="relative w-full bg-white flex flex-col items-center py-16 px-4 sm:px-8"
       >
-        <div className="relative z-10 max-w-7xl px-4 sm:px-6 lg:px-8 text-left mt-8 md:mt-16 w-full md:w-1/2 ml-8">
-          <h2 className="text-3xl md:text-4xl font-bold text-[#16423C] mb-4">
+        {/* Title Section */}
+        <div className="text-center mb-12">
+          <h2 className="text-2xl sm:text-3xl md:text-4xl font-bold text-[#16423C] mb-4">
             Aplikasi WebGIS
           </h2>
-          <p className="text-base md:text-lg text-gray-700">
+          <p className="text-sm sm:text-base md:text-lg text-gray-700 max-w-3xl mx-auto">
             Menyediakan berbagai data titik pemantauan kualitas air sungai, udara, dan air laut yang dapat diakses secara interaktif.
           </p>
         </div>
 
         {/* Card Grid */}
-        <div className="relative z-10 max-w-7xl px-4 sm:px-6 lg:px-8 grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-8 w-full">
+        <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6 w-full max-w-6xl">
           {[
-            { 
-              id: "air-sungai", 
-              bgImage: webgisAirSungai, // Ganti dengan URL gambar untuk tampilan WebGIS
-              icon: AirSungaiIcon, 
-              title: "Peta Pemantauan Kualitas Air Sungai", 
-              link: "/maps/kualitas-air-sungai" 
+            {
+              id: "air-sungai",
+              bgImage: webgisAirSungai, // URL gambar untuk tampilan WebGIS
+              icon: AirSungaiIcon,
+              title: "Peta Pemantauan Kualitas Air Sungai",
+              link: "/maps/kualitas-air-sungai",
             },
-            { 
-              id: "udara", 
-              bgImage: webgisUdara, 
-              icon: UdaraIcon, 
-              title: "Peta Pemantauan Kualitas Udara", 
-              link: "/maps/kualitas-udara" 
+            {
+              id: "udara",
+              bgImage: webgisUdara,
+              icon: UdaraIcon,
+              title: "Peta Pemantauan Kualitas Udara",
+              link: "/maps/kualitas-udara",
             },
-            { 
-              id: "air-laut", 
-              bgImage: webgisAirLaut, 
-              icon: AirLautIcon, 
-              title: "Peta Pemantauan Kualitas Air Laut", 
-              link: "/maps/kualitas-air-laut" 
-            }
+            {
+              id: "air-laut",
+              bgImage: webgisAirLaut,
+              icon: AirLautIcon,
+              title: "Peta Pemantauan Kualitas Air Laut",
+              link: "/maps/kualitas-air-laut",
+            },
           ].map((app, index) => (
             <Link
               key={index}
               to={app.link}
-              className="group flex flex-col w-full bg-white rounded-xl shadow-lg hover:shadow-xl transition-shadow duration-300 overflow-hidden relative"
+              className="group flex flex-col bg-white rounded-lg shadow-md hover:shadow-lg transition-shadow duration-300 overflow-hidden relative"
             >
-              {/* Gambar Background */}
+              {/* Background Gambar */}
               <div
-                className="h-48 w-full bg-cover bg-center"
+                className="h-40 sm:h-48 md:h-56 w-full bg-cover bg-center"
                 style={{ backgroundImage: `url(${app.bgImage})` }}
               />
 
-              {/* Ikon dalam lingkaran */}
-              <div className="absolute top-6 left-6 w-16 h-16 bg-white rounded-full flex items-center justify-center shadow-lg">
-                <img src={app.icon} alt={app.title} className="w-8 h-8" />
+              {/* Ikon Lingkaran */}
+              <div className="absolute top-4 left-4 w-10 sm:w-12 h-10 sm:h-12 bg-white rounded-full flex items-center justify-center shadow-md">
+                <img src={app.icon} alt={app.title} className="w-6 h-6" />
               </div>
 
-              {/* Bagian Bawah: Title dan Button */}
-              <div className="p-6 bg-[#f9f9f9] flex flex-col items-center">
-                <h3 className="text-md font-semibold text-center text-[#16423C] mb-4">
+              {/* Bagian Title */}
+              <div className="p-4 bg-[#f9f9f9]">
+                <h3 className="text-center text-sm sm:text-md font-semibold text-[#16423C]">
                   {app.title}
                 </h3>
-                <button className="border border-[#16423C] text-[#16423C] px-4 py-2 text-sm rounded-full hover:bg-[#16423C] hover:text-white transition duration-300">
-                  Buka
-                </button>
               </div>
             </Link>
           ))}
         </div>
       </div>
 
-
       {/* Footer */}
       <footer className="bg-[#d1e0dd]/55 p-6 mt-8 font-cardo text-black text-sm">
         <div className="container mx-auto text-center">
           <div className="flex justify-center mb-4">
-            <img src={logo} alt="DLHK DIY Logo" className="h-16 mx-auto" />
+            <img src={logo} alt="DLHK DIY Logo" className="h-12 sm:h-16 mx-auto" />
           </div>
-          <p className="text-sm">Jl. Argulobang No. 19, Baciro, Gondokusuman, Yogyakarta 55225</p>
-          <div className="flex justify-center items-center mt-2">
+          <p className="text-sm sm:text-base">Jl. Argulobang No. 19, Baciro, Gondokusuman, Yogyakarta 55225</p>
+          <div className="flex justify-center items-center mt-2 text-sm sm:text-base">
             <FaPhoneAlt className="mr-2" />
             <span>(0274) 588 518</span>
-            <span className="mx-2">|</span>
+            <span className="mx-2 hidden sm:inline">|</span>
             <FaEnvelope className="mr-2" />
             <span>dlhk.jogjaprov.go.id</span>
           </div>
           <div className="flex justify-center mt-4 space-x-4">
-            {[{ icon: FaInstagram, link: "https://www.instagram.com/dlhkdiy/" }, { icon: FaFacebook, link: "https://www.facebook.com/dlhkdiy/" }, { icon: FaYoutube, link: "https://www.youtube.com/@dlhkdiy/videos" }].map((social, index) => (
-              <a key={index} href={social.link} target="_blank" rel="noopener noreferrer" className="text-xl text-[#16423C] hover:text-[#0d6a4e] transition duration-300">
+            {[
+              { icon: FaInstagram, link: "https://www.instagram.com/dlhkdiy/" },
+              { icon: FaFacebook, link: "https://www.facebook.com/dlhkdiy/" },
+              { icon: FaYoutube, link: "https://www.youtube.com/@dlhkdiy/videos" },
+            ].map((social, index) => (
+              <a
+                key={index}
+                href={social.link}
+                target="_blank"
+                rel="noopener noreferrer"
+                className="text-lg sm:text-xl text-[#16423C] hover:text-[#0d6a4e] transition duration-300"
+              >
                 {React.createElement(social.icon)}
               </a>
             ))}
           </div>
-          <p className="mt-4">&copy; 2024 DLHK DIY. All rights reserved.</p>
+          <p className="mt-4 text-xs sm:text-sm">&copy; 2024 DLHK DIY. All rights reserved.</p>
         </div>
       </footer>
     </div>
