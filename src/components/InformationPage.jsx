@@ -1,6 +1,6 @@
 import React from "react";
 import { Link } from "react-router-dom";
-import { FaPhoneAlt, FaEnvelope, FaInstagram, FaFacebook, FaYoutube } from "react-icons/fa";
+import { FaPhoneAlt, FaEnvelope, FaInstagram, FaFacebook, FaYoutube, FaBars } from "react-icons/fa";
 import logo from "../assets/logo.png";
 import MapDIY from "../assets/MapDIY.png";
 import Slide1 from "../assets/Slide1.png";
@@ -28,22 +28,29 @@ const InformationPage = () => {
       {/* Navbar */}
       <nav className="fixed top-0 left-0 w-full bg-white bg-opacity-50 shadow-lg z-50">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-          <div className="flex justify-between items-center h-20">
+          <div className="flex justify-between items-center h-16 md:h-20">
+            {/* Logo dan Informasi */}
             <div className="flex items-center">
-              <img src={logo} alt="DLHK Logo" className="h-12 w-12" />
-              <div className="ml-3">
-                <span className="font-cardo text-black text-sm font-bold leading-tight">
+              <img
+                src={logo}
+                alt="DLHK Logo"
+                className="h-10 w-10 sm:h-12 sm:w-12"
+              />
+              <div className="ml-2 sm:ml-3">
+                <span className="font-cardo text-black text-xs sm:text-sm font-bold leading-tight">
                   DINAS LINGKUNGAN HIDUP DAN KEHUTANAN
                 </span>
                 <br />
-                <span className="font-cardo text-black text-sm">
+                <span className="font-cardo text-black text-xs sm:text-sm">
                   DAERAH ISTIMEWA YOGYAKARTA
                 </span>
               </div>
             </div>
+
+            {/* Tombol */}
             <button
               onClick={() => handleScrollToSection("application-section")}
-              className="bg-[#16423C] text-white px-4 py-2 rounded hover:bg-opacity-80 transition duration-300"
+              className="bg-[#16423C] text-white text-xs sm:text-sm px-3 sm:px-4 py-1 sm:py-2 rounded hover:bg-opacity-80 transition duration-300"
             >
               Aplikasi WebGIS
             </button>
@@ -51,8 +58,8 @@ const InformationPage = () => {
         </div>
       </nav>
 
-      {/* Hero Section Carousel */}
-      <div className="relative w-full h-screen">
+      {/* Hero Section */}
+      <div className="relative w-full h-[60vh] sm:h-screen">
         <Carousel
           showArrows={true}
           showThumbs={false}
@@ -62,30 +69,25 @@ const InformationPage = () => {
           interval={5000}
           className="h-full"
         >
-          {/* Slide 1 */}
           <div className="relative w-full h-full">
             <img src={Slide1} alt="Slide 1" className="w-full h-full object-cover" />
-            <div className="absolute top-1/4 left-10 sm:left-16 text-left max-w-lg lg:max-w-2xl">
-              <h1 className="font-cardo text-[#16423C] text-3xl sm:text-4xl font-bold mb-4">
+            <div className="absolute top-1/4 left-5 sm:left-16 text-left max-w-xs sm:max-w-lg lg:max-w-2xl">
+              <h1 className="font-cardo text-[#16423C] text-lg sm:text-3xl lg:text-4xl font-bold mb-4">
                 SISTEM INFORMASI
               </h1>
-              <h1 className="font-cardo text-[#16423C] text-3xl sm:text-4xl font-bold mb-7">
+              <h1 className="font-cardo text-[#16423C] text-lg sm:text-3xl lg:text-4xl font-bold mb-7">
                 PEMANTAUAN MUTU AIR & UDARA
               </h1>
-              <p className="font-cardo text-black text-sm sm:text-lg">
+              <p className="font-cardo text-black text-sm sm:text-base">
                 Dinas Lingkungan Hidup dan Kehutanan DIY menyediakan akses publik terhadap titik
                 pemantauan kualitas air sungai, udara, dan air laut di Daerah Istimewa Yogyakarta.
               </p>
             </div>
           </div>
-
-          {/* Slide 2 */}
-          <div className="w-full h-full">
+          <div>
             <img src={Slide2} alt="Slide 2" className="w-full h-full object-cover" />
           </div>
-
-          {/* Slide 3 */}
-          <div className="w-full h-full">
+          <div>
             <img src={Slide3} alt="Slide 3" className="w-full h-full object-cover" />
           </div>
         </Carousel>
@@ -93,32 +95,33 @@ const InformationPage = () => {
 
       {/* About Section */}
       <div className="relative w-full min-h-screen bg-white py-12 sm:py-16">
-  <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 flex flex-col lg:flex-row items-center lg:items-start">
-    {/* Gambar Peta */}
-    <div className="relative lg:w-1/2 flex justify-center lg:justify-start">
-      <img
-        src={MapDIY}
-        alt="Map Decoration"
-        className="h-64 sm:h-72 lg:h-96 w-auto max-w-xs sm:max-w-sm lg:max-w-md"
-      />
-    </div>
+        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 flex flex-col-reverse lg:flex-row items-center lg:items-start gap-y-8">
+          {/* Gambar Peta */}
+          <div className="lg:w-1/2 flex justify-center lg:justify-start">
+            <img
+              src={MapDIY}
+              alt="Map Decoration"
+              className="h-56 sm:h-64 lg:h-72 xl:h-96 w-auto max-w-xs sm:max-w-sm lg:max-w-md"
+            />
+          </div>
 
-    {/* Teks About */}
-    <div className="lg:w-1/2 text-left mt-8 lg:mt-0 lg:pl-8 lg:pt-24">
-      <h2 className="font-cardo text-[#16423C] text-2xl sm:text-3xl font-bold mb-4">
-        Visualisasi geospasial interaktif—
-      </h2>
-      <p className="font-cardo text-black text-base sm:text-lg mb-4">
-        menggambarkan pemantauan mutu air dan lingkungan secara akurat dalam mendukung perlindungan
-        dan pengelolaan lingkungan hidup.
-      </p>
-      <p className="font-cardo text-black text-base sm:text-lg">
-        Aplikasi ini dirancang untuk memudahkan akses data dalam menginformasikan mutu air dan udara
-        di Daerah Istimewa Yogyakarta.
-      </p>
-    </div>
-  </div>
-</div>
+          {/* Teks About */}
+          <div className="lg:w-1/2 text-center lg:text-left lg:mt-16 lg:pl-8">
+            <h2 className="font-cardo text-[#16423C] text-lg sm:text-xl lg:text-2xl font-bold mb-4">
+              Visualisasi geospasial interaktif—
+            </h2>
+            <p className="font-cardo text-black text-sm sm:text-base lg:text-lg mb-4 leading-relaxed">
+              menggambarkan pemantauan mutu air dan lingkungan secara akurat dalam mendukung
+              perlindungan dan pengelolaan lingkungan hidup.
+            </p>
+            <p className="font-cardo text-black text-sm sm:text-base lg:text-lg leading-relaxed">
+              Aplikasi ini dirancang untuk memudahkan akses data dalam menginformasikan mutu air
+              dan udara di Daerah Istimewa Yogyakarta.
+            </p>
+          </div>
+        </div>
+      </div>
+
       
       {/* Application Section */}
       <div
@@ -188,39 +191,45 @@ const InformationPage = () => {
       </div>
 
       {/* Footer */}
-      <footer className="bg-[#d1e0dd]/55 p-6 mt-8 font-cardo text-black text-sm">
-        <div className="container mx-auto text-center">
-          <div className="flex justify-center mb-4">
-            <img src={logo} alt="DLHK DIY Logo" className="h-12 sm:h-16 mx-auto" />
-          </div>
-          <p className="text-sm sm:text-base">Jl. Argulobang No. 19, Baciro, Gondokusuman, Yogyakarta 55225</p>
-          <div className="flex justify-center items-center mt-2 text-sm sm:text-base">
+      <footer className="bg-[#d1e0dd]/55 p-4 sm:p-6 mt-8 font-cardo text-black text-xs sm:text-sm">
+      <div className="container mx-auto text-center">
+        <div className="flex justify-center mb-4">
+          <img src={logo} alt="DLHK DIY Logo" className="h-8 sm:h-12 lg:h-16 mx-auto" />
+        </div>
+        <p className="text-xs sm:text-sm lg:text-base">
+          Jl. Argulobang No. 19, Baciro, Gondokusuman, Yogyakarta 55225
+        </p>
+        <div className="flex flex-col sm:flex-row justify-center items-center mt-2 text-xs sm:text-sm">
+          <div className="flex items-center mb-2 sm:mb-0">
             <FaPhoneAlt className="mr-2" />
             <span>(0274) 588 518</span>
-            <span className="mx-2 hidden sm:inline">|</span>
+          </div>
+          <span className="mx-2 hidden sm:inline">|</span>
+          <div className="flex items-center">
             <FaEnvelope className="mr-2" />
             <span>dlhk.jogjaprov.go.id</span>
           </div>
-          <div className="flex justify-center mt-4 space-x-4">
-            {[
-              { icon: FaInstagram, link: "https://www.instagram.com/dlhkdiy/" },
-              { icon: FaFacebook, link: "https://www.facebook.com/dlhkdiy/" },
-              { icon: FaYoutube, link: "https://www.youtube.com/@dlhkdiy/videos" },
-            ].map((social, index) => (
-              <a
-                key={index}
-                href={social.link}
-                target="_blank"
-                rel="noopener noreferrer"
-                className="text-lg sm:text-xl text-[#16423C] hover:text-[#0d6a4e] transition duration-300"
-              >
-                {React.createElement(social.icon)}
-              </a>
-            ))}
-          </div>
-          <p className="mt-4 text-xs sm:text-sm">&copy; 2024 DLHK DIY. All rights reserved.</p>
         </div>
-      </footer>
+        <div className="flex justify-center mt-4 space-x-4">
+          {[
+            { icon: FaInstagram, link: "https://www.instagram.com/dlhkdiy/" },
+            { icon: FaFacebook, link: "https://www.facebook.com/dlhkdiy/" },
+            { icon: FaYoutube, link: "https://www.youtube.com/@dlhkdiy/videos" },
+          ].map((social, index) => (
+            <a
+              key={index}
+              href={social.link}
+              target="_blank"
+              rel="noopener noreferrer"
+              className="text-lg sm:text-xl lg:text-2xl text-[#16423C] hover:text-[#0d6a4e] transition duration-300"
+            >
+              {React.createElement(social.icon)}
+            </a>
+          ))}
+        </div>
+        <p className="mt-4 text-xs sm:text-sm">&copy; 2024 DLHK DIY. All rights reserved.</p>
+      </div>
+    </footer>
     </div>
   );
 };
