@@ -1,6 +1,6 @@
 import React from "react";
 import { Link } from "react-router-dom";
-import { FaPhoneAlt, FaEnvelope, FaInstagram, FaFacebook, FaYoutube, FaBars } from "react-icons/fa";
+import { FaPhoneAlt, FaEnvelope, FaInstagram, FaFacebook, FaYoutube } from "react-icons/fa";
 import logo from "../assets/logo.png";
 import MapDIY from "../assets/MapDIY.png";
 import Slide1 from "../assets/Slide1.png";
@@ -71,16 +71,17 @@ const InformationPage = () => {
         >
           <div className="relative w-full h-full">
             <img src={Slide1} alt="Slide 1" className="w-full h-full object-cover" />
-            <div className="absolute top-1/4 left-5 sm:left-16 text-left max-w-xs sm:max-w-lg lg:max-w-2xl">
-              <h1 className="font-cardo text-[#16423C] text-lg sm:text-3xl lg:text-4xl font-bold mb-4">
+            <div className="absolute top-1/4 left-5 sm:left-10 lg:left-16 text-left max-w-xs sm:max-w-md lg:max-w-2xl p-4">
+              <h1 className="font-cardo text-[#16423C] text-base sm:text-2xl lg:text-4xl font-bold mb-1 sm:mb-3 lg:mb-4 leading-snug sm:leading-normal lg:leading-relaxed">
                 SISTEM INFORMASI
               </h1>
-              <h1 className="font-cardo text-[#16423C] text-lg sm:text-3xl lg:text-4xl font-bold mb-7">
+              <h1 className="font-cardo text-[#16423C] text-base sm:text-2xl lg:text-4xl font-bold mb-2 sm:mb-4 lg:mb-6 leading-snug sm:leading-normal lg:leading-relaxed">
                 PEMANTAUAN MUTU AIR & UDARA
               </h1>
-              <p className="font-cardo text-black text-sm sm:text-base">
-                Dinas Lingkungan Hidup dan Kehutanan DIY menyediakan akses publik terhadap titik
-                pemantauan kualitas air sungai, udara, dan air laut di Daerah Istimewa Yogyakarta.
+              <p className="font-cardo text-black text-sm sm:text-base lg:text-lg leading-snug sm:leading-normal lg:leading-relaxed">
+                Dinas Lingkungan Hidup dan Kehutanan DIY menyediakan akses publik
+                terhadap titik pemantauan kualitas air sungai, udara, dan air laut di
+                Daerah Istimewa Yogyakarta.
               </p>
             </div>
           </div>
@@ -94,7 +95,7 @@ const InformationPage = () => {
       </div>
 
       {/* About Section */}
-      <div className="relative w-full min-h-screen bg-white py-12 sm:py-16">
+      <div className="relative w-full min-h-screen bg-white py-12 sm:py-16relative w-full bg-white flex flex-col items-center py-16 px-4 sm:px-8">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 flex flex-col-reverse lg:flex-row items-center lg:items-start gap-y-8">
           {/* Gambar Peta */}
           <div className="lg:w-1/2 flex justify-center lg:justify-start">
