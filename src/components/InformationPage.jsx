@@ -25,41 +25,36 @@ const InformationPage = () => {
 
   return (
     <div>
-      {/* Navbar */}
-      <nav className="fixed top-0 left-0 w-full bg-white bg-opacity-50 shadow-lg z-50">
-        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-          <div className="flex justify-between items-center h-16 md:h-20">
-            {/* Logo dan Informasi */}
-            <div className="flex items-center">
-              <img
-                src={logo}
-                alt="DLHK Logo"
-                className="h-10 w-10 sm:h-12 sm:w-12"
-              />
-              <div className="ml-2 sm:ml-3">
-                <span className="font-cardo text-black text-xs sm:text-sm font-bold leading-tight">
-                  DINAS LINGKUNGAN HIDUP DAN KEHUTANAN
-                </span>
-                <br />
-                <span className="font-cardo text-black text-xs sm:text-sm">
-                  DAERAH ISTIMEWA YOGYAKARTA
-                </span>
-              </div>
-            </div>
+   <nav className="fixed top-0 left-0 w-full bg-white bg-opacity-90 shadow-lg z-50">
+  <div className="flex items-center justify-between h-15 px-4">
+    {/* Logo dan Informasi */}
+    <div className="flex items-center">
+      <img
+        src={logo}
+        alt="DLHK Logo"
+        className="h-8 w-8 sm:h-10 sm:w-10 lg:h-12 lg:w-12"
+      />
+      <div className="ml-2">
+        <span className="font-cardo text-black text-[10px] sm:text-xs lg:text-sm font-bold leading-tight">
+          DINAS LINGKUNGAN HIDUP DAN KEHUTANAN
+        </span>
+        <br />
+        <span className="font-cardo text-black text-[10px] sm:text-xs lg:text-sm">
+          DAERAH ISTIMEWA YOGYAKARTA
+        </span>
+      </div>
+    </div>
+  </div>
+</nav>
 
-            {/* Tombol */}
-            <button
-              onClick={() => handleScrollToSection("application-section")}
-              className="bg-[#16423C] text-white text-xs sm:text-sm px-3 sm:px-4 py-1 sm:py-2 rounded hover:bg-opacity-80 transition duration-300"
-            >
-              Aplikasi WebGIS
-            </button>
-          </div>
-        </div>
-      </nav>
+
 
       {/* Hero Section */}
-      <div className="relative w-full h-[60vh] sm:h-screen">
+      <div
+        className={`relative w-full ${
+          window.innerWidth < 640 ? "mt-14" : "h-[60vh]"
+        } sm:h-screen`}
+      >
         <Carousel
           showArrows={true}
           showThumbs={false}
@@ -78,7 +73,7 @@ const InformationPage = () => {
               <h1 className="font-cardo text-[#16423C] text-base sm:text-2xl lg:text-4xl font-bold mb-2 sm:mb-4 lg:mb-6 leading-snug sm:leading-normal lg:leading-relaxed">
                 PEMANTAUAN MUTU AIR & UDARA
               </h1>
-              <p className="font-cardo text-black text-sm sm:text-base lg:text-lg leading-snug sm:leading-normal lg:leading-relaxed">
+              <p className="font-cardo text-gray-700 text-sm sm:text-base lg:text-lg md:text-lg leading-snug sm:leading-normal lg:leading-relaxed">
                 Dinas Lingkungan Hidup dan Kehutanan DIY menyediakan akses publik
                 terhadap titik pemantauan kualitas air sungai, udara, dan air laut di
                 Daerah Istimewa Yogyakarta.
@@ -93,6 +88,7 @@ const InformationPage = () => {
           </div>
         </Carousel>
       </div>
+
 
       {/* About Section */}
       <div className="relative w-full min-h-screen bg-white py-12 sm:py-16relative w-full bg-white flex flex-col items-center py-16 px-4 sm:px-8">
@@ -111,11 +107,11 @@ const InformationPage = () => {
             <h2 className="font-cardo text-[#16423C] text-lg sm:text-xl lg:text-2xl font-bold mb-4">
               Visualisasi geospasial interaktif—
             </h2>
-            <p className="font-cardo text-black text-sm sm:text-base lg:text-lg mb-4 leading-relaxed">
+            <p className="font-cardo text-gray-700 text-sm sm:text-base lg:text-lg md:text-lg mb-4 leading-relaxed">
               menggambarkan pemantauan mutu air dan lingkungan secara akurat dalam mendukung
               perlindungan dan pengelolaan lingkungan hidup.
             </p>
-            <p className="font-cardo text-black text-sm sm:text-base lg:text-lg leading-relaxed">
+            <p className="font-cardo text-gray-700 text-sm sm:text-base lg:text-lg md:text-lg leading-relaxed">
               Aplikasi ini dirancang untuk memudahkan akses data dalam menginformasikan mutu air
               dan udara di Daerah Istimewa Yogyakarta.
             </p>
@@ -231,6 +227,8 @@ const InformationPage = () => {
         <p className="mt-4 text-xs sm:text-sm">&copy; 2024 DLHK DIY. All rights reserved.</p>
       </div>
     </footer>
+
+
     </div>
   );
 };
