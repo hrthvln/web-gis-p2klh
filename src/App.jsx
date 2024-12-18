@@ -9,6 +9,9 @@ import RiverWaterQualityMap from './components/RiverWaterQualityMap';
 import AirQualityMap from './components/AirQualityMap';
 import SeaWaterQualityMap from './components/SeaWaterQualityMap';
 import InformationPage from './components/InformationPage';
+import RiverWater from './components/RiverWater';
+import SeaWater from './components/SeaWater';
+import Air from './components/Air';
 
 function App() {
   return (
@@ -46,6 +49,19 @@ function App() {
           <Route 
               path="/InformationPage" 
               element={<InformationPage />} 
+            />
+          {/* Mencoba */}
+            <Route 
+              path="/RiverWater" 
+              element={<RiverWater />} 
+            />
+            <Route 
+              path="/SeaWater" 
+              element={<SeaWater />} 
+            />
+            <Route 
+              path="/Air" 
+              element={<Air />} 
             />
           </Routes>
       </div>

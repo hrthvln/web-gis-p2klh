@@ -1,0 +1,409 @@
+/* File: SeaWater.css */
+
+/* Gaya untuk kontrol lokasi */
+.leaflet-control-locate {
+    margin-bottom: 7px;
+    transform: scale(0.8);
+  }
+  
+  /* Gaya untuk kontrol zoom */
+  .leaflet-control-zoom {
+    margin-bottom: 4px;
+    transform: scale(0.8);
+  }
+  
+  /* Gaya untuk kontrol koordinat */
+  .leaflet-control-coordinates {
+    background: rgba(255, 255, 255, 0.7);
+    padding: 2px;
+    font-size: 11px;
+    font-family: Arial, sans-serif;
+    line-height: 1.5;
+  }
+  
+  /* Gaya popup */
+  .popup-container {
+    font-size: 10px;
+    width: 250px;
+    padding: 10px;
+    position: relative;
+    font-family: Arial, sans-serif;
+    line-height: 1.5;
+  }
+  
+  .popup-container h3 {
+    font-size: 11px;
+    font-weight: bold;
+    margin-bottom: 10px;
+    text-align: center;
+  }
+  
+  .popup-container img {
+    width: 100%;
+    height: auto;
+    object-fit: cover;
+    max-height: 100%;
+  }
+  
+  .popup-container table {
+    font-size: 10px;
+    width: 100%;
+    border-collapse: collapse;
+    text-align: left;
+  }
+  
+  .popup-container td {
+    padding: 4px;
+    vertical-align: top;
+  }
+  
+  .popup-container td:first-child {
+    font-weight: bold;
+  }
+
+/* Navbar */
+.navbar {
+  background-color: #0096c7;
+  padding: 5px 15px; /* Menambahkan padding horizontal */
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+
+/* Logo dan Judul */
+.navbar-logo {
+  display: flex;
+  align-items: center;
+}
+
+.logo {
+  height: 35px;
+  margin-right: 10px;
+}
+
+.navbar-title {
+  margin: 0;
+  color: white;
+  font-size: 0.9rem;
+}
+
+/* Dropdown dan Tombol */
+.navbar-items {
+  display: flex;
+  align-items: center;
+  flex-wrap: nowrap; /* Mencegah elemen terbungkus */
+}
+
+.dropdown-container {
+  display: flex;
+  align-items: center;
+  margin-right: 10px; /* Spasi antara dropdown dan tombol */
+}
+
+.dropdown-wrapper {
+  position: relative;
+  display: flex;
+  align-items: center;
+}
+
+.dropdown-label {
+  color: white;
+  font-size: 0.6rem;
+  margin-right: 5px; /* Spasi antara label dan select */
+}
+
+.dropdown-select {
+  width: 200px; /* Ukuran dropdown */
+  padding: 0.1rem 0.5rem;
+  font-size: 0.6rem;
+  color: white;
+  border: 1px solid #ced4da;
+  border-radius: 5px;
+  background-color: transparent;
+  appearance: none;
+  appearance: none;
+  outline: none;
+  transition: border-color 0.2s ease-in-out;
+}
+
+.dropdown-select:focus {
+  border-color: #fff;
+}
+
+.option {
+  color: black;
+  background-color: white;
+  font-size: 0.7rem; /* Ukuran font opsi */
+  padding: 0.2rem; /* Ruang dalam opsi */
+  line-height: 1.2; /* Tinggi baris opsi */
+}
+
+.dropdown-icon {
+  position: absolute;
+  right: 10px;
+  pointer-events: none;
+  color: #ffffff;
+  font-size: 0.6rem;
+}
+
+.export-data-button {
+  font-size: 0.9rem;
+  color: white;
+  cursor: pointer;
+  margin-left: 10px;
+}
+
+.export-data-button:hover {
+  background-color: white;
+  color: #0096c7;
+}
+
+/* Ikon */
+.icon-container {
+  display: flex;
+  align-items: center;
+}
+
+.icon {
+  font-size: 1rem;
+  color: white;
+  cursor: pointer;
+  margin-left: 15px; /* Spasi antar ikon */
+}
+
+
+  /* Pop-up Container Styles */
+  .popup-container {
+      position: absolute;
+      top: 50px;
+      right: 7px;
+      background-color: white;
+      padding: 10px;
+      border-radius: 8px;
+      box-shadow: 0 0 15px rgba(0,0,0,0.3);
+      z-index: 1000;
+      min-width: 210px;
+      max-height: 350px;
+      overflow-y: auto;
+      scrollbar-width: thin;
+      scrollbar-color: #888 #f1f1f1;
+    }
+    
+    .popup-layer-list {
+      width: auto;
+    }
+    
+    .popup-year-filter {
+      width: auto;
+    }
+    
+    .popup-legend {
+      width: auto;
+    }
+    
+    /* Popup Header */
+    .popup-header {
+      margin: 0 0 10px 0;
+      font-size: 8px; 
+      font-weight: bold;
+      border-bottom: 1px solid #ccc;
+      padding-bottom: 8px;
+      margin-bottom: 8px;
+    }
+  
+    /* Popup Content Styles */
+    .popup-content {
+      margin-bottom: 10px;
+      font-size: 10px;
+      font-weight: normal;
+    }
+    
+    .popup-checkbox-label,
+    .popup-radio-label {
+      font-size: 10px;
+      display: flex;
+      align-items: inline-block;
+      margin-bottom: 0px;
+      vertical-align: middle;
+    }
+    
+    .popup-checkbox-input,
+    .popup-radio-input {
+      margin-right: 5px;
+      vertical-align: middle;
+    }
+    
+    /* Legend Styles */
+    .legend-item {
+      display: flex;
+      align-items: center;
+      margin-bottom: 5px;
+    }
+    
+    .legend-circle {
+      display: inline-block;
+      width: 10px;
+      height: 10px;
+      border-radius: 50%;
+      margin-right: 10px;
+    }
+    
+    .legend-circle-oneSea {
+      background-color: #0000ff; /* Sesuaikan warna */
+    }
+    
+    .legend-circle-twoSea {
+      background-color: #ff6347; /* Sesuaikan warna */
+    }
+
+    .legend-circle-february {
+      background-color: #ff7800; /* Sesuaikan warna */
+    }
+
+    .legend-circle-june {
+      background-color: #00ff00; /* Sesuaikan warna */
+    }
+
+    .legend-circle-october {
+      background-color: #0000ff; /* Sesuaikan warna */
+    }
+
+    .legend-circle-udara {
+      background-color: #0000ff; /* Sesuaikan warna */
+    }
+    
+    .legend-square {
+      display: inline-block;
+      width: 10px;
+      height: 10px;
+      margin-right: 10px;
+    }  
+    
+    /* Map */
+    .map {
+      height: 586px;
+    }
+    
+
+
+
+    /* Responsiveness */
+    @media (max-width: 768px) {
+      .navbar {
+        flex-direction: column;
+        align-items: flex-start;
+      }
+    
+      .navbar-title {
+        font-size: 1rem;
+      }
+    
+      .export-data-container {
+        flex-direction: column; /* Stack items vertically */
+        align-items: flex-start; /* Align items to the start */
+      }
+
+      .dropdown-select {
+        width: 100px; /* Lebar lebih kecil */
+        font-size: 0.5rem; /* Font lebih kecil */
+        padding: 0.3rem; /* Padding lebih kecil */
+      }
+
+      .dropdown-label {
+        font-size: 0.5rem;
+      }
+
+      .option {
+        font-size: 0.2rem; /* Font lebih kecil */
+        padding: 0.1rem; /* Padding minimal */
+        line-height: 1; /* Tinggi baris kecil */
+      }
+
+      .export-data-button {
+        width: 100%;
+        margin-left: 7px;
+        margin-top: 0;
+      }
+    
+      .export-data-label {
+        font-size: 10px; /* Slightly larger font size for better readability */
+        margin-right: 2;
+      }
+
+      .map {
+        height: 100vh; /* Tinggi layar penuh */
+        width: 100%; /* Lebar penuh */
+      }
+
+
+    }
+    
+
+    @media (max-width: 768px) {
+      .popup-container {
+        top: 85px;
+      }
+    }
+
+    @media (max-width: 540px) {
+      .popup-container {
+        top: 85px;
+      }
+    }
+
+
+    @media (max-width: 480px) {
+      .map {
+        height: 100vh; /* Tinggi layar penuh */
+        width: 100%; /* Lebar penuh */
+      }
+
+      .navbar-title {
+        font-size: 0.9rem;
+      }
+
+      .dropdown-select {
+        width: 120px; /* Lebar lebih kecil lagi */
+        font-size: 0.4rem; /* Font kecil */
+        padding: 0.2rem; /* Padding minimal */
+      }
+
+      .select-button,
+      .option-item,
+      .export-data-button {
+        font-size: 0.7rem;
+        padding: 2px 4px;
+      }
+    
+      .select-button {
+        max-width: 120px;
+      }
+
+      .select {
+        font-size: 0.6rem; /* Ukuran lebih kecil */
+        padding: 0.3rem; /* Padding minimal */
+      }
+
+      .option {
+        font-size: 0.4rem; /* Font lebih kecil lagi */
+        padding: 0.1rem; /* Padding lebih kecil */
+        line-height: 1; /* Pastikan tinggi baris kecil */
+      }
+
+      .popup-container {
+        top: 85px;
+      }
+
+      @media (max-width: 340px) {
+        .navbar-title {
+          font-size: 0.8rem;
+        }
+
+
+        .popup-container {
+          top: 90px;
+        }
+      }  
+
+      
+    }
