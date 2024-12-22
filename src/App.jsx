@@ -1,14 +1,9 @@
 // src/App.jsx
 import React from 'react';
 import { BrowserRouter as Router, Routes, Route } from 'react-router-dom';
-import Navbar from './components/Navbar';
-import HeroSection from './components/HeroSection';
-import ApplicationSection from './components/ApplicationSection';
-import Footer from './components/Footer';
 import RiverWaterQualityMap from './components/RiverWaterQualityMap';
 import AirQualityMap from './components/AirQualityMap';
 import SeaWaterQualityMap from './components/SeaWaterQualityMap';
-import InformationPage from './components/InformationPage';
 import RiverWater from './components/RiverWater';
 import SeaWater from './components/SeaWater';
 import Air from './components/Air';
@@ -22,14 +17,7 @@ function App() {
           {/* Home Route with Hero, About, and Application sections */}
           <Route 
             path="/" 
-            element={
-              <>
-                <Navbar />
-                <HeroSection />
-                <ApplicationSection />
-                <Footer />
-              </>
-            } 
+            element={<MainPage />} 
           />
           {/* River Water Quality Map Route */}
           <Route 
@@ -46,11 +34,6 @@ function App() {
             path="/maps/kualitas-air-laut" 
             element={<SeaWater />} 
           />
-          {/* Information Page */}
-          <Route 
-              path="/InformationPage" 
-              element={<InformationPage />} 
-            />
           {/* Mencoba */}
             <Route 
               path="/RiverWaterQualityMap" 
@@ -63,10 +46,6 @@ function App() {
             <Route 
               path="/AirQualityMap" 
               element={<AirQualityMap />} 
-            />
-            <Route 
-              path="/MainPage" 
-              element={<MainPage />} 
             />
           </Routes>
       </div>
