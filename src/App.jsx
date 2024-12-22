@@ -12,6 +12,7 @@ import InformationPage from './components/InformationPage';
 import RiverWater from './components/RiverWater';
 import SeaWater from './components/SeaWater';
 import Air from './components/Air';
+import MainPage from './components/MainPage';
 
 function App() {
   return (
@@ -33,17 +34,17 @@ function App() {
           {/* River Water Quality Map Route */}
           <Route 
             path="/maps/kualitas-air-sungai" 
-            element={<RiverWaterQualityMap />} 
+            element={<RiverWater />} 
           />
           {/* Air Quality Map Route */}
           <Route 
             path="/maps/kualitas-udara" 
-            element={<AirQualityMap />} 
+            element={<Air />} 
           />
           {/* Sea Water Quality Map Route */}
           <Route 
             path="/maps/kualitas-air-laut" 
-            element={<SeaWaterQualityMap />} 
+            element={<SeaWater />} 
           />
           {/* Information Page */}
           <Route 
@@ -52,16 +53,20 @@ function App() {
             />
           {/* Mencoba */}
             <Route 
-              path="/RiverWater" 
-              element={<RiverWater />} 
+              path="/RiverWaterQualityMap" 
+              element={<RiverWaterQualityMap />} 
             />
             <Route 
-              path="/SeaWater" 
-              element={<SeaWater />} 
+              path="/SeaWaterQualityMap" 
+              element={<SeaWaterQualityMap />} 
             />
             <Route 
-              path="/Air" 
-              element={<Air />} 
+              path="/AirQualityMap" 
+              element={<AirQualityMap />} 
+            />
+            <Route 
+              path="/MainPage" 
+              element={<MainPage />} 
             />
           </Routes>
       </div>

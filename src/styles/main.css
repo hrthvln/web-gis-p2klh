@@ -1,0 +1,74 @@
+@keyframes slider {
+  0% {
+    transform: translateX(0%);
+  }
+  20% {
+    transform: translateX(0%);
+  }
+  25% {
+    transform: translateX(-100%);
+  }
+  45% {
+    transform: translateX(-100%);
+  }
+  50% {
+    transform: translateX(-200%);
+  }
+  70% {
+    transform: translateX(-200%);
+  }
+  75% {
+    transform: translateX(-300%);
+  }
+  95% {
+    transform: translateX(-300%);
+  }
+  100% {
+    transform: translateX(0%);
+  }
+}
+
+.animate-slider {
+  display: flex;
+  animation: slider 40s linear infinite;
+}
+
+/* Untuk memastikan Navbar fixed */
+.navbar {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  z-index: 50;
+}
+
+/* Untuk memastikan Hero Section konsisten */
+.hero-section img {
+  max-width: 100%;
+  height: auto;
+  object-fit: contain;
+}
+
+
+.custom-height {
+  height: 8rem !important;
+}
+
+@media (min-width: 640px) and (max-width: 755px) {
+  .custom-height {
+    height: 9rem !important;
+  }
+}
+
+@media (min-width: 756px) and (max-width: 1023px) {
+  .custom-height {
+    height: 10.5rem !important;
+  }
+}
+
+@media (min-width: 1024px) {
+  .custom-height {
+    height: 14rem !important;
+  }
+}
+
