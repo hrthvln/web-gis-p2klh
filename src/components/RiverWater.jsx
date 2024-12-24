@@ -706,26 +706,23 @@ const RiverWater = () => {
           )}
       </nav>
 
+      {/* Map */}
+      <div id="map" className="map"></div>
+
       {/* Komponen Header */}
-      <div className="header"></div>
+      <div className="header-river-water"></div>
 
       {/* Komponen Informasi */}
       <div className="information-river-water"></div>
-
-
-    {/* React Joyride */}
-    <Joyride
+      
+      {/* React Joyride */}
+      <Joyride
         steps={TourSteps}
         run={run}
         continuous
         showSkipButton
-        scrollToFirstStep
+        styles
       />
-
-    {/* Map */}
-    <div id="map" className="map"></div>
-      
-    
 
     </div>
   );

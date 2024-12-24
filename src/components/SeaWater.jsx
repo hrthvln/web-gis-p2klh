@@ -510,7 +510,7 @@ const SeaWaterQualityMap = () => {
     <div id="map" className="map"></div>
 
     {/* Komponen Header */}
-    <div className="header"></div>
+    <div className="header-sea-water"></div>
 
     {/* Komponen Informasi */}
     <div className="information-sea-water"></div>

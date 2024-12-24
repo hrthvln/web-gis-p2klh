@@ -322,7 +322,7 @@
       background-color: #ff6347; /* Warna latar belakang tooltip */
       color: #fff; /* Warna teks tooltip */
       border-radius: 5px; /* Border radius tooltip */
-      font-size: 14px;
+      font-size: 8px;
       padding: 10px;
       text-align: left;
     }

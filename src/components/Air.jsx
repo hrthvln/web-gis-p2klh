@@ -542,7 +542,7 @@ const handlePopupToggle = (popupName) => {
       <div id="map" className="map"></div>
 
       {/* Komponen Header */}
-      <div className="header"></div>
+      <div className="header-air"></div>
 
       {/* Komponen Informasi */}
       <div className="information-air"></div>
