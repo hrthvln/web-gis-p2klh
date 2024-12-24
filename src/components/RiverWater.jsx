@@ -3,9 +3,11 @@ import L from 'leaflet';
 import 'leaflet/dist/leaflet.css';
 import 'leaflet.locatecontrol/dist/L.Control.Locate.min.css';
 import 'leaflet.locatecontrol/dist/L.Control.Locate.min.js';
+import Joyride from 'react-joyride';
 import { FaLayerGroup, FaInfoCircle, FaCalendarAlt, FaDownload } from 'react-icons/fa'; // Import icon dari react-icons
 import logo from '../assets/logo.png'; // Sesuaikan jalur logo
-import '../styles/SeaWater.css';
+import '../styles/webgis.css';
+import TourSteps from '../components/TourSteps';
 
 const RiverWater = () => {
   const [map, setMap] = useState(null);
@@ -29,6 +31,7 @@ const RiverWater = () => {
   const [activePopup, setActivePopup] = useState(null);
   const [selectedFile, setSelectedFile] = useState('');
   const [dropdownOpen, setDropdownOpen] = useState(false);
+  const [run, setRun] = useState(false);
 
 
   // Warna yang ditetapkan untuk setiap kabupaten
@@ -62,6 +65,7 @@ const RiverWater = () => {
     oktober: "#0000ff", // Biru untuk Oktober
   };
 
+
   // Fungsi untuk memuat data GeoJSON
   const loadGeoJsonData = async (url) => {
     try {
@@ -73,6 +77,11 @@ const RiverWater = () => {
       return null;
     }
   };
+
+  useEffect(() => {
+    // Mengatur Joyride untuk berjalan saat halaman dimuat
+    setRun(true);
+  }, []);
   
   useEffect(() => {
     // Inisialisasi peta
@@ -109,10 +118,15 @@ const RiverWater = () => {
       // Gaya untuk kontrol lokasi
       locateControl.style.marginBottom = '7px';
       locateControl.style.transform = 'scale(0.8)';
+      locateControl.style.left = 'auto'; // Menghapus posisi kiri default
+      locateControl.style.right = '13px'; // Menambahkan margin ke kanan
   
       // Gaya untuk kontrol zoom
       zoomControl.style.marginBottom = '4px'; // Beri jarak antara kontrol zoom dan lokasi
       zoomControl.style.transform = 'scale(0.8)';
+      zoomControl.style.left = 'auto'; // Menghapus posisi kiri default
+      zoomControl.style.right = '13px'; // Menambahkan margin ke kanan
+    
     }, 0);
   
     // Kontrol khusus untuk menampilkan koordinat di pojok kiri bawah
@@ -525,15 +539,15 @@ const RiverWater = () => {
             {/* Icons */}
             <div className="icon-container">
               <FaLayerGroup
-                className="icon"
+                className="layer-icon"
                 onClick={() => handlePopupToggle('isLayerListOpen')}
               />
               <FaCalendarAlt
-                className="icon"
+                className="year-icon"
                 onClick={() => handlePopupToggle('isYearFilterOpen')}
               />
               <FaInfoCircle
-                className="icon"
+                className="legend-icon"
                 onClick={() => handlePopupToggle('isLegendOpen')}
               />
             </div>
@@ -691,10 +705,28 @@ const RiverWater = () => {
             </div>
           )}
       </nav>
-    
+
+      {/* Komponen Header */}
+      <div className="header"></div>
+
+      {/* Komponen Informasi */}
+      <div className="information-river-water"></div>
+
+
+    {/* React Joyride */}
+    <Joyride
+        steps={TourSteps}
+        run={run}
+        continuous
+        showSkipButton
+        scrollToFirstStep
+      />
+
     {/* Map */}
     <div id="map" className="map"></div>
       
+    
+
     </div>
   );
 };

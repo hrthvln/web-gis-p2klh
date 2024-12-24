@@ -3,9 +3,11 @@ import L from 'leaflet';
 import 'leaflet/dist/leaflet.css';
 import 'leaflet.locatecontrol/dist/L.Control.Locate.min.css';
 import 'leaflet.locatecontrol/dist/L.Control.Locate.min.js';
+import Joyride from 'react-joyride';
 import { FaLayerGroup, FaInfoCircle, FaCalendarAlt, FaDownload } from 'react-icons/fa'; // Import icon dari react-icons
 import logo from '../assets/logo.png'; // Sesuaikan jalur logo
 import '../styles/webgis.css';
+import TourSteps from '../components/TourSteps';
 
 const AirQualityMap = () => {
   const [map, setMap] = useState(null);
@@ -28,6 +30,9 @@ const AirQualityMap = () => {
   const [udaraLayer, setUdaraLayer] = useState(null); 
   const [showUdaraLayer, setShowUdaraLayer] = useState(true); // Visibility dari layer udara
   const [showIkuLayer, setShowIkuLayer] = useState(true);
+
+  // State untuk layer tour steps
+  const [run, setRun] = useState(true);
 
   // Warna yang ditetapkan untuk setiap kabupaten
   const kabupatenColors = {
@@ -91,10 +96,15 @@ const AirQualityMap = () => {
       // Gaya untuk kontrol lokasi
       locateControl.style.marginBottom = '7px';
       locateControl.style.transform = 'scale(0.8)';
+      locateControl.style.left = 'auto'; // Menghapus posisi kiri default
+      locateControl.style.right = '13px'; // Menambahkan margin ke kanan
+
   
       // Gaya untuk kontrol zoom
       zoomControl.style.marginBottom = '4px'; // Beri jarak antara kontrol zoom dan lokasi
       zoomControl.style.transform = 'scale(0.8)';
+      zoomControl.style.left = 'auto'; // Menghapus posisi kiri default
+      zoomControl.style.right = '13px'; // Menambahkan margin ke kanan
     }, 0);
   
     // Kontrol khusus untuk menampilkan koordinat di pojok kiri bawah
@@ -414,15 +424,15 @@ const handlePopupToggle = (popupName) => {
               {/* Icons */}
               <div className="icon-container">
                 <FaLayerGroup
-                  className="icon"
+                  className="layer-icon"
                   onClick={() => handlePopupToggle('isLayerListOpen')}
                 />
                 <FaCalendarAlt
-                  className="icon"
+                  className="year-icon"
                   onClick={() => handlePopupToggle('isYearFilterOpen')}
                 />
                 <FaInfoCircle
-                  className="icon"
+                  className="legend-icon"
                   onClick={() => handlePopupToggle('isLegendOpen')}
                 />
               </div>
@@ -530,7 +540,22 @@ const handlePopupToggle = (popupName) => {
       
       {/* Map */}
       <div id="map" className="map"></div>
-        
+
+      {/* Komponen Header */}
+      <div className="header"></div>
+
+      {/* Komponen Informasi */}
+      <div className="information-air"></div>
+      
+      {/* React Joyride */}
+      <Joyride
+        steps={TourSteps}
+        run={run}
+        continuous
+        showSkipButton
+        styles
+      />
+
       </div>
     );
   };

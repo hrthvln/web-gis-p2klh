@@ -3,16 +3,20 @@
 .leaflet-control-locate {
     margin-bottom: 7px;
     transform: scale(0.8);
+    left: auto;
+    right: 13px;
   }
   
   /* Gaya untuk kontrol zoom */
   .leaflet-control-zoom {
     margin-bottom: 4px;
     transform: scale(0.8);
+    left: auto;
+    right: 13px;
   }
   
   /* Gaya untuk kontrol koordinat */
-  .leaflet-control-coordinates {
+  .leaflet-control-latlng {
     background: rgba(255, 255, 255, 0.7);
     padding: 2px;
     font-size: 11px;
@@ -161,18 +165,20 @@
   color: #0096c7;
 }
 
-/* Ikon */
-.icon-container {
-  display: flex;
-  align-items: center;
-}
+  /* Ikon */
+  .icon-container {
+    display: flex;
+    align-items: center;
+  }
 
-.icon {
-  font-size: 1rem;
-  color: white;
-  cursor: pointer;
-  margin-left: 15px; /* Spasi antar ikon */
-}
+  .layer-icon,
+  .year-icon,
+  .legend-icon {
+    font-size: 1rem;
+    color: white;
+    cursor: pointer;
+    margin-left: 15px; /* Spasi antar ikon */
+  }
 
 
   /* Pop-up Container Styles */
@@ -281,6 +287,69 @@
       height: 10px;
       margin-right: 10px;
     }  
+
+    .alert-popup {
+      position: fixed;
+      top: 50%;
+      left: 50%;
+      transform: translate(-50%, -50%);
+      background-color: white;
+      border: 1px solid #ccc;
+      border-radius: 8px;
+      box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+      z-index: 1002; /* Pastikan popup di atas elemen lain */
+      padding: 20px;
+      text-align: center;
+    }
+    
+    .alert-content {
+      margin: 0;
+    }
+    
+    .alert-content button {
+      margin-top: 10px;
+      padding: 5px 10px;
+      background-color: #0096c7;
+      color: white;
+      border: none;
+      border-radius: 5px;
+      cursor: pointer;
+    }
+
+
+    /* Gaya untuk tooltip Joyride */
+    .joyride-tooltip {
+      background-color: #ff6347; /* Warna latar belakang tooltip */
+      color: #fff; /* Warna teks tooltip */
+      border-radius: 5px; /* Border radius tooltip */
+      font-size: 14px;
+      padding: 10px;
+      text-align: left;
+    }
+
+    /* Gaya untuk panah tooltip Joyride */
+    .joyride-tooltip-arrow {
+      background-color: #ff6347; /* Warna panah */
+    }
+
+    /* Gaya untuk beacon Joyride */
+    .joyride-beacon {
+      width: 30px; /* Ukuran beacon */
+      height: 30px; /* Ukuran beacon */
+      background-color: #ff6347; /* Warna beacon */
+      border-radius: 50%; /* Membuat beacon berbentuk bulat */
+    }
+
+    /* Gaya umum untuk langkah-langkah Joyride */
+    .joyride-step {
+      z-index: 1000; /* Pastikan panduan selalu tampil di atas konten lain */
+    }
+
+    /* Tambahkan aturan untuk mencegah scrollbar saat Joyride aktif */
+    body.joyride-active {
+      overflow: hidden; /* Menonaktifkan scrollbar */
+    }
+
     
     /* Map */
     .map {
