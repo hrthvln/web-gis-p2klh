@@ -1,9 +1,6 @@
 // src/App.jsx
 import React from 'react';
 import { BrowserRouter as Router, Routes, Route } from 'react-router-dom';
-import RiverWaterQualityMap from './components/RiverWaterQualityMap';
-import AirQualityMap from './components/AirQualityMap';
-import SeaWaterQualityMap from './components/SeaWaterQualityMap';
 import RiverWater from './components/RiverWater';
 import SeaWater from './components/SeaWater';
 import Air from './components/Air';
@@ -34,19 +31,6 @@ function App() {
             path="/maps/kualitas-air-laut" 
             element={<SeaWater />} 
           />
-          {/* Mencoba */}
-            <Route 
-              path="/RiverWaterQualityMap" 
-              element={<RiverWaterQualityMap />} 
-            />
-            <Route 
-              path="/SeaWaterQualityMap" 
-              element={<SeaWaterQualityMap />} 
-            />
-            <Route 
-              path="/AirQualityMap" 
-              element={<AirQualityMap />} 
-            />
           </Routes>
       </div>
     </Router>
