@@ -5,7 +5,7 @@ import 'leaflet.locatecontrol/dist/L.Control.Locate.min.css';
 import 'leaflet.locatecontrol/dist/L.Control.Locate.min.js';
 import { FaLayerGroup, FaInfoCircle, FaCalendarAlt, FaDownload } from 'react-icons/fa'; // Import icon dari react-icons
 import logo from '../assets/logo.png'; // Sesuaikan jalur logo
-import '../styles/SeaWater.css';
+import '../styles/webgis.css';
 
 const SeaWaterQualityMap = () => {
   const [map, setMap] = useState(null);
