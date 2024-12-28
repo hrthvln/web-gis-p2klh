@@ -149,7 +149,7 @@ const ApplicationSection = () => {
     id="air-sungai"
     className="card p-4 sm:p-6 bg-white rounded-lg shadow-md hover:shadow-lg transform transition-transform hover:scale-105"
   >
-    <Link to="/maps/kualitas-air-sungai">
+    <Link to="/maps/kualitas-air-sungai-2023">
       <div className="custom-height bg-white border-2 border-gray-150 p-4 rounded-lg flex flex-col items-center justify-center">
         <img
           src={AirSungaiIcon}
@@ -168,7 +168,7 @@ const ApplicationSection = () => {
     id="udara"
     className="card bg-white p-4 sm:p-6 rounded-lg shadow-md hover:shadow-lg transform transition-transform hover:scale-105"
   >
-    <Link to="/maps/kualitas-udara">
+    <Link to="/maps/kualitas-udara-2023">
       <div className="custom-height bg-white border-2 border-gray-150 p-4 rounded-lg flex flex-col items-center justify-center">
         <img
           src={UdaraIcon}
@@ -187,7 +187,7 @@ const ApplicationSection = () => {
     id="air-laut"
     className="card bg-white p-4 sm:p-6 rounded-lg shadow-md hover:shadow-lg transform transition-transform hover:scale-105"
   >
-    <Link to="/maps/kualitas-air-laut">
+    <Link to="/maps/kualitas-air-laut-2023">
       <div className="custom-height bg-white border-2 border-gray-150 p-4 rounded-lg flex flex-col items-center justify-center">
         <img
           src={AirLautIcon}
