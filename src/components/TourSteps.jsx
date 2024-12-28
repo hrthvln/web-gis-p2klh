@@ -62,12 +62,12 @@ const tourSteps = [
     },
     {
       target: '.leaflet-control-locate',
-      content: 'Fitur ini untuk menampilkan lokasi Anda pada peta.',
+      content: 'Fitur ini untuk menampilkan lokasi kamu di peta.',
       placement: 'top',
     },
     {
       target: '.leaflet-control-latlng',
-      content: 'Bagian ini menunjukkan nilai latitude dan longitude cursor Anda di peta.',
+      content: 'Bagian ini menunjukkan nilai latitude dan longitude cursor kamu di peta.',
       placement: 'top',
     },
   ];

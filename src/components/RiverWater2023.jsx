@@ -409,7 +409,7 @@ const RiverWater = () => {
       case 'october':
         setShowOktLayer(checked);
         if (checked) {
-          loadPointLayer(oktLayer, setOktLayer, '/map/titikSungai_Okt.geojson', pointColors.oktober, 'IP_Okt');
+          loadPointLayer(oktLayer, setOktLayer, '/map/titikSungaiOkt_2023.geojson', pointColors.oktober, 'IP_Okt');
         } else {
           if (oktLayer) map.removeLayer(oktLayer);
         }
@@ -722,7 +722,11 @@ const RiverWater = () => {
         run={run}
         continuous
         showSkipButton
-        styles
+        styles={{
+          options: {
+            zIndex: 2000, // Pastikan tooltip selalu terlihat
+          },  
+        }}
       />
     </div>
   );

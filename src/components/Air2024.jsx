@@ -554,7 +554,11 @@ const handlePopupToggle = (popupName) => {
         run={run}
         continuous
         showSkipButton
-        styles
+        styles={{
+          options: {
+            zIndex: 2000, // Pastikan tooltip selalu terlihat
+          },  
+        }}
       />
 
       </div>
